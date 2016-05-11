@@ -1,0 +1,82 @@
+<md-dialog aria-label="Mango (Fruit)"  ng-cloak style="padding:0;max-height: 100%; width:1000px;z-index:9999999" id="imageOverlay">
+<div class="modal-header c-modal-header" style="padding:5px;height:37px;">
+        <button ng-click="imageOverlayClose()"
+                style="display:inline-block"
+                class="close dialog-close" 
+                data-dismiss="modal" 
+                type="button" 
+                >
+            <span aria-hidden="True" class="c-span" >×</span>
+        </button>
+        <i class="fa fa-folder c-icon"></i>
+        <h5 class="modal-title c-heading" style="display:inline-block">
+          <i class=" icon-folder-close" style="margin-right:5px;"></i><span style="font-size:10px;">图库</span>
+        </h5>
+    
+        <div class="" style="display:inline-block;float:right;margin-right:50px;">
+          <input class="form-control" 
+                 name="image" 
+                 ng-model="query" 
+                 placeholder="搜索图片" 
+                 type="text" 
+                 style="height: 25px;padding: 6px 6px;font-size: 10px;">
+        </div>
+</div>
+
+
+    <md-dialog-content style="padding:0;z-index:9999999;">
+        <div class="piclaber" id="imgpop">
+          <div class="leftTab">
+            <ul>
+              <li class="active">我的图库</li>
+            </ul>
+          </div>
+          <div class="rightTab">
+              <ul id="imageList">
+
+                 <li class="myImg" style="width:140px; height:120px;" id="newImageTarget">
+                    <form id='uploadImageForm' name="peter" enctype='multipart/form-data'>
+                      <input type="file" name="uploadImage" ng-model="uploadImageFile" style="width:140px;height:120px;opacity:0; z-index:99999;position:absolute;"  onchange="angular.element(this).scope().uploadImage(this)" />
+                      <input name ="userName" type="hidden" value="{{userName}}"/>
+                    </form>
+                    <a type="button" class="btn btn-default" style="width: 140px;height: 120px;display: block;line-height: 100px;"><i class="icon-upload-alt icon-large"></i></a>
+                 </li> 
+
+                  <li class="myImg" ng-repeat="item in imageList | filter:query | orderBy:order" id="{{item.id}}">
+                      <div class="imageContainer"><img class="myImageActive" src="{{item.url}}" ></div>
+                    
+                      <div class="imageInfo">
+                      <span style="font-size:6px;color:#fff;float:left; padding:2px;">{{item.name.substring(-1,16)}}</span>
+                      </div>
+                      <div style="position:absolute;top:0px;left:0px;background-color:rgba(0,0,0,0.8);width:100%;height:100%;opacity:0;text-align:center;" class="imageOption">
+                        <a style="z-index:9999;color:#fff; margin-right:20px;display:inline-block;line-height:120px;" class="removeImageHover" ng-click="removeImage(item.id)">
+                        <i class=" icon-trash icon-2x" ></i></a>
+                        <a style="z-index:9999;color:#fff;display:inline-block;line-height: 120px;" class="selectedImageHover" ng-click="imageSelected(item.url)"><i class="icon-ok-sign icon-2x" ></i></a>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+        </div>
+    
+    </md-dialog-content>
+</md-dialog>
+  
+
+<script type="text/javascript">
+
+$(document).on("mouseenter",".myImg",function(){
+     $(this).find('.imageOption').stop().delay(50).animate({opacity:1},200);
+});
+$(document).on("mouseleave",".myImg",function(){
+    $(this).find('.imageOption').stop().delay(50).animate({opacity:0},200);
+    // $('#container').css('filter','blur(5px)');
+});
+$(document).on("mouseenter",".imageOption",function(){
+    $(this).find(".selectedImageHover").stop().delay(50).animate({color:"#00CC99"},200);
+
+});
+$(document).on("mouseleave",".imageOption",function(){
+    $(this).find(".removeImageHover").stop().delay(50).animate({color:"#00CC99"},200);
+});
+
+</script>

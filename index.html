@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="en" ng-app="mainApp">
+<head>
+	<meta charset="UTF-8">
+	<title>H5</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+   <!--jquery resource-->
+    <script type="text/javascript" src="js/lib/jquery.js"></script>
+    <script type="text/javascript" src='js/lib/jquery-ui.min.js"'></script>
+    <script type="text/javascript" src="js/lib/jquery-ui-1.9.2.custom.min.js"></script>
+      <script type="text/javascript" src="js/lib/zeroclipboard/jquery.zclip.min.js"></script> 
+
+    <!--angular rescource-->
+    <script type="text/javascript" src="js/lib/angular.js"></script>
+    <script type="text/javascript" src="js/lib/angular-aria.js"></script>
+    <script type="text/javascript" src="js/lib/angular-animate.js"></script>
+    <script type="text/javascript" src="js/lib/angular-material.js"></script>
+    <script type="text/javascript" src="js/lib/angular-ui-router.js"></script>
+    <script type="text/javascript" src="js/lib/angular-messages.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/angular-material.css"/>
+
+
+
+
+    <!--color panel-->
+    <script src="js/lib/kendo.all.min.js"></script>
+    <link rel="stylesheet" href="css/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="css/kendo.material.min.css" />
+    <link rel="stylesheet" href="css/kendo.common.min.css" />
+    <link rel="stylesheet" href="css/kendo.rtl.min.css">
+    <link rel="stylesheet" href="css/kendo.silver.min.css"/>
+    <link rel="stylesheet" href="css/kendo.mobile.all.min.css"/>
+
+    <!--bootstrap resource-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+	<script type="text/javascript" src="js/lib/bootstrap.js"></script>
+    <script type="text/javascript" src="js/lib/ui-bootstrap-1.1.2.js"></script>
+
+
+
+
+    <!--template resource-->
+    <link rel="stylesheet" type="text/css" href="css/animate.css"/>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <script src="js/lib/swiper.min.js"></script>
+    <script src="js/lib/animate.delay.js"></script>
+<!--<script type="text/javascript" src="js/lib/swiper.min.js"></script>
+    <script type="text/javascript" src="swiper.animate1.0.2.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/swiper.min.css"/> -->
+
+    <!--icons resource-->
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome-ie7.min.css">
+
+    <!--common resource-->
+    <script type="text/javascript" src="js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/init.css"/>
+    <link rel="stylesheet" type="text/css" href="css/h5_dash.css"/>
+
+
+
+	<style type="text/css">
+    html{
+        font-size: 65%;
+    }
+	body{
+        position: relative;
+        height: 100%;
+        font-family: "Microsoft YaHei",微软雅黑,Helvetica Neue, Helvetica, Arial, sans-serif;
+        color:#000;
+        margin: 0;
+        padding: 0;
+		background: #fff;
+		height: 100%;
+		width: 100%;
+		background-image: url('./images/imagebg.png') no-repeat;
+	}
+	.h-nav-bar{
+		background: #ffffff none repeat scroll 0 0 !important;
+		box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.14), 0 0 2px 2px rgba(0, 0, 0, 0.098), 0 0 5px 1px rgba(0, 0, 0, 0.082);
+	}
+/*	div.swiper-slide{
+		position: relative;
+	}*/
+	ul.h-slide-list{
+	 text-align: center;
+	 width: 100%;
+	 margin: 0;
+	 padding: 0;
+	 max-height: 700px;
+	}
+	div.h-slide-tool-bar{
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		top: 10px;
+		right: 10px;
+	}
+	div.h-slide-list-bar{
+		width: 100%;
+		background: #dedede;
+		text-align: center;
+		padding: 10px;
+	}
+	div.h-slide-tool-bar ul {
+		margin: 0;
+		padding: 0;
+	}
+	div.h-slide-tool-bar ul li {
+		list-style: none;
+		width: 40px;
+		height: 40px;
+		/*border:1px solid #000;*/
+		margin-bottom: 20px;
+		text-align: center;
+		padding: 5px;
+		background: #dedede;
+	}
+	div.h-slide-edit-box{
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		width:300px;
+	    bottom:20px;
+		right: 450px;
+	}
+	div.h-slide-edit-box ul{
+		height: 30px;
+	}
+	div.h-slide-edit-box ul li{
+		list-style: none;
+		width: 40px;
+		height: 40px;
+		/*border:1px solid #000;*/
+		margin-right: 5px;
+		text-align: center;
+		padding: 5px;
+		display: inline-block;
+		background: #dedede;
+	}
+	ul.h-slide-list li{
+		width: 90%;
+		height: 200px;
+		border: 1px solid #000;
+		margin-bottom: 5px;
+	}
+
+
+    .md-toolbar-tools{
+    	height: none;
+    }
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+    .swiper-slide {
+        text-align: center;
+     /*   font-size: 18px;*/
+        background: #fff;
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+/*	input:hover{
+		border: 1px solid blue;
+	}*/
+	md-backdrop.md-sidenav-backdrop{
+    	display:none
+	}
+	md-tabs-wrapper{
+		-display:none;
+	}
+ul.h-images-list{
+	margin: 0;
+	padding: 0;
+	width: 700px;
+	height: 400px;
+
+}
+ul.h-images-list li{
+	list-style: none;
+	max-width:150px;
+	height: auto;
+	float: left;
+	vertical-align: top;
+}
+ul.h-images-list li img{
+	padding: 5px;
+	width: 100%;
+}
+.pannel-title{
+	width:50px;font-weight:bold;
+
+	margin-bottom: 10px;
+	margin-right: 10px;
+}
+.bgAcitve{
+	cursor: pointer;
+}
+.pannel-icon{
+	width: 30px; margin-right: 10px;
+}
+.swiper-pagination-bullet{
+	width: 20px;
+	height: 20px;
+}
+#textSelected:hover{
+	cursor: move;
+}
+<!--2015 12 14 -->
+.editModuleWrap{
+}
+.backgroundSeting >.k-colorpicker, .k-toolbar .k-split-button {
+
+    margin-top: -12px;
+}
+.k-colorpicker, .k-toolbar .k-split-button{
+ width:20px
+    height: 20px;
+    overflow: hidden;}
+.k-colorpicker .k-selected-color {
+    border-radius: 0px;
+}
+.k-block, .k-button, .k-textbox, .k-drag-clue, .k-touch-scrollbar, .k-window, .k-window-titleless .k-window-content, .k-window-action, .k-inline-block, .k-grid .k-filter-options, .k-grouping-header .k-group-indicator, .k-autocomplete, .k-multiselect, .k-combobox, .k-dropdown, .k-dropdown-wrap, .k-datepicker, .k-timepicker, .k-colorpicker, .k-datetimepicker, .k-notification, .k-numerictextbox, .k-picker-wrap, .k-numeric-wrap, .k-colorpicker, .k-list-container, .k-calendar-container, .k-calendar td, .k-calendar .k-link, .k-treeview .k-in, .k-editor-inline, .k-tooltip, .k-tile, .k-slider-track, .k-slider-selection, .k-upload, .k-split-button .k-gantt-views, .k-gantt-views > .k-current-view {
+    border-radius: 0;
+}
+.k-colorpicker .k-picker-wrap {
+	line-height: none;
+	width: 20px;
+	height: 20px;
+	border:none;
+}
+.k-block, .k-widget {
+    background-color:transparent;
+}
+.k-dropdown, span.k-colorpicker {
+    background-color:transparent;
+}
+.k-picker-wrap.k-state-default>.k-select{
+	    border-color: none;
+}
+.backgroundSeting >.k-colorpicker, .k-toolbar .k-split-button {
+    margin-top:0px;
+    position: absolute;
+    right: 36px;
+}
+.k-colorpicker .k-selected-color{
+	width: 20px;
+	height: 16px;
+}
+.k-colorpicker .k-selected-color {
+   border-radius:none;
+}
+#pagesList{
+	margin: auto;
+	position: absolute;
+	left: -33%;
+	right: 0;
+	bottom: 0;
+	top:0;
+}
+#pagesList{
+/*	width: 370px;*/
+	width: 320px;
+	height: 480px;
+/*	position: relative;*/
+/*	position: absolute;*/
+
+}
+
+.isEdit{
+/*	border: 1px #7ec8ed solid;border:7px rgba(0,0,0,.3) solid;*/
+}
+
+.thumbnail{
+	width: 100%;
+	position:relative;
+	height: 334px;
+}
+.thumbnail-hover{
+	display:none;
+	position: relative;
+}
+.dask{
+	opacity: 1;
+	position: absolute;
+	width: 100%;
+	background: #fff;
+    height: 325px;
+}
+
+.flip {
+	-webkit-backface-visibility: hidden;
+	-webkit-transform: translateX(0); /* Needed to work around an iOS 3.1 bug that causes listview thumbs to disappear when -webkit-visibility:hidden is used. */
+	backface-visibility: hidden;
+	transform: translateX(0);
+}
+.flip.out {
+	-webkit-transform: rotateY(-90deg) scale(.9);
+	-webkit-animation-name: flipouttoleft;
+	-webkit-animation-duration: 175ms;
+	transform: rotateY(-90deg) scale(.9);
+	animation-name: flipouttoleft;
+	animation-duration: 175ms;
+}
+.flip.in {
+	-webkit-animation-name: flipintoright;
+	-webkit-animation-duration: 225ms;
+	animation-name: flipintoright;
+	animation-duration: 225ms;
+}
+@-webkit-keyframes flipouttoleft {
+    from { -webkit-transform: rotateY(0); }
+    to { -webkit-transform: rotateY(-90deg) scale(.9); }
+}
+@keyframes flipouttoleft {
+    from { transform: rotateY(0); }
+    to { transform: rotateY(-90deg) scale(.9); }
+}
+@-webkit-keyframes flipintoright {
+    from { -webkit-transform: rotateY(90deg) scale(.9); }
+    to { -webkit-transform: rotateY(0); }
+}
+@keyframes flipintoright {
+    from { transform: rotateY(90deg) scale(.9); }
+    to { transform: rotateY(0); }
+}
+
+.ui-selected{
+	outline: 1px solid #81a3ea;
+    cursor: default;
+}
+
+.ui-resizable-handle{display: none;}
+.ui-selected .ui-resizable-handle {
+    display: block;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    z-index: 10000;
+    border-radius: 6px;
+    background: #2570ba !important;
+    background: -moz-linear-gradient(top,#92b9ea,#2570ba) !important;
+    background: -webkit-gradient(linear,0 0,0 100%,from(#92b9ea),to(#2570ba)) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff92b9ea',endColorstr='#ff2570ba',GradientType=0) !important;
+    border: 1px solid #fff;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+/*.ui-resizable-s {
+    cursor: s-resize;
+    height: 7px;
+    width: 7px;
+    bottom: -5px;
+    left: 50%;
+    margin-left: -5px;
+}
+.ui-resizable-n {
+    cursor: n-resize;
+    height: 7px;
+    width: 7px;
+    top: -5px;
+    left: 50%;
+    margin-left: -5px;
+}
+.ui-resizable-e {
+    cursor: e-resize;
+    width: 7px;
+    right: -5px;
+    top: 50%;
+    height: 7px;
+    margin-top: -5px;
+}
+.ui-resizable-w {
+    cursor: w-resize;
+    width: 7px;
+    left: -5px;
+    top: 50%;
+    height: 7px;
+    margin-top: -5px;
+}*/
+.ui-resizable-se {
+    cursor: se-resize;
+    width: 7px;
+    height: 7px;
+    right: -5px;
+    bottom: -5px;
+}
+.ui-resizable-sw {
+    cursor: sw-resize;
+    width: 7px;
+    height: 7px;
+    left: -5px;
+    bottom: -5px;
+}
+.ui-resizable-ne {
+    cursor: ne-resize;
+    width: 7px;
+    height: 7px;
+    right: -5px;
+    top: -5px;
+}
+.ui-resizable-nw {
+    cursor: nw-resize;
+    width: 7px;
+    height: 7px;
+    left: -5px;
+    top: -5px;
+}
+.ui-selected > .rotate-rightTop {
+    position: absolute;
+    right: 50%;
+    margin-right: -7px;
+    top: -27px;
+    cursor: url(./images/rotate_cursor.png),auto;
+    display: none;
+}
+a.selectedImageHover:hover,a.removeImageHover:hover{
+  text-decoration: none;
+}
+.mainbox{
+	height: 100%;
+/*	background: #E0E0E0;*/
+	overflow: hidden;
+	position: relative;
+	background-image: url('./images/imagebg.png');
+/*background-size: 100% 100%;*/
+	width: 100%;
+}
+.gridListdemoDynamicTiles md-icon {
+  width: 50%;
+  height: 30%; }
+.gridListdemoDynamicTiles md-icon svg {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%; }
+.gridListdemoDynamicTiles .s64 {
+  font-size: 64px; }
+.gridListdemoDynamicTiles .s32 {
+  font-size: 48px; }
+.gridListdemoDynamicTiles md-icon.fa {
+  display: block;
+  padding-left: 0; }
+.gridListdemoDynamicTiles md-icon.s32 span {
+  padding-left: 8px; }
+.gridListdemoDynamicTiles md-grid-list {
+  margin: 8px; }
+.gridListdemoDynamicTiles .gray {
+  background: #f5f5f5; }
+.gridListdemoDynamicTiles .green {
+  background: #b9f6ca; }
+.gridListdemoDynamicTiles .yellow {
+  background: #ffff8d; }
+.gridListdemoDynamicTiles .blue {
+  background: #84ffff; }
+.gridListdemoDynamicTiles .darkBlue {
+  background: #80d8ff; }
+.gridListdemoDynamicTiles .deepBlue {
+  background: #448aff; }
+.gridListdemoDynamicTiles .purple {
+  background: #b388ff; }
+.gridListdemoDynamicTiles .lightPurple {
+  background: #8c9eff; }
+.gridListdemoDynamicTiles .red {
+  background: #ff8a80; }
+.gridListdemoDynamicTiles .pink {
+  background: #ff80ab; }
+.gridListdemoDynamicTiles md-grid-tile {
+  transition: all 300ms ease-out 50ms; }
+.gridListdemoDynamicTiles md-grid-tile md-icon {
+  padding-bottom: 32px; }
+.gridListdemoDynamicTiles md-grid-tile md-grid-tile-footer {
+  background: rgba(0, 0, 0, 0.68);
+  height: 36px; }
+.gridListdemoDynamicTiles md-grid-tile-footer figcaption {
+  width: 100%; }
+.gridListdemoDynamicTiles md-grid-tile-footer figcaption h3 {
+  margin: 0;
+  font-weight: 700;
+  width: 100%;
+  text-align: center; }
+.md-dialog-container{
+	z-index: 99999999999;
+}
+.footer{
+	position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background: #00649d;
+    height: 35px;
+    text-align: center;
+}
+.edit-icon a{
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    line-height: 48px;
+}
+input,button,select,textarea{outline:none}
+
+/**reset angular ui*/
+
+/*user profile*/
+.btn-group.open .dropdown-toggle {
+     -webkit-box-shadow: none;
+     box-shadow: none;
+}
+.dropdown-menu{
+	border-radius: 0px;
+	box-shadow: none;
+	min-width: 220px;
+	padding:0;
+}
+.dropdown-menu:before{
+    content: '';
+    display: block;
+    overflow: hidden;
+    width: 0px;
+    height: 0px;
+    border: 50px solid transparent;
+    border-color: #fff transparent;
+    border-width: 0 10px 10px 10px;
+    position: absolute;
+    left: 178px;
+    top: -10px;
+
+}
+.logout:hover{
+	background: #f4f4f4;
+	transition: background 200ms ease-in-out 0s;
+}
+
+/*remove outline */
+:focus{outline:0;}
+
+/*.k-button {
+            width: 20px;
+            height: 20px;
+        }*/
+.ui-selected:hover{
+	cursor: move;
+}
+
+.animateDelayElement{
+	opacity: 1;
+}
+
+.filter{-webkit-filter: blur(5px);filter: blur(5px);}
+.closeOverLay{
+	cursor: pointer;
+    font-size: 23px;
+    text-align: right;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: top;
+    position: absolute;
+    right: 22px;
+    background-image: url('./images/close2.png');
+    background-repeat: no-repeat;
+    top: 15px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 124%;
+}
+
+.imageContainer{
+    text-align: center;
+/*    margin-bottom: 5px;*/
+ /*   background-color: rgb(255, 255, 255);*/
+    background-size: contain;
+    background-position: 50% 50%;
+    width: auto;
+    height: 100%;
+}
+md-input-container.md-default-theme, md-input-container label, md-input-container.md-default-theme, md-input-container .md-placeholder {
+    text-shadow: ;
+    color: rgba(255,255,255,1);
+    font-size: 20px;
+    font-weight: normal;
+}
+
+md-input-container.md-default-theme, md-input-container .md-input {
+    color: rgba(0,0,0,0.87);
+    border-color: rgba(255,255,255,0.5);
+    text-shadow: ;
+}
+
+md-input-container.md-default-theme, md-input-container .md-input {
+    color: rgba(255,255,255,0.87);
+    border-color: rgba(255,255,255,0.5);
+    font-size: 36px;
+    text-shadow: ;
+}
+md-input-container.md-default-theme:not(.md-input-invalid).md-input-has-value, md-input-container:not(.md-input-invalid).md-input-has-value label {
+   color: rgba(255,255,255,0.87);
+}
+    input:-webkit-autofill,
+    textarea:-webkit-autofill,
+    select:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 1000px white inset;
+    }
+
+
+.swiper-pagination-bullet {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border: 1px solid red;
+    display: block;
+    margin-top: 3px;
+}
+
+
+
+</style>
+
+</head>
+
+<body>
+
+<div ui-view="" style="height: 100%;" id="main">
+    
+</div>
+</body>
+
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/commonModule/homeController.js"></script>
+<script type="text/javascript" src="js/editModule/editText.js"></script>
+<script type="text/javascript" src="js/projectModule/projectService.js"></script>
+<script type="text/javascript" src="js/userModule/AuthService.js"></script>
+<script type="text/javascript" src="js/userModule/session.js"></script>
+<script type="text/javascript" src="js/commonModule/eidtToolDirective.js"></script>
+<script type="text/javascript" src="js/commonModule/leftNavDirective.js"></script>
+<script type="text/javascript" src="js/commonModule/pageSettingService.js"></script>
+<script type="text/javascript" src="js/userModule/loginDirective.js"></script>
+<script type="text/javascript" src="js/projectModule/projectController.js"></script>
+<script type="text/javascript" src="js/userModule/application-controller.js"></script>
+<script type="text/javascript" src="js/userModule/sessionService.js"></script>
+<script type="text/javascript" src="js/userModule/loginService.js"></script>
+<script type="text/javascript" src="js/imageModule/imageService.js"></script>
+<script type="text/javascript" src="js/imageModule/imageEditDirective.js"></script>
+
+
+</html>

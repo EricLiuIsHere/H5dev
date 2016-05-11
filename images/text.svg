@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<!-- Created by SVGDeveloper 1.0 -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   width="640px"
+   height="480px"
+   viewBox="0 65.326 612 502.174"
+   enable-background="new 0 65.326 612 502.174"
+   xml:space="preserve"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="text.svg"><metadata
+     id="metadata22"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><sodipodi:namedview
+     pagecolor="#ff39ff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1304"
+     inkscape:window-height="746"
+     id="namedview20"
+     showgrid="false"
+     inkscape:zoom="0.64302523"
+     inkscape:cx="444.92149"
+     inkscape:cy="260.66761"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Layer_1" /><defs
+     id="defs3"><linearGradient
+       id="linearGradient4863"
+       osb:paint="solid"><stop
+         style="stop-color:#85837f;stop-opacity:1;"
+         offset="0"
+         id="stop4865" /></linearGradient><symbol
+       overflow="visible"
+       id="symbol"><path
+         d="M457 38L112 38C112 38 96 38 96 52C96 64 96 449 96 449C96 449 98 464 111 464L523 464C523 464 538 463 538 448C538 434 538 118 538 118"
+         fill="none"
+         fill-opacity="0"
+         stroke="#FFFFFF"
+         stroke-width="27"
+         transform="matrix(1.061,0,0,1.061,-15.54409,-26.521)"
+         id="path6" /></symbol></defs><path
+     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:1.35600005;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 102.81836 -8.2480469 C 92.766401 -8.2480469 84.673828 3.5234995 84.673828 18.144531 L 84.673828 423.91797 C 84.673828 438.539 92.766401 450.30859 102.81836 450.30859 L 540.48047 450.30859 C 550.53243 450.30859 558.625 438.539 558.625 423.91797 L 558.625 116.95508 L 530.03516 145.08984 L 530.03516 421.71875 L 109.96484 421.71875 L 109.96484 17.044922 L 403.48633 17.044922 L 429.18945 -8.2480469 L 102.81836 -8.2480469 z "
+     id="rect4399"
+     transform="matrix(1.0461958,0,0,1.0461958,-28.782678,65.325996)" /><path
+     style="fill:#ffffff;stroke:none;stroke-opacity:0"
+     d="m 459.07227,-8.6816406 c -1.15249,-0.061055 -2.0447,0.1894558 -2.63672,0.7714844 L 405.62017,42.047683 c 38.37682,37.244338 66.08192,64.876267 103.88764,97.001147 l 47.70703,-47.238283 c 3.77559,-3.738535 -6.40517,-19.829265 -22.82617,-36.078125 L 492.89062,14.671875 C 479.03544,0.96189512 465.29571,-8.3519424 459.07227,-8.6816406 Z M 394.21199,57.099593 234.33984,211.99805 c -5.7198,5.54185 -7.46931,13.92466 -5.81445,22.87695 l 83.47852,82.60156 c 9.0457,1.63625 17.45307,-0.15581 23.11328,-5.75781 L 497.32206,151.37923 C 467.09956,124.31017 394.21199,57.099593 394.21199,57.099593 Z M 322.11238,296.48205 c -9.06015,-1.63886 -18.64961,8.90625 -25.42142,-0.46252 l -33.33351,-46.11674 c -6.77139,-9.36818 -19.17842,-11.11657 -20.83572,-20.08202 l -13.28012,-9.74001 -21.43497,110.44658 115.22254,-12.96232 z"
+     id="rect18"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ssccsccscsccccccssccccc"
+     transform="matrix(1.0461958,0,0,1.0461958,-28.782678,65.325996)" /><g
+     transform="matrix(1,0,0,1,-13.683,56.094)"
+     style="font-size:12px;font-family:'Segoe UI';writing-mode:tb-rl;fill:#000000;stroke:none;stroke-opacity:0"
+     id="text16" /></svg>

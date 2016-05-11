@@ -1,0 +1,16 @@
+<div class="col-left scrollspy-example" ng-controller="LeftCtrl" data-spy="scroll" data-target="#navbar-example"> 
+	<div ng-repeat="ques in feedback.leftpages" class="pageThumbItem" >
+			<div class="box" ng-click="choosePage(ques.thumbId)" data-activeid="{{ques.thumbId}}">
+					<div class="page">
+							<div class="pageThumb"></div>
+							<div class="pageThumbMask" >
+								<a href="#" ng-click="removePage(ques.thumbId)" class="removePage"><i class="icon-trash" style="margin-right: 5px;"></i>删除</a>
+							
+							</div>
+					</div>		
+			
+			</div>
+	</div>
+<div class="new-button" ng-click="addEmptyTemplate()"><i class="icon-plus 2x-icon" style="margin-right:10px;"></i>创建新页</div>
+</div>
+

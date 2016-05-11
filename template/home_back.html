@@ -1,0 +1,141 @@
+<div  class="mainContent" id='popupContainer' ng-controller="applicationController" style="height: 100%;">
+    <!--eidt area-->
+    <div ui-view="editPanel" style="height: 100%;">
+
+       <!--navbar-->
+        <div class="navbar navbar-blue">  
+
+            <div class="navbar-text navbar-left" id="ibm-home" style="font-size: 24px;font-weight: bold;line-height: 50px;margin-left: 10px;">H5</div>
+                <p class="navbar-text navbar-left"><a ng-click="myProject()" style="text-decoration:none;cursor:pointer">我的项目</a></p>
+                <div class="navbar-img"><edittext></edittext><editimage></editimage>
+            </div>
+            <p class="navbar-text navbar-right" id="userProfile" style="margin: 0px 10px 0px 0px; line-height:50px;">
+
+            <!-- Single button -->
+            <div class="btn-group" uib-dropdown is-open="status.isopen" style="position:absolute;right:0px;" ng-if="isAuthorized">
+                    <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled" style="background: transparent;border:none;"><img id="uImage" src="{{currentUser.userPhoto}}" >
+                    </button>
+
+                    <ul uib-dropdown-menu role="menu" aria-labelledby="single-button" style="left: -156px;">
+                      <li role="menuitem">
+                        <div style="text-align: center;">
+                            <img id="uImage" src="{{currentUser.userPhoto}}" style="width:68px;  border: 2px solid #0061ff;background-color: #eff4f4;background-size: cover;margin: 20px auto 0;">
+                        </div>
+                      </li>
+                      <li role="menuitem" style="color: #0061ff;
+                                          display: block;
+                                          font-size: 16px;
+                                          font-weight: 700;
+                                          line-height: 19px;
+                                          margin-top: 12px;
+                                          text-align: center;">
+                            {{currentUser.userName}}
+                      </li>
+                      <li role="menuitem" style="
+                                          color: #3c4646;
+                                          font-weight:0;
+                                          line-height: 1.5em;
+                                          padding: 15px 10px 13px 20px; 
+                                          margin-top: 20px; 
+                                          cursor: pointer;" 
+                                          class="logout"
+                                          ng-click="loginOut()">
+                          <i class="icon-signout icon-1x" style="color:#0061ff;float:left; margin-top: 4px;"></i>
+                          <span style="font-size: 14px;margin-left: 10px;">退出</span>
+                      </li>
+                    </ul>
+            </div>
+
+            
+            <span class="userName" style="
+                                    display: block;
+                                    position: absolute;
+                                    right: 10px;
+                                    line-height: 3.5em;" 
+                                    id="welcome" 
+                                    ng-click="userLogin()" 
+                                    ng-if="!isAuthorized">欢迎,登陆</span> </div>
+       <!--navbar-->
+
+       <!-- mainbox-->
+        <div class="mainbox" style="height: 100%;">
+              <pageleft></pageleft>
+
+
+              <div class="col-center" id="editModulePosition" style="height: 100%;">
+                    <div id="addBox" style="display:none;text-align:center;background:rgba(0,0,0,0.8);width:150px; height:50px;color:#fff;font-size:18px;padding:10px;border-radius:5px;position:absolute;top:50%;left:90%;z-index:9999999;">保存成功！</div>
+                <div class="swiper-container" style="width: 320px;">
+                    <div id="pagesList" class="swiper-wrapper" style="height: 480px;">
+         
+                        <div class="swiper-slide isEdit" data-type="page" id="right_1" style="height: 100%;  direction: ltr;"> </div> 
+                         <div class="swiper-pagination">xxxxxx</div>
+                    </div>
+
+                </div>
+                    <toolbar1></toolbar1>
+              </div>
+        </div>
+        <!-- mainbox-->
+
+    </div>
+    <!--eidt area-->
+
+    <!--setbg-->
+    <div class="backgroundSeting" style=" width: 300px;position: absolute;right: 50%; top: 11%;">背景颜色
+         <div  id="color-chooser-bg-1" style="margin-left: 10px;"></div> 
+         <input type="color" id="hsv-picker-bg-1" 
+                ng-model="setFontBackgroundColor" 
+                style="display:inline-block;position: absolute;top:0%;" autocomplete="off">
+    </div>
+    <!--setbg-->
+</div>
+
+   
+ 
+
+
+<script>
+
+
+
+
+$(document).ready(function(){
+
+
+  $("#color-chooser-bg-1").kendoColorPalette({
+        palette: ["#ffffff", "#000000","#746153", "#3a4c8b", "#ffcc33", "#fb455f", "#ac120f" ],
+        tileSize: 20,
+        value: "#ffffff",
+        change: function() {
+            var colorId = "#"+this.value().substring(1);
+              console.log('works ' +colorId);
+              setTimeout(function(){
+
+                $('.isEdit').css('backgroundColor',colorId);
+              },100);
+
+
+            console.log('click works');
+        }
+});
+
+
+$("#hsv-picker-bg-1").kendoColorPicker({
+  toolIcon: false,
+  palette: "websafe",
+  tileSize: 20,
+  buttons:true,
+  opacity: true,
+   change: function() {
+            var colorId = this.value();
+
+              setTimeout(function(){
+     
+                $('.isEdit').css('backgroundColor',colorId);
+              },100);
+
+        }
+});
+})
+
+</script>

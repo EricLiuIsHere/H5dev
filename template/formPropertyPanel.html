@@ -1,0 +1,333 @@
+<div class="col-right" id="form-properties">
+      <div class="title"><div class="active">Form</div></div>  
+    
+      <div class="btn-group module">
+<!--         <button type="button" class="btn btn-default module-select-half" id="formBorderStyle">Border Style</button>
+        <ul class="dropdown-menu">
+         <li  ng-click="setFormBorderStyle(m.formBorderStyle)" ng-repeat="m in formBorderStyle"><a href="#">{{m.formBorderStyle}}</a></li>
+        </ul>
+      -->
+
+      <div layout>
+      <div class="form-group" style="text-align:left; margin:10px 0px 0px 10px;">
+          <span class="md-body-1">Background Color</span>
+          <input id="formColorPicker" type="color"  ng-model="setFormBackgroundColor" />
+        </div>
+      </div>
+
+    <div layout>
+      <div class="form-group" style="text-align:left; margin:10px 0px 0px 10px;">
+          <span class="md-body-1" style="margin-right:34px;">Border Color</span>
+          <input id="formBorderColorPicker" type="color"  ng-model="setFormBorderColor" />
+        </div>
+      </div>
+
+
+      <div layout>
+        <div flex="30" layout layout-align="center center" style="margin-right:10px;">
+          <span class="md-body-1">BorderWidth</span>
+        </div>
+        <md-slider flex class="md-primary" md-discrete  ng-model="formBorderWidth.size"   max='300' min = '1' step='1'  ng-change="setFormBorderWidthSize()"  aria-label="rating">
+        </md-slider>
+        <div flex="25" layout layout-align="center center" style="margin-left:10px;">
+            <input flex type="number" ng-model="formBorderWidth.size" aria-label="red" aria-controls="red-slider"><span class="md-body-1" style="margin-left: 5px;">px</span>
+        </div>
+      </div>
+
+
+      <div layout>
+        <div flex="30" layout layout-align="center center" style="margin-right:10px;">
+          <span class="md-body-1">Radius</span>
+        </div>
+        <md-slider flex class="md-primary" md-discrete  ng-model="formRadius.size"  max='300' min = '1' step='1'  ng-change="setFormRadiusSize()"  aria-label="rating">
+        </md-slider>
+        <div flex="25" layout layout-align="center center" style="margin-left:10px;">
+            <input flex type="number" ng-model="formRadius.size" aria-label="red" aria-controls="red-slider"><span class="md-body-1" style="margin-left: 5px;">px</span>
+        </div>
+      </div>
+              
+      <div class="Separation"></div>    
+
+<select ng-model="selected"  class="input input--dropdown form-control" id="js--formAnimations" ng-change="formAnimate()">
+<option value="">Animate</option>
+<optgroup label="Attention Seekers">
+<option value="bounce">bounce</option>
+<option value="flash">flash</option>
+<option value="pulse">pulse</option>
+<option value="rubberBand">rubberBand</option>
+<option value="shake">shake</option>
+<option value="swing">swing</option>
+<option value="tada">tada</option>
+<option value="wobble">wobble</option>
+<option value="jello">jello</option>
+</optgroup>
+
+<optgroup label="Bouncing Entrances">
+<option value="bounceIn">bounceIn</option>
+<option value="bounceInDown">bounceInDown</option>
+<option value="bounceInLeft">bounceInLeft</option>
+<option value="bounceInRight">bounceInRight</option>
+<option value="bounceInUp">bounceInUp</option>
+</optgroup>
+
+<optgroup label="Bouncing Exits">
+<option value="bounceOut">bounceOut</option>
+<option value="bounceOutDown">bounceOutDown</option>
+<option value="bounceOutLeft">bounceOutLeft</option>
+<option value="bounceOutRight">bounceOutRight</option>
+<option value="bounceOutUp">bounceOutUp</option>
+</optgroup>
+
+<optgroup label="Fading Entrances">
+<option value="fadeIn">fadeIn</option>
+<option value="fadeInDown">fadeInDown</option>
+<option value="fadeInDownBig">fadeInDownBig</option>
+<option value="fadeInLeft">fadeInLeft</option>
+<option value="fadeInLeftBig">fadeInLeftBig</option>
+<option value="fadeInRight">fadeInRight</option>
+<option value="fadeInRightBig">fadeInRightBig</option>
+<option value="fadeInUp">fadeInUp</option>
+<option value="fadeInUpBig">fadeInUpBig</option>
+</optgroup>
+
+<optgroup label="Fading Exits">
+<option value="fadeOut">fadeOut</option>
+<option value="fadeOutDown">fadeOutDown</option>
+<option value="fadeOutDownBig">fadeOutDownBig</option>
+<option value="fadeOutLeft">fadeOutLeft</option>
+<option value="fadeOutLeftBig">fadeOutLeftBig</option>
+<option value="fadeOutRight">fadeOutRight</option>
+<option value="fadeOutRightBig">fadeOutRightBig</option>
+<option value="fadeOutUp">fadeOutUp</option>
+<option value="fadeOutUpBig">fadeOutUpBig</option>
+</optgroup>
+
+<optgroup label="Flippers">
+<option value="flip">flip</option>
+<option value="flipInX">flipInX</option>
+<option value="flipInY">flipInY</option>
+<option value="flipOutX">flipOutX</option>
+<option value="flipOutY">flipOutY</option>
+</optgroup>
+
+<optgroup label="Lightspeed">
+<option value="lightSpeedIn">lightSpeedIn</option>
+<option value="lightSpeedOut">lightSpeedOut</option>
+</optgroup>
+
+<optgroup label="Rotating Entrances">
+<option value="rotateIn">rotateIn</option>
+<option value="rotateInDownLeft">rotateInDownLeft</option>
+<option value="rotateInDownRight">rotateInDownRight</option>
+<option value="rotateInUpLeft">rotateInUpLeft</option>
+<option value="rotateInUpRight">rotateInUpRight</option>
+</optgroup>
+
+<optgroup label="Rotating Exits">
+<option value="rotateOut">rotateOut</option>
+<option value="rotateOutDownLeft">rotateOutDownLeft</option>
+<option value="rotateOutDownRight">rotateOutDownRight</option>
+<option value="rotateOutUpLeft">rotateOutUpLeft</option>
+<option value="rotateOutUpRight">rotateOutUpRight</option>
+</optgroup>
+
+<optgroup label="Sliding Entrances">
+<option value="slideInUp">slideInUp</option>
+<option value="slideInDown">slideInDown</option>
+<option value="slideInLeft">slideInLeft</option>
+<option value="slideInRight">slideInRight</option>
+
+</optgroup>
+<optgroup label="Sliding Exits">
+<option value="slideOutUp">slideOutUp</option>
+<option value="slideOutDown">slideOutDown</option>
+<option value="slideOutLeft">slideOutLeft</option>
+<option value="slideOutRight">slideOutRight</option>
+
+</optgroup>
+
+<optgroup label="Zoom Entrances">
+<option value="zoomIn">zoomIn</option>
+<option value="zoomInDown">zoomInDown</option>
+<option value="zoomInLeft">zoomInLeft</option>
+<option value="zoomInRight">zoomInRight</option>
+<option value="zoomInUp">zoomInUp</option>
+</optgroup>
+
+<optgroup label="Zoom Exits">
+<option value="zoomOut">zoomOut</option>
+<option value="zoomOutDown">zoomOutDown</option>
+<option value="zoomOutLeft">zoomOutLeft</option>
+<option value="zoomOutRight">zoomOutRight</option>
+<option value="zoomOutUp">zoomOutUp</option>
+</optgroup>
+
+<optgroup label="Specials">
+<option value="hinge">hinge</option>
+<option value="rollIn">rollIn</option>
+<option value="rollOut">rollOut</option>
+</optgroup>
+</select>
+      </div>           
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#formColorPicker").kendoColorPicker({
+  });
+
+  $("#formBorderColorPicker").kendoColorPicker({
+  });
+ 
+});
+</script>
+
+
+
+
+<!-- 
+<div class="editModuleWrap" style=" width:270px;
+  min-height: 300px;
+  background-color:#dddddd; position:absolute;" layout-padding layout="column">
+
+<div class="editToolTitle" style="height:20px;border-bottom:1px solid #eeeeee;">
+  <h3 style="font-size:14px;padding:0;margin:0;">form proterty</h3>
+</div>
+    <span class="pannel-title">Background color <input kendo-color-picker k-palette="'websafe'" ng-model="backgroundColor" /></span>
+     <md-button class="md-primary md-raised" ng-click="showTabDialog($event)" flex-sm="100" flex-md="100" flex-gt-md="auto">Add Image
+    </md-button>
+    <div layout>
+      <span class="pannel-title" style="margin-top:10px;">Opacity</span>
+          <md-slider flex ng-model="opacity.numberValue"  max='1' min = '0' step='0.1' ng-change="getImageOpacity()" aria-label="blue" id="blue-slider" class="md-primary">
+          </md-slider>
+          <div flex="20" layout layout-align="center center">
+            <input flex type="number" max='1' min = '0' ng-model="opacity.numberValue" ng-change="getImageOpacity()" aria-label="blue" aria-controls="blue-slider">
+          </div>
+           <div flex="10" layout layout-align="center center">
+            <span class="md-body-1">%</span>
+          </div>
+    </div>
+    <section>
+      
+         <span class="pannel-title">Animate</span>
+         <select class="input input--dropdown " id="js--imageAnimations" ng-controller="SelectImageAnimation">
+         <optgroup label="Attention Seekers">
+          <option value="bounce">bounce</option>
+          <option value="flash">flash</option>
+          <option value="pulse">pulse</option>
+          <option value="rubberBand">rubberBand</option>
+          <option value="shake">shake</option>
+          <option value="swing">swing</option>
+          <option value="tada">tada</option>
+          <option value="wobble">wobble</option>
+          <option value="jello">jello</option>
+        </optgroup>
+
+        <optgroup label="Bouncing Entrances">
+          <option value="bounceIn">bounceIn</option>
+          <option value="bounceInDown">bounceInDown</option>
+          <option value="bounceInLeft">bounceInLeft</option>
+          <option value="bounceInRight">bounceInRight</option>
+          <option value="bounceInUp">bounceInUp</option>
+        </optgroup>
+
+        <optgroup label="Bouncing Exits">
+          <option value="bounceOut">bounceOut</option>
+          <option value="bounceOutDown">bounceOutDown</option>
+          <option value="bounceOutLeft">bounceOutLeft</option>
+          <option value="bounceOutRight">bounceOutRight</option>
+          <option value="bounceOutUp">bounceOutUp</option>
+        </optgroup>
+
+        <optgroup label="Fading Entrances">
+          <option value="fadeIn">fadeIn</option>
+          <option value="fadeInDown">fadeInDown</option>
+          <option value="fadeInDownBig">fadeInDownBig</option>
+          <option value="fadeInLeft">fadeInLeft</option>
+          <option value="fadeInLeftBig">fadeInLeftBig</option>
+          <option value="fadeInRight">fadeInRight</option>
+          <option value="fadeInRightBig">fadeInRightBig</option>
+          <option value="fadeInUp">fadeInUp</option>
+          <option value="fadeInUpBig">fadeInUpBig</option>
+        </optgroup>
+
+        <optgroup label="Fading Exits">
+          <option value="fadeOut">fadeOut</option>
+          <option value="fadeOutDown">fadeOutDown</option>
+          <option value="fadeOutDownBig">fadeOutDownBig</option>
+          <option value="fadeOutLeft">fadeOutLeft</option>
+          <option value="fadeOutLeftBig">fadeOutLeftBig</option>
+          <option value="fadeOutRight">fadeOutRight</option>
+          <option value="fadeOutRightBig">fadeOutRightBig</option>
+          <option value="fadeOutUp">fadeOutUp</option>
+          <option value="fadeOutUpBig">fadeOutUpBig</option>
+        </optgroup>
+
+        <optgroup label="Flippers">
+          <option value="flip">flip</option>
+          <option value="flipInX">flipInX</option>
+          <option value="flipInY">flipInY</option>
+          <option value="flipOutX">flipOutX</option>
+          <option value="flipOutY">flipOutY</option>
+        </optgroup>
+
+        <optgroup label="Lightspeed">
+          <option value="lightSpeedIn">lightSpeedIn</option>
+          <option value="lightSpeedOut">lightSpeedOut</option>
+        </optgroup>
+
+        <optgroup label="Rotating Entrances">
+          <option value="rotateIn">rotateIn</option>
+          <option value="rotateInDownLeft">rotateInDownLeft</option>
+          <option value="rotateInDownRight">rotateInDownRight</option>
+          <option value="rotateInUpLeft">rotateInUpLeft</option>
+          <option value="rotateInUpRight">rotateInUpRight</option>
+        </optgroup>
+
+        <optgroup label="Rotating Exits">
+          <option value="rotateOut">rotateOut</option>
+          <option value="rotateOutDownLeft">rotateOutDownLeft</option>
+          <option value="rotateOutDownRight">rotateOutDownRight</option>
+          <option value="rotateOutUpLeft">rotateOutUpLeft</option>
+          <option value="rotateOutUpRight">rotateOutUpRight</option>
+        </optgroup>
+
+        <optgroup label="Sliding Entrances">
+          <option value="slideInUp">slideInUp</option>
+          <option value="slideInDown">slideInDown</option>
+          <option value="slideInLeft">slideInLeft</option>
+          <option value="slideInRight">slideInRight</option>
+
+        </optgroup>
+        <optgroup label="Sliding Exits">
+          <option value="slideOutUp">slideOutUp</option>
+          <option value="slideOutDown">slideOutDown</option>
+          <option value="slideOutLeft">slideOutLeft</option>
+          <option value="slideOutRight">slideOutRight</option>
+          
+        </optgroup>
+        
+        <optgroup label="Zoom Entrances">
+          <option value="zoomIn">zoomIn</option>
+          <option value="zoomInDown">zoomInDown</option>
+          <option value="zoomInLeft">zoomInLeft</option>
+          <option value="zoomInRight">zoomInRight</option>
+          <option value="zoomInUp">zoomInUp</option>
+        </optgroup>
+        
+        <optgroup label="Zoom Exits">
+          <option value="zoomOut">zoomOut</option>
+          <option value="zoomOutDown">zoomOutDown</option>
+          <option value="zoomOutLeft">zoomOutLeft</option>
+          <option value="zoomOutRight">zoomOutRight</option>
+          <option value="zoomOutUp">zoomOutUp</option>
+        </optgroup>
+
+        <optgroup label="Specials">
+          <option value="hinge">hinge</option>
+          <option value="rollIn">rollIn</option>
+          <option value="rollOut">rollOut</option>
+        </optgroup>
+         </select>
+
+    </section>
+</div> -->

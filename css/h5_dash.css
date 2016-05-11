@@ -1,0 +1,146 @@
+#ibm-content-body {
+    padding-top: 0px !important;
+}
+ul li:before{
+	content:''!important;
+}
+
+.ndiv{ width:100%; height:60px;font-size: 30px;line-height: 60px;padding-left: 20px;background-color:white;z-index: 10;}
+.ndiv2{ width:100%; background: #00649d; min-height: 0px; z-index: 10;}
+.fix-div{ position:fixed; top:0px;}
+.fix-div2{ position:fixed; top:0px;}
+
+.ibm-card:hover{border:1px solid #00b2ef;}
+.icon1{height: 270px;margin: 40px 0 40px 0;}
+
+.first.btn {background: #5AAAFA;border: 1px solid #fff;cursor: pointer;}
+.first.btn:hover{background:#0789bf;cursor: pointer;}
+.second.btn{border: 1px solid #fff;cursor: pointer;}
+.second.btn:hover{border:1px solid #00b2ef;color:#00b2ef;cursor: pointer;}
+.third.btn{width:194px;border: 1px solid #fff;background:#DB2780;cursor: pointer;}
+.third.btn:hover{width:194px;border: 1px solid #666666;background: #666666;cursor: pointer;}
+
+
+
+*{margin:0;padding:0;list-style-type:none;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:400;}
+a,img{border:0;}
+/*body{font:12px/1.5 \5FAE\8F6F\96C5\9ED1,tahoma,arial,\5b8b\4f53;color:#666;}*/
+a{text-decoration:none;color:#fff;}
+
+
+
+
+.modlist{display:block;min-height:600px;padding: 30px 80px 130px;}
+
+.modpic li{display:block;float:left;width:200px;height:300px;margin:25px;padding-top: 0;padding: 0px;}
+.modpic li {display:block;position:relative;width:200px;height:300px;overflow:hidden;box-shadow: 2px 2px 4px #000;}
+.modpic li span{display:block;position:absolute;top:260px;width:200px;height:355px;background-color:#FFF;filter:alpha(opacity=90);-moz-opacity:0.9;opacity:0.9;text-align:center;font-size:14px;color:#666;}
+.modpic li span p{line-height:40px;} 
+
+/* icon position */
+.projectInfoShowMoreIcons-copy, .projectInfoShowMoreIcons-remove, .projectInfoShowMoreIcons-cancel, .projectInfoShowMoreIcons, .projectInfoShowMoreIcons-preview, .projectInfoShowMoreIcons-report, .projectInfoShowMoreIcons-edit{
+background-image: url(../images/icons.png);
+background-repeat: no-repeat;
+width: 25px;
+height: 25px;
+float: left;
+}
+.projectInfoShowMoreIcons-preview{
+background-position: 0px 66%;
+}
+.projectInfoShowMoreIcons-edit{
+background-position: 0px 83%;
+}
+.projectInfoShowMoreIcons-report{
+background-position: 0px 100%;
+
+}
+.projectInfoShowMoreIcons{
+background-position: 0px 0px;
+position: absolute;
+right: 15px;
+}
+.projectInfoDownloadQRCode{
+    text-align:center;width:100%;height:30px;padding:5px;background:#3399FF;color:#fff;
+}
+.projectInfoDownloadQRCode:hover{
+    cursor: pointer;
+}
+.showMoreIcons{text-align: right;
+    width: 100%;
+    height: 30px;
+    overflow: hidden;
+}
+.showMoreIconsBottom{
+     height: 30px;
+    /* margin-left: 110px; */
+    overflow: hidden;
+    width: auto;
+    text-align: right;
+ 
+    margin-right: 5px;
+}
+.showMoreIconsTop{
+/*    position: absolute;*/
+    height:30px;
+    margin-left:100px;
+    overflow:hidden;
+    width: auto;
+    margin: 0;
+    text-align: right;
+    margin-right: 5px;
+    margin-top: 10px;
+}
+.showMoreIconsBottom a{
+    margin-left: 10px;
+}
+.projectInfoShowMoreIcons-copy{
+background-position: 0px 49%;
+position: absolute;
+right: 75px;
+}
+.projectInfoShowMoreIcons-remove{
+background-position: 0px 33%;
+position: absolute;
+right: 50px;
+}
+.projectInfoShowMoreIcons-cancel{
+background-position: 0px 16%;
+}
+/*resize image */
+.qrclass{width:150px; height:147px}
+.imgclass{width:100%;height:325px;}
+
+.caret-down, .caret-up{
+	display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    color: #d8d8d8;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+}
+.caret-up {border-bottom: 9pt dashed;}
+.caret-down {border-top: 9pt dashed;}
+.ProjectPreview-container-preview-btn{
+	width: 45px;
+    height: 90px;
+    border: 1px solid silver;
+    outline: 0;
+    color: silver;
+    font-size: 30px;
+    float: right;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #fff;
+}
+.ProjectPreview-container-preview-btn:hover{border-color:#42c2b3;border-radius:5px;background-color:#fff}
+.ProjectPreview-container-preview-btn:hover .caret-down,.ProjectPreview-container-preview-btn:hover .caret-up{color:#42c2b3}
+.ProjectPreview-container-preview-btnarea{
+	position: absolute;
+    top: 140px;
+    right: 15%;
+    width: 50px;
+}

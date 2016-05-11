@@ -1,0 +1,66 @@
+<md-dialog aria-label="Mango (Fruit)" class="dashBoardPreview"  tabindex="-1" id="delProjectOverLay"  style="position:fixed;width: 100%;position: fixed;z-index: 10110;height: 100%; background: rgba(0,0,0,0.8); top:0; left: 0;max-width: 100%;max-height: 100%;">
+
+  <a class="closeOverLay" ng-click="close()"></a>
+    <md-dialog-content style="width:100%;height:100%;z-index: 999;position: absolute;top:45%;bottom: 0;left: 0;right: 0;margin:auto;">
+     
+       
+        <div style="width: 470px; margin:0 auto; color: #fff;font-size: 20px">
+          <h2>要删除 {{projectName}} ? 请三思</h2>
+            <button ng-disabled="createProjectFrom.$invalid"  type="button" class="btn btn-primary" ng-click="deleteInProgress()"  style="   -moz-appearance: none;
+            background-color: transparent;
+      border: 2px solid #198cbf;
+      border-radius: 0;
+      color: #198cbf;
+      display: block;
+      font-size: 22px;
+      height: 60px;
+      margin: 30px 0;
+      width: 200px;"> 删除</button>
+        </div>
+
+
+ 
+    </md-dialog-content>
+</md-dialog>
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+
+
+<div class="" id="delProjectOverLay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document" style="width:400px;z-index: 999;margin-top: 10%; " id="copyProjectOverLay">
+    <div class="modal-content" style="border-radius: 0px;">
+
+      <div class="modal-body">
+        <h2>将要删除{{projectName}}? 请三思</h2>
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">项目名称</label>
+            <input type="text" class="form-control" id="projectName" style=" border-radius: 0px;"  ng-model="projectName" value="{{projectName}}">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">项目介绍</label>
+            <textarea class="form-control" id="message-text" style="    border-radius: 0px;"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" style="border-radius:0px" ng-click="close()">取消</button>
+        <button type="button" class="btn btn-primary" ng-click="deleteInProgress()" style="border-radius:0px">删除</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ -->

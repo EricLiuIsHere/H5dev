@@ -1,0 +1,39 @@
+<!--form-text-proterties start-->
+<div class="col-right" id="form-text-proterties">
+<div class="title"><div class="active">Form input</div></div>           
+  
+<div class="btn-group module">
+    <div layout>
+      <div flex="20" layout layout-align="center center" style="margin-right:10px;">
+        <span class="md-body-1">Label</span>
+      </div>
+      <div flex layout layout-align="center center" style="margin-left:10px;">
+        <input flex type="text"  class="form-control" ng-model="inputLable"/>
+      </div>
+    </div>  
+  <div class="Separation"></div>
+    <div layout >
+       <div flex="20" layout layout-align="center center" style="margin-right:10px;">
+        <span class="md-body-1">Required</span>
+       </div>
+       <div flex layout layout-align="center center" style="margin-left:10px;">
+         <div class="radio">
+            <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="required" ng-model="requiredStatus" checked/>Yes</label>
+            <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="" ng-model="requiredStatus" />No</label>
+          </div>
+        </div>
+    </div>   
+   <div class="Separation"></div> 
+   <div layout>
+      <div flex="20" layout layout-align="center center" style="margin-right:10px;">
+        <span class="md-body-1">Type</span>
+      </div>
+       <div flex layout layout-align="center center" style="margin-left:10px;">
+        <select class="input input--dropdown form-control" ng-model="inputType"><option>text</option><option>email</option><option>hidden</option><option>number</option></select>
+       </div>
+    </div>  
+    <div class="Separation"></div>  
+<button type="button" class="btn btn-default" ng-click="createInputFn()">Create new input</button>
+</div>
+</div>
+      	<!--form-text-proterties end-->

@@ -1,0 +1,171 @@
+  <nav class="navbar navbar-blue dashboardContainer" >        
+     <div class="navbar-text navbar-left" id="ibm-home" style="    font-size: 24px;font-weight: bold;line-height: 50px;margin-left: 10px;">H5</div>
+      <p class="navbar-text navbar-left"><a  ng-click="createProject()" style="text-decoration:none;cursor:pointer">新建项目</a></p>
+  
+
+
+      <p class="navbar-text navbar-right" id="userProfile" style="margin: 0px 10px 0px 0px; line-height:50px;">
+
+    <!-- Single button -->
+    <div class="btn-group" uib-dropdown is-open="status.isopen" style="position:absolute;right:0px;" ng-if="isAuthorized">
+      <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled" style="background: transparent;border:none;">
+       <img id="uImage" src="{{currentUser.userPhoto}}" >
+      </button>
+      <ul uib-dropdown-menu role="menu" aria-labelledby="single-button" style="left: -156px;">
+
+        <li role="menuitem"><div style="    text-align: center;">
+          <img id="uImage" src="{{currentUser.userPhoto}}" style="width:68px;  border: 2px solid #0061ff;
+          background-color: #eff4f4;background-size: cover;margin: 20px auto 0;">
+        </div></li>
+        <li role="menuitem" style="color: #0061ff;
+                            display: block;
+                            font-size: 16px;
+                            font-weight: 700;
+                            line-height: 19px;
+                            margin-top: 12px;
+                            text-align: center;">
+              {{currentUser.userName}}
+        </li>
+        <li role="menuitem" style="
+                            color: #3c4646;
+                            font-weight:0;
+                            line-height: 1.5em;
+                            padding: 15px 10px 13px 20px; 
+                            margin-top: 20px; 
+                            cursor: pointer;" 
+                            class="logout"
+                            ng-click="loginOut()">
+            <i class="icon-signout icon-1x" style="color:#0061ff;float:left; margin-top: 4px;"></i>
+            <span style="font-size: 14px;margin-left: 10px;">退出</span>
+        </li>
+   <!--      <li class="divider"></li>
+        <li role="menuitem"><a href="#">Separated link</a></li> -->
+      </ul>
+    </div>
+
+    
+    <span class="userName" style="
+                            display: block;
+                            position: absolute;
+                            right: 10px;
+                            line-height: 3.5em;" 
+                            id="welcome" 
+                            ng-click="userLogin()" 
+                            ng-if="!isAuthorized">欢迎,登陆</span></p>
+
+
+                            
+
+  </nav>
+
+
+<div class="container" id="dashboardContent">
+<div style="text-align:center; margin-bottom:40px; margin-top: 90px;"><input ng-model="query" class="dashboardSearch" placeholder="查找项目" style="height:50px;min-width:500px;border:0;border-bottom:1px solid #eeeeee;font-size:18px;"> </div>
+  <div id="addBox" style="display:none;text-align:center;background:rgba(0,0,0,0.8);width:150px; height:50px;color:#fff;font-size:18px;padding:10px;border-radius:5px;margin: auto;  position: absolute;  top: 0; left: 0; bottom: 0; right: 0;  ;z-index:9999999;">保存成功！</div>
+
+  <div id="removeBox" style="display:none;text-align:center;background:rgba(0,0,0,0.8);width:150px; height:50px;color:#fff;font-size:18px;padding:10px;border-radius:5px;position:absolute;top:50%;left:50%;z-index:9999999;">删除成功！</div>
+
+<div class="row modlist">
+        <div class="col-sm-6 col-md-4 col-lg-3 modmore" ng-repeat="item in projectList | filter:query | orderBy:order" id="{{item.id}}">
+        
+          <div class="thumbnail"  style="height: 334px; padding: 0;" >
+            		<div class="projectInfo-projectName" style="position:absolute;width:100%;opacity:1;">
+            			<img  style="width:100%;height:auto;"  src="{{item.cover}}" >
+    		            <div style="width:100%;
+                                position:absolute;
+                                bottom:0px;
+                                text-align:center;
+                                height:40px;
+                                background:#fff;
+                                padding:10px 0px 10px 0px;">
+    		            	     <p>{{item.projectname}}</p>
+    		            </div>
+            		</div>
+    	            <div class="dask" style="position:absolute;width:100%;opacity:0;">
+            	
+                        <p class="showMoreIconsTop">
+                
+
+                    <span ng-click="deletePage($event,item.id,item.projectname)" 
+                          class="label label-default">
+                          <i class="icon-eye-open icon-1" style="margin-right: 5px;"></i>删除</span>
+                          
+                    <span ng-click="copyProject($event,item.id,item.projectname)"  
+                          class="label label-default">
+                          <i class="icon-edit" style="margin-right: 5px;"></i>复制
+                       </span>
+              <!--      <a href="javascript:;" class="projectInfoShowMoreIcons-report"></a>-->
+                  </p>
+        					
+                  <div>
+                  <img src="{{item.qrcode}}" style="width:100%;">
+                  <p class="projectInfoDownloadQRCode" ng-click="downLoadQrCode(item.qrcode)">下载二维码</p>
+                  </div>
+        					<p class="showMoreIconsBottom">
+        						<span ng-click='previewPage($event,item.url,item.qrcode,item.code[0])' 
+                          class="label label-default">
+                          <i class="icon-eye-open icon-1" style="margin-right: 5px;"></i>预览</span>
+
+        						<span ng-click='editPage($event,item.id)' 
+                          class="label label-default">
+                          <i class="icon-edit" style="margin-right: 5px;"></i>编辑
+                       </span>
+        			<!--			<a href="javascript:;" class="projectInfoShowMoreIcons-report"></a>-->
+        					</p>
+            	</div>
+
+            </div>
+          </div>
+        </div>
+    </div>
+
+<script type="text/javascript">
+$(document).on("mouseenter",".thumbnail",function(){
+		$(this).find('.dask').stop().delay(50).animate({opacity:1},200);
+		$('#container').css('filter','blur(5px)');
+});
+$(document).on("mouseleave",".thumbnail",function(){
+		$(this).find('.dask').stop().delay(50).animate({opacity:0},200);
+		$('#container').css('filter','blur(5px)');
+});
+// $(document).on("mouseenter",".showMoreIcons",function(){
+// 		$(this).find(".projectInfoShowMoreIcons").stop().delay(50).animate({opacity:0},200);
+// 		$(this).find(".projectInfoShowMoreIcons-remove").stop().delay(50).animate({width:'25px',opacity:1},200);
+// 		$(this).find(".projectInfoShowMoreIcons-copy").stop().delay(50).animate({width:'25px',opacity:1},200);
+// });
+// $(document).on("mouseleave",".showMoreIcons",function(){
+// 		$(this).find(".projectInfoShowMoreIcons").stop().delay(50).animate({opacity:1},200);
+// 		$(this).find(".projectInfoShowMoreIcons-remove").stop().delay(50).animate({width:'0px',opacity:0},200);
+// 		$(this).find(".projectInfoShowMoreIcons-copy").stop().delay(50).animate({width:'0px',opacity:0},200);
+// });
+
+</script>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#removePage').tooltip();
+    $(function () {
+      $('[data-toggle="removePage"]').tooltip()
+    })
+
+    $('#copyPage').tooltip();
+    $(function () {
+      $('[data-toggle="copyPage"]').tooltip()
+    })
+    $('#previewPage').tooltip();
+    $(function () {
+      $('[data-toggle="previewPage"]').tooltip()
+    })
+
+    $('#editPage').tooltip();
+    $(function () {
+      $('[data-toggle="editPage"]').tooltip()
+    })
+
+    $('#reportPage').tooltip();
+    $(function () {
+      $('[data-toggle="reportPage"]').tooltip()
+    })
+  });
+</script>
