@@ -8,4 +8,4 @@ angular.module('session',[]).service('Session',function(){
 		this.userPhoto 	= null;
 	}
 	return this;
-});
+}); 
