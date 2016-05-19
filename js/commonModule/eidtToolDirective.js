@@ -280,8 +280,10 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
            // console.log( pageLengthObj == null +"pageLength is null"+"///"+data.pageLength.length)
             if(pageLengthObj.length == null || pageLengthObj.length == 0){
               newLengthObj = data.pageLength;
+              console.log('pageLengthObj111111:'+pageLengthObj);
             }else{
               newLengthObj = pageLengthObj;
+              console.log('pageLengthObj1222211:'+pageLengthObj);
             }
 
             // for(var i in newLengthObj){
@@ -291,6 +293,11 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
             //console.log(newLengthObj.length+" newLengthObj.length")
          
             //console.log('newLengthObj:'+newLengthObj.length)
+           var leftCode = [];
+                   $(".box .page .swiper-slide").each(function(n){
+                        leftCode.push($(".box .page .swiper-slide").eq(n).prop("outerHTML"));  
+                    });
+
            var editCode = $("#pagesList").html()
                     .replace(/ui-selected/, '')
                     //.replace(/<div class="ui-resizable-handle(.)*?div>/g, '')
@@ -321,13 +328,12 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
                           .replace(/<div class="ui-resizable-handle(.)*?div>/g, '')
                           .replace(/ui-resizable/g,'');
              //console.log('@eidtToolDirective.js ready save')
+             console.log('previewsave11166:'+leftCode);
 
-
-            projectFn.saveProject(newLengthObj, projectid, editCode, previewCode)
+            projectFn.saveProject(newLengthObj, projectid, leftCode, editCode, previewCode)
               .then(function(data) {
-                  
                  // console.log('@eidtToolDirective.js save project completed')
-             
+             console.log('funckcc:'+leftCode);
                   if (data.status) {
                     setTimeout(function(){$("#popupContainer").removeClass('filter');},250)
                     $("#addBox").show();
@@ -380,9 +386,11 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
               //如果projeFn.getPageLength没有数据，从第一个缩略图里获取hash
                 var defaultThumb = $('*[data-activeid]').data('activeid');
                    pageLengthObj = [{'type': '1','thumbId':defaultThumb}];
+                   console.log('pageLengthObj111:'+pageLengthObj);
               }else{
 
                    pageLengthObj = projectFn.getPageLength();
+                   console.log('pageLengthObj222:'+pageLengthObj);
               }
               
                // console.log('only one page'+pageLengthObj)
@@ -419,7 +427,12 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
                    // .replace('defaultPage','defaultPage isEdit')
                    // .replace('direction: ltr; display: none;','direction: ltr;display: block;');
 
-              projectFn.addProject(projectName,previewCode,editCode,projectInfo,userName,pageLengthObj)
+              var leftCode = [];
+                   $(".box .page .swiper-slide").each(function(n){
+                        leftCode.push($(".box .page .swiper-slide").eq(n).prop("outerHTML"));
+                    });
+
+              projectFn.addProject(projectName,previewCode,editCode,leftCode,projectInfo,userName,pageLengthObj)
                 .then(function(data) {
                    // console.log(data.status+":data.status")
                     if (data.status) {

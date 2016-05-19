@@ -328,7 +328,8 @@ function showAddImageOverLay($mdToast,$mdDialog,$document,newImage){
 			    initSelectedAndDraggable();
 
 				$mdDialog.hide();
-	       		setTimeout(function(){$("#popupContainer").removeClass('filter');},250)
+	       		setTimeout(function(){$("#popupContainer").removeClass('filter');refresh()},250)
+
 		   }
 
             //上传图片
