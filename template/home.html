@@ -123,7 +123,7 @@ $(document).ready(function(){
 
                     $('.isEdit').css('backgroundColor',colorId);
                   },100);
-
+                refresh();
             }
     });
 
@@ -151,17 +151,24 @@ $(document).ready(function(){
                   'z-index' : '100',
                   'position': 'relative',
                 })
-
+                refresh();
             }
     });
 
 
-
-    ////
-
-
-
-
 })
+
+function refresh() {
+  $(".box .col-leftclick .swiper-slide").remove();
+  //$(".box .col-leftclick").append($("#pagesList .isEdit").css('transform','scale(0.5,0.5)').clone());
+  $(".box .col-leftclick").append($("#pagesList .isEdit").css('zoom','30%').clone());
+  //$(".box .col-leftclick").append($("#pagesList .textElement").css('transform','scale(0.3,0.3)').clone());
+  $(".col-leftclick .textElement").css('transform','scale(0.3,0.3)');
+  $("#pagesList .isEdit").css('zoom','100%');
+  setTimeout(function(){
+                //$(".col-leftclick .textElement").css('transform','scale(0.3,0.3)');
+                    $(".box .col-leftclick .isEdit").removeClass('isEdit');
+                  },100);
+} 
 
 </script> 
