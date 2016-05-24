@@ -101,6 +101,7 @@ homeController.controller('homeController', function(
           $state.go('dashboard');
          }else{
           //3.登陆状态下创建新项目，没有点击保存，直接点击我的项目
+          //console.log('unsave????');
           addProject($mdDialog,$document);
          }
 
@@ -205,6 +206,11 @@ function saveProjectFn(){
               newLengthObj = pageLengthObj;
             }
 
+            var leftCode = [];
+                   $(".box .page .swiper-slide").each(function(n){
+                        leftCode.push($(".box .page .swiper-slide").eq(n).prop("outerHTML"));
+                    });
+
             var editCode = $("#pagesList").html()
                   .replace(/ui-selected/, '')
                   .replace(/isEdit/,'')
@@ -232,10 +238,9 @@ function saveProjectFn(){
                           // .replace(/style="[^\"]*(animation-name|animation-duration|animation-delay)+:[^\:]*;[^\"]*"/g,' ')
                           .replace(/<div class="ui-resizable-handle(.)*?div>/g, '')
                           .replace(/ui-resizable/g,'')
-
-          projectFn.saveProject(newLengthObj, projectid, editCode, previewCode)
+                        
+          projectFn.saveProject(newLengthObj, projectid, leftCode, editCode, previewCode)
             .then(function(data) {
-                
                 if (data.status) {
                     $mdDialog.hide();
                     setTimeout(function(){
@@ -318,8 +323,12 @@ $mdDialog.show({
                     .replace(/display: flex;/g, "display: none;")
                     //.replace('defaultPage','defaultPage isEdit')
                     //.replace('direction: ltr; display: none;','direction: ltr;display: block;')
+              var leftCode = [];
+                   $(".box .page .swiper-slide").each(function(n){
+                        leftCode.push($(".box .page .swiper-slide").eq(n).prop("outerHTML"));
+                    });
 
-        projectFn.addProject(projectName,previewCode,editCode,projectInfo,userName,pageLength)
+        projectFn.addProject(projectName,previewCode,editCode,leftCode,projectInfo,userName,pageLength)
                  .then(function(data) {
                 // console.log(data.status+":data.status")
                     if (data.status) {
@@ -420,11 +429,14 @@ setTimeout(function(){
   var projectIdInLeftNav = projectFn.getProjectId();
 
   projectFn.loadEditPage(projectIdInLeftNav).then(function(data) {
+    console.log('projectIdInLeftNav00000000000'+projectIdInLeftNav);
 
     $scope.feedback.leftpages = data.pageLength;
     var colLeftHeight         = 140 * $scope.feedback.leftpages.length;
 
-    setTimeout(function(){$("div.page:eq(0)").addClass('col-leftclick')},100)
+    setTimeout(function(){
+      $("div.page:eq(0)").addClass('col-leftclick')
+    },100)
   })
 
 
@@ -472,7 +484,12 @@ $("#color-chooser-bg-1").data("kendoColorPalette").value('#ffffff');
          },100)
 
       }
-//
+//同步缩略图
+        setTimeout(function(){
+          refresh();
+          $(".box .swiper-slide").css('opacity','0.4').show();
+          $('.col-leftclick .swiper-slide').css('opacity','1')
+        },100)
 
 
 
@@ -533,7 +550,11 @@ $("#color-chooser-bg-1").data("kendoColorPalette").value('#ffffff');
         'background-color': cuscolor,
       })
     } 
-    
+    setTimeout(function(){
+          refresh();
+          $(".box .swiper-slide").css('opacity','0.4').show();
+          $('.col-leftclick .swiper-slide').css('opacity','1')
+        },100)
 }
 
 /*
@@ -626,6 +647,11 @@ $scope.removePage = function(pageId){
 
           }// end for loop
           projectFn.savePageLength(_scope.feedback.leftpages);
+          setTimeout(function(){
+          refresh();
+          $(".box .swiper-slide").css('opacity','0.4').show();
+          $('.col-leftclick .swiper-slide').css('opacity','1')
+        },100)
 
         } // end $scope.deleteInProgress
 

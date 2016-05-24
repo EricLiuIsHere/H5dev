@@ -30,6 +30,7 @@ project.factory('projectFn',function($http,$q,$timeout,$compile,SERVER_URL,login
     var projectIdInDashboardService  = [];
 
 
+
     var myProjectAction = {
 
         saveProjectId:function(projectId){
@@ -48,7 +49,7 @@ project.factory('projectFn',function($http,$q,$timeout,$compile,SERVER_URL,login
             }
 
         },
-        saveProject:function(pageLength,projectId,editCode,previewCode,projectName){
+        saveProject:function(pageLength,projectId,leftCode,editCode,previewCode,projectName){
         	  var userName = loginFn.islogged().email;
            // console.log(userName+':save project')
             var deffered = $q.defer();
@@ -57,26 +58,27 @@ project.factory('projectFn',function($http,$q,$timeout,$compile,SERVER_URL,login
             console.log(pageSettingService)
             var pageSettingDirection = pageSettingService.direction || 'vertical';
 
-            console.log('pageSettingContent:'+pageSettingContent)
-            console.log('pageSettingDirection:'+pageSettingDirection)
+            // console.log('pageSettingContent:'+pageSettingContent)
+            // console.log('pageSettingDirection:'+pageSettingDirection)
 
-            // console.log('xxxxxxxxxxxx')
-    
+            // console.log('xxxxxxxxxxxx');
+            // console.log(leftCode);
+            // console.log('xxxxxxxxxxxx');
+            
             $http.post(productUrl+saveProject,{
                 'pageLength':pageLength,
                 'userName':userName,
                 'projectId':projectId,
                 'projectName':projectName,
-                'pages':{'editCode':editCode,'previewCode':previewCode,'pageSetting':{"content":pageSettingContent,"direction":pageSettingDirection}}
+                'pages':{'editCode':editCode,'previewCode':previewCode,'leftCode':leftCode,'pageSetting':{"content":pageSettingContent,"direction":pageSettingDirection}}
             }).success(function(data){
-                
                 deffered.resolve(data)
             }).error(function(data){
                 deffered.reject(data)
             });
             return deffered.promise;
         },
-        addProject:function(projectName,previewCode,editCode,projectInfo,userName,pageLengthObj){
+        addProject:function(projectName,previewCode,editCode,leftCode,projectInfo,userName,pageLengthObj){
 
           //生成hash
             function makeid(){
@@ -137,7 +139,7 @@ project.factory('projectFn',function($http,$q,$timeout,$compile,SERVER_URL,login
                 'pageLength' : pageLeftNavObj,
                 'projectId'  : '',
                 'userName'   : userName,
-                'pages'      : {'editCode':editCode,'previewCode':previewCode,'pageSetting':{"content":pageSettingContent,"direction":pageSettingDirection}}
+                'pages'      : {'editCode':editCode,'previewCode':previewCode,'leftCode':leftCode,'pageSetting':{"content":pageSettingContent,"direction":pageSettingDirection}}
             }).success(function(data){
                 
                 deffered.resolve(data)

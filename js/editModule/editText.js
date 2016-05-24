@@ -76,6 +76,14 @@ editText.directive('edittext',function(
 
 					//通过$sce,格式化html。db存储的html是字符串，angularjs需要通过$sce来格式化
 					$scope.page.editCode = $sce.trustAsHtml(data.pages.editCode);
+					console.log(typeof(data.pages.leftCode));
+
+					//load left Thumbnail
+					setTimeout(function(){
+					$.each($('.box .page'), function(i,val){  
+					      $('.box .page').eq(i).append(data.pages.leftCode[i]);
+					  });
+					  },100); 
 					console.log('data.pages.pageSetting.direction:'+data.pages.pageSetting.direction)
 					$('#sliderDirection').attr('data-direction',data.pages.pageSetting.direction)
 					pageSettingService.setPageSetting(data.pages.pageSetting.direction)
@@ -151,6 +159,7 @@ console.log("AA  "+$('#sliderDirection').attr('data-direction') )
 			//创建新文本
 			$scope.newText = function(){
                 createNewText($mdToast,$document);
+                refresh();
 			};
 		}
 	}
@@ -652,8 +661,10 @@ $( ".isEdit > div" ).draggable({
 			     var h = ( 100 * parseFloat($(this).css("height")) / parseFloat($(this).parent().css("height")) )+ "%" ;
 			     
 			     console.log('width:'+w+"-height:"+h);
+
 			     $(this).css("width" , w);
 			     $(this).css("height" ,'auto');
+			     refresh();
 			}
 });
 
