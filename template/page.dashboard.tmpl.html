@@ -60,13 +60,13 @@
 
 
 <div class="container" id="dashboardContent">
-<div style="text-align:center; margin-bottom:40px; margin-top: 90px;"><input ng-model="query" class="dashboardSearch" placeholder="查找项目" style="height:50px;min-width:500px;border:0;border-bottom:1px solid #eeeeee;font-size:18px;"> </div>
+<div style="text-align:center; margin-bottom:40px; margin-top: 90px;"><input ng-model="PName" class="dashboardSearch" placeholder="查找项目" style="height:50px;min-width:500px;border:0;border-bottom:1px solid #eeeeee;font-size:18px;"> </div>
   <div id="addBox" style="display:none;text-align:center;background:rgba(0,0,0,0.8);width:150px; height:50px;color:#fff;font-size:18px;padding:10px;border-radius:5px;margin: auto;  position: absolute;  top: 0; left: 0; bottom: 0; right: 0;  ;z-index:9999999;">保存成功！</div>
 
   <div id="removeBox" style="display:none;text-align:center;background:rgba(0,0,0,0.8);width:150px; height:50px;color:#fff;font-size:18px;padding:10px;border-radius:5px;position:absolute;top:50%;left:50%;z-index:9999999;">删除成功！</div>
 
 <div class="row modlist">
-        <div class="col-sm-6 col-md-4 col-lg-3 modmore" ng-repeat="item in projectList | filter:query | orderBy:order" id="{{item.id}}">
+        <div class="col-sm-6 col-md-4 col-lg-3 modmore" ng-repeat="item in projectList | filter:{projectname:PName}:false | orderBy:order" id="{{item.id}}">
         
           <div class="thumbnail"  style="height: 334px; padding: 0;" >
             		<div class="projectInfo-projectName" style="position:absolute;width:100%;opacity:1;">
