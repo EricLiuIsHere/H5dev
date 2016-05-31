@@ -178,6 +178,7 @@ function createNewText($mdToast,$document){
     iText.appendTo(currentPage);
     showTextEditPanel($mdToast,$document);
     initSelectedAndDraggable();
+    refresh();
 }
 
 
@@ -245,7 +246,8 @@ function showTextEditPanel($mdToast,$document){
 
 			$('.ui-selected > .mText').css('fontSize',($scope.fontSize.size/10)+"em");
 			//通过读取data-xxx 属性 设定创建元素时的默认值
-			$('.ui-selected > .mText').attr('data-fontSize',$scope.fontSize.size)
+			$('.ui-selected > .mText').attr('data-fontSize',$scope.fontSize.size);
+			refresh();
 		}
 
 
@@ -256,13 +258,15 @@ function showTextEditPanel($mdToast,$document){
       		var lineHeightValue = $scope.lineHeight.size+"em";
 			$('.ui-selected > .mText').css('lineHeight',lineHeightValue);
 			//通过读取data-xxx 属性 设定创建元素时的默认值
-			$('.ui-selected > .mText').attr('data-lineHeight',$scope.lineHeight.size)
+			$('.ui-selected > .mText').attr('data-lineHeight',$scope.lineHeight.size);
+			refresh();
 		}
 
 		//设置字体
 		$scope.fontFamily = [{"name":"Helvetica","value":"Helvetica"},{"name":"Arial","value":"Arial"},{"name":"Verdana","value":"Verdana"},{"name":"Tahoma","value":"Tahoma"},{"name":"Georgia","value":"Georgia"},{"name":"sans-serif","value":"sans-serif"},{"name":"monospace","value":"monospace"},{"name":"fantasy","value":"fantasy"},{"name":"cuisive","value":"cuisive"},{"name":"Helvetica, sans-serif","value":"Helvetica, sans-serif"},{"name":"Arial, sans-serif","value":"Arial, sans-serif"},{"name":"Lucida Grande', sans-serif","value":"Lucida Grande', sans-serif"},{"name":"Verdana,sans-serif","value":"Verdana,sans-serif"},{"name":" Tahoma, sans-serif","value":" Tahoma, sans-serif"},{"name":"'Trebuchet MS', sans-serif","value":"'Trebuchet MS', sans-serif"},{"name":"Georgia, serif","value":"Georgia, serif"},{"name":"Times, serif","value":"Times, serif"}];
 		$scope.setFontFamily = function(){
 			$('.ui-selected > .mText').css('fontFamily','"'+$scope.selected+'"');
+			refresh();
 		}
 
 		//设置字体颜色
@@ -282,6 +286,7 @@ function showTextEditPanel($mdToast,$document){
 				// $("#fontBlodId").removeClass("fontItemActive");
 				$(".B-but").removeClass("fontItemActive");
 			}
+			refresh();
 		};
 
 		//设置斜体
@@ -296,6 +301,7 @@ function showTextEditPanel($mdToast,$document){
 						// $("#fontItalicId").removeClass("fontItemActive");
 						$(".B-I").removeClass("fontItemActive");
 			}
+			refresh();
 		}
 
 		//设置下划线
@@ -312,11 +318,13 @@ function showTextEditPanel($mdToast,$document){
 					// $("#textDecorationId").removeClass("fontItemActive");
 				$(".B-U").removeClass("fontItemActive");
 			}
+			refresh();
 		}
 
 		//设置元素对齐
 		$scope.setTextAlign = function(textPos){
 			$(".textAlign").removeClass('fontItemActive');
+			refresh();
 			
 			setTimeout(function(){
 				$('.ui-selected > .mText').css("textAlign",textPos);
@@ -329,7 +337,8 @@ function showTextEditPanel($mdToast,$document){
 			$('.ui-selected').css("borderRadius",$scope.radius.size+"px");
 
 			//通过读取data-xxx 属性 设定创建元素时的默认值
-			$('.ui-selected > .mText').attr('data-borderradius',$scope.radius.size)
+			$('.ui-selected > .mText').attr('data-borderradius',$scope.radius.size);
+			refresh();
 		}
 
 		//设置文本背景
@@ -342,7 +351,8 @@ function showTextEditPanel($mdToast,$document){
 			$('.ui-selected > .mText').css("opacity",$scope.opacity.numberValue);
 
 			//通过读取data-xxx 属性 设定创建元素时的默认值
-			$('.ui-selected > .mText').attr('data-opacity',$scope.opacity.numberValue)
+			$('.ui-selected > .mText').attr('data-opacity',$scope.opacity.numberValue);
+			refresh();
 		};
 
 
@@ -376,6 +386,7 @@ function showTextEditPanel($mdToast,$document){
 			    				 .css({"animation-name":x,"animation-duration":speed,"animation-delay":delay})
 			    				 .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
 			    });
+			    refresh();
 			}
 		}
 
@@ -412,7 +423,7 @@ function showTextEditPanel($mdToast,$document){
 					$('.ui-selected').attr('swiper-animate-delay',delay);
 				}
 				setTimeout(test,100);
-
+				refresh();
 		}
 
 
@@ -639,6 +650,7 @@ $( ".isEdit > div" ).draggable({
 			     var t = ( 100 * parseFloat($(this).css("top")) / parseFloat($(this).parent().css("height")) )+ "%" ;
 			     $(this).css("left" , l);
 			     $(this).css("top" , t);
+			     refresh();
     },
     drag: function(ev, ui) {
     	ev.stopPropagation();
@@ -646,6 +658,7 @@ $( ".isEdit > div" ).draggable({
 			     var t = ( 100 * parseFloat($(this).css("top")) / parseFloat($(this).parent().css("height")) )+ "%" ;
 			     $(this).css("left" , l);
 			     $(this).css("top" , t);
+			     refresh();
     }
 }).resizable({ handles: 'se,sw,ne,nw',
 		stop:function (event, ui){
@@ -654,6 +667,7 @@ $( ".isEdit > div" ).draggable({
 			     var t = ( 100 * parseFloat($(this).css("top")) / parseFloat($(this).parent().css("height")) )+ "%" ;
 			     $(this).css("left" , l);
 			     $(this).css("top" , t);
+			     refresh();
 
                         
 	

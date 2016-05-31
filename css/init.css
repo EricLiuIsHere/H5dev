@@ -53,7 +53,7 @@ a.imgbut:hover{ background: #3383b1; text-decoration: none;}
 .col-left .box .mark { width: 100%; height: 25px; opacity: .7; position: absolute; background:#fff ; top: 0; left: 0;}
 .col-left .box .pop-icon a{ margin: 0 5px; color: #aaa;}
 .col-left .box .pop-icon a:hover{color: #999;}
-.col-left .new-button{ float:left; color: #fff; font-size: 14px; background: #4178be; width: 145px; line-height: 40px; height: 40px;position: fixed; bottom: 0;}
+.col-left .new-button{ float:left; color: #fff; font-size: 14px; background: #4178be; width: 140px; line-height: 40px; height: 40px;position: fixed; bottom: 0;}
 /*.col-left .flex{width: 9px; height: 100px; background: #ccc; position: absolute; right: -9px;}*/
 
 .col-center{display: inline-block; margin: 0 auto;  
