@@ -179,7 +179,7 @@ project.factory('projectFn',function($http,$q,$timeout,$compile,SERVER_URL,login
         loadEditPage:function(id,$scope){
             var deffered = $q.defer()
             $http({method:"GET",url:productUrl+editProject,params:{pid:id}}).success(function(data){
-               console.log('loadEditPage:'+data);
+               console.log('loadEditPage:'+data.projectname);
                // $('#sliderDirection').attr('data-direction',data.pages.pageSetting.direction);
                //  pageSettingService.setPageSetting(data.pages.pageSetting.direction);
                 // for(var i in data){

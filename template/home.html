@@ -5,9 +5,11 @@
        <!--navbar-->
         <div class="navbar navbar-blue">  
 
-            <div class="navbar-text navbar-left" id="ibm-home" style="font-size: 24px;font-weight: bold;line-height: 50px;margin-left: 10px;">H5</div>
-                <p class="navbar-text navbar-left"><a ng-click="myProject()" style="text-decoration:none;cursor:pointer">我的项目</a></p>
-                <div class="navbar-img"><edittext></edittext><editimage></editimage>
+            <div class="navbar-text navbar-left" id="ibm-home" style="font-size: 24px;font-weight: bold;line-height: 50px;margin-left: 40px;">H5</div>
+                <a  class="imgbut" ng-click="myProject()" data-toggle="editIcon" data-placement="top" title="我的项目"   id="editIcon" ><i class="icon-th icon-2x"></i><p style="font-size:12px;">我的项目</p></a>
+                
+                <div class="navbar-img1"><p class="navbar-text navbar-left">当前项目名: </p><p class="navbar-text navbar-left currentprojectname"></p></div>
+            <div class="navbar-img2"><edittext></edittext><editimage></editimage>
             </div>
             <p class="navbar-text navbar-right" id="userProfile" style="margin: 0px 10px 0px 0px; line-height:50px;">
 
@@ -103,6 +105,17 @@
 
     <!--setbg-->
 
+<!--loading page-->
+
+  <div class="reveal-modal" style="top: 100px; opacity: 1; visibility: hidden;">
+
+        <div class="well well-large well-transparent lead">
+      <i class="icon-spinner icon-spin"></i> loading ...
+    </div>
+      </div>
+  <div class="reveal-modal-bg" style="display: none;"></div>
+
+<!--loading page-->
 
 <script>
 

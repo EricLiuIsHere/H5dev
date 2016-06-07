@@ -83,7 +83,11 @@ homeController.controller('homeController', function(
 
 //用户未登录状态点击我的项目
   $scope.myProject = function(){
+    $('.reveal-modal').css('visibility','visible');
+    $('.reveal-modal-bg').css('display','block');
     if(loginFn.islogged().status){
+      //$('.reveal-modal').css('visibility','hidden');
+      //$('.reveal-modal-bg').css('display','none');
 
       var textIsNull = $('.textElementActive').length<1;
       var imageIsNull = $('.imageElementAcitve').length<1;
@@ -96,7 +100,7 @@ homeController.controller('homeController', function(
             saveProjectFn();
 
          }else if(textIsNull&& imageIsNull &&!$("#pagesList").data("projectid")){
-        //2.登陆状态下，没有编辑行为，直接挑砖道dashboard
+        //2.登陆状态下，没有编辑行为，直接跳转到dashboard
 
           $state.go('dashboard');
          }else{
