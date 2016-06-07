@@ -76,19 +76,20 @@ editText.directive('edittext',function(
 
 					//通过$sce,格式化html。db存储的html是字符串，angularjs需要通过$sce来格式化
 					$scope.page.editCode = $sce.trustAsHtml(data.pages.editCode);
-					console.log(typeof(data.pages.leftCode));
+					//console.log(data.pages.projectName);
 
 					//load left Thumbnail
 					setTimeout(function(){
 					$.each($('.box .page'), function(i,val){  
 					      $('.box .page').eq(i).append(data.pages.leftCode[i]);
 					  });
-					  },100); 
+					  },150); 
 					console.log('data.pages.pageSetting.direction:'+data.pages.pageSetting.direction)
 					$('#sliderDirection').attr('data-direction',data.pages.pageSetting.direction)
 					pageSettingService.setPageSetting(data.pages.pageSetting.direction)
 					//将当前项目id绑定到dom结点，用于保存更新项目
 					$("#pagesList").attr('data-projectid',loadingProjectById);
+                    $(".currentprojectname").text(data.projectname);
                     
                     //设置默认显示页面
 					setTimeout(function(){
@@ -720,7 +721,11 @@ $( ".isEdit " ).selectable();
 			        // Coverting to percentage
 			        var topInPercentage = (100 * elementTopPosition) / ParentHeight;
 			        var leftInPercentage = (100 * elementLeftPosition) / parentWidth;
+<<<<<<< HEAD
 			        console.log(ui)
+=======
+
+>>>>>>> refs/remotes/origin/branch-RK
 			        $(ui).css({top: topInPercentage + '%', left: leftInPercentage + '%'});
 
 			    }
