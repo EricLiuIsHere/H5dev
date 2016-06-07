@@ -721,11 +721,6 @@ $( ".isEdit " ).selectable();
 			        // Coverting to percentage
 			        var topInPercentage = (100 * elementTopPosition) / ParentHeight;
 			        var leftInPercentage = (100 * elementLeftPosition) / parentWidth;
-<<<<<<< HEAD
-			        console.log(ui)
-=======
-
->>>>>>> refs/remotes/origin/branch-RK
 			        $(ui).css({top: topInPercentage + '%', left: leftInPercentage + '%'});
 
 			    }
