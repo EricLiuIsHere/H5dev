@@ -79,10 +79,15 @@ editText.directive('edittext',function(
 					//console.log(data.pages.projectName);
 
 					//load left Thumbnail
+					//$('.col-leftclick .swiper-slide').remove();
+
 					setTimeout(function(){
 					$.each($('.box .page'), function(i,val){  
 					      $('.box .page').eq(i).append(data.pages.leftCode[i]);
+					      //console.log('================='+data.pages.leftCode[i]);
 					  });
+					//$('.box').click();
+					//$('.box').eq(0).click();
 					  },150); 
 					console.log('data.pages.pageSetting.direction:'+data.pages.pageSetting.direction)
 					$('#sliderDirection').attr('data-direction',data.pages.pageSetting.direction)
@@ -94,7 +99,7 @@ editText.directive('edittext',function(
                     //设置默认显示页面
 					setTimeout(function(){
 						console.log("A")
-						$('.swiper-slide').eq(0).addClass('isEdit').show();
+						$('#pagesList .swiper-slide').eq(0).addClass('isEdit').show();
 console.log("AA  "+$('#sliderDirection').attr('data-direction') )
 						if($("#sliderDirection").attr('data-direction') == ''){
 							console.log("B")
@@ -117,7 +122,7 @@ console.log("AA  "+$('#sliderDirection').attr('data-direction') )
 					        console.log("DD")
 					     }
 
-					},150)
+					},250)
 
 					//console.log('loading project')
 

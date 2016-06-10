@@ -367,17 +367,20 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .saveSuccess{
     display:none;
-        text-align: center;
+    text-align: center;
     background: rgba(0,0,0,0.8);
     width: 150px;
-    height: 35px;
+    height: 50px;
     color: #fff;
-    font-size: 14px;
-    padding: 8px;
-    border-radius: 3px;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    margin: auto;
     position: absolute;
-    top: 9%;
-    left: 81%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
     z-index: 9999999;
 }
 
@@ -422,3 +425,11 @@ input[type=number]::-webkit-outer-spin-button {
     z-index: 10001;
     text-align: center;
 }
+.inputfield{padding: 0 10px 0 10px;
+    float: right;
+    width: 200px;
+    font: 15px Arial;
+    border: 2px aqua inset;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;}
