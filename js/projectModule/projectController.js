@@ -57,7 +57,10 @@ projectController.controller('projectController', function(
       controller: function($scope, $compile, projectFn) {
         $scope.loadingSave =false;
         $scope.isDisabled = false;
-        $scope.copyProjectInProgress = function() {
+        $scope.createProjectInProgress = function() {
+          //初始化 getPageLength 防止存储到当前项目
+          projectFn.getPageLength().length = 0;
+          
         $scope.loadingSave = true;
         //$scope.isDisabled = true;
         $('#saveProjectOverLay .btn-primary').attr("disabled","disabled")
@@ -124,14 +127,14 @@ projectController.controller('projectController', function(
   }
 
     $scope.editPage = function(ev,id,projectname){
-      $('.swiper-slide').remove();
+      //$('.swiper-slide').remove();
       $state.go('homePage');
-      console.log(id);
+      console.log('editpage::'+id);
       projectFn.saveProjectId(id);
       //reload leftNav 
       setTimeout(function(){
           $('.box').eq(0).click();
-        },150)
+        },350)
     }
   // $scope.previewPage = function(ev, url, qrcode, code) {
   //   $('.modlist').css('display', 'none')

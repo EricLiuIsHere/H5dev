@@ -83,10 +83,11 @@ homeController.controller('homeController', function(
     });
   }
 
-//用户未登录状态点击我的项目
+//用户点击我的项目
   $scope.myProject = function(){
     $('.reveal-modal').css('visibility','visible');
     $('.reveal-modal-bg').css('display','block');
+    //用户登录状态
     if(loginFn.islogged().status){
       //$('.reveal-modal').css('visibility','hidden');
       //$('.reveal-modal-bg').css('display','none');
@@ -119,7 +120,8 @@ homeController.controller('homeController', function(
          }
 
 
-    }else{
+    }//用户未登录状态
+    else{
       $("#popupContainer").addClass('filter');
       $mdDialog.show({
          controller: function($scope,$rootScope){
@@ -144,8 +146,8 @@ homeController.controller('homeController', function(
                         $("#popupContainer").removeClass('filter');
 
                         if(!$("#pagesList").data("projectid")){
-
-                            addProject($mdDialog,$document);
+                            $state.go('dashboard');
+                            //addProject($mdDialog,$document);
                         }
 
                     }else{
@@ -457,7 +459,11 @@ setTimeout(function(){
       $("div.page:eq(0)").addClass('col-leftclick')
     },100)
   })
+  
+  // $http({method:"GET",url:productUrl+editProject,params:{pid:projectIdInLeftNav}}).success(function(data){
+  //       $scope.feedback.leftpages = data.pageLength;
 
+  // })
 
 
 
