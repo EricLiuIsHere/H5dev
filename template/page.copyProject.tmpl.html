@@ -36,6 +36,13 @@
                 <div ng-message="required">请输入项目名称</div>
               </div>
           </div>
+          <script>
+            $(document).ready(function(){
+              if($('.form-group').eq(0).length>0){
+                  $('#projectName').click(function(){$('.duplicatedpn').remove();$('form .btn').removeAttr('disabled');})
+                }
+                });
+          </script>
           <div class="form-group">
             <label for="message-text" class="control-label">项目介绍</label>
             <textarea class="form-control" id="message-text" style=" min-height:120px;resize: none; font-size: 20px;border-radius: 0px;"></textarea>
