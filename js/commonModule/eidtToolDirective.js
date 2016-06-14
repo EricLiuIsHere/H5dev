@@ -187,7 +187,7 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
                 *  }
                 */
                 if(projectIdIsNull()){
-                    addProjectFn($mdDialog, $document)  
+                    addProjectFn($mdDialog, $document);  
                 }else{
                     saveProjectFn();
                 }
@@ -330,12 +330,10 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
                           .replace(/<div class="ui-resizable-handle(.)*?div>/g, '')
                           .replace(/ui-resizable/g,'');
              //console.log('@eidtToolDirective.js ready save')
-             console.log('previewsave11166:'+leftCode);
 
             projectFn.saveProject(newLengthObj, projectid, leftCode, editCode, previewCode)
               .then(function(data) {
                  // console.log('@eidtToolDirective.js save project completed')
-             console.log('funckcc:'+leftCode);
                   if (data.status) {
                     setTimeout(function(){$("#popupContainer").removeClass('filter');},250)
                     $("#addBox").show();
