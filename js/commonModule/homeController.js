@@ -46,6 +46,8 @@ homeController.controller('homeController', function(
             }
             $scope.loginClose = function(){
                   $mdDialog.hide();
+                  $('.reveal-modal').hide();
+                  $('.reveal-modal-bg').hide();
                   setTimeout(function(){$("#popupContainer").removeClass('filter');},250)
             }
 
@@ -96,17 +98,24 @@ homeController.controller('homeController', function(
         //1.登陆状态下，编辑已创建过的项目，但没有保存，点击我的项目会将项目保存到db
         //2.登陆状态下，用户编辑结束，已点击保存，无须提示是否保存
         if($("#pagesList").data("projectid")){
+              
+              setTimeout(function(){
+                 $('.edit-icon .icon-save').click();
+              },100);
+              setTimeout(function(){
+                  $state.go('dashboard');
+              },500);
+              
 
-            saveProjectFn();
-
-         }else if(textIsNull&& imageIsNull &&!$("#pagesList").data("projectid")){
-        //2.登陆状态下，没有编辑行为，直接跳转到dashboard
-
-          $state.go('dashboard');
-         }else{
+         }
+         else{
           //3.登陆状态下创建新项目，没有点击保存，直接点击我的项目
-          //console.log('unsave????');
-          addProject($mdDialog,$document);
+              if(textIsNull&& imageIsNull){
+                $state.go('dashboard');
+              }
+              else{
+                addProject($mdDialog,$document);
+              }
          }
 
 
@@ -117,7 +126,9 @@ homeController.controller('homeController', function(
            $scope.button_clicked = false;
              $scope.loadingLogin = false;
             $scope.loginClose = function(){
-              mdDialogHide($mdDialog)
+              mdDialogHide($mdDialog);
+              $('.reveal-modal').hide();
+              $('.reveal-modal-bg').hide();
             }
 
             $scope.loginBtn = function(){
@@ -288,12 +299,16 @@ $mdDialog.show({
       $scope.button_clicked = false;
       $scope.closeSavePage = function() {
         $mdDialog.hide();
+        $('.reveal-modal').hide();
+        $('.reveal-modal-bg').hide();
         $("#popupContainer").removeClass('filter');
       }
       $scope.savePageContent = function() {
          $scope.loadingSave = true;
            $scope.button_clicked = true;
-         var projectName = $("#projectName").val();
+           $('#dialog_0 .btn-primary').attr('disabled','disabled')
+           $('#dialog_1 .btn-primary').attr('disabled','disabled')
+           $('#dialog_2 .btn-primary').attr('disabled','disabled')
          var projectName = $("#projectName").val();
          var projectInfo = $('#projectInfo').val();
          var pageLength  = projectFn.getPageLength();
@@ -331,7 +346,7 @@ $mdDialog.show({
                    $(".box .page .swiper-slide").each(function(n){
                         leftCode.push($(".box .page .swiper-slide").eq(n).prop("outerHTML"));
                     });
-
+              $('.currentprojectname').text(projectName);
         projectFn.addProject(projectName,previewCode,editCode,leftCode,projectInfo,userName,pageLength)
                  .then(function(data) {
                 // console.log(data.status+":data.status")

@@ -56,8 +56,11 @@ projectController.controller('projectController', function(
     $mdDialog.show({
       controller: function($scope, $compile, projectFn) {
         $scope.loadingSave =false;
+        $scope.isDisabled = false;
         $scope.copyProjectInProgress = function() {
         $scope.loadingSave = true;
+        //$scope.isDisabled = true;
+        $('#saveProjectOverLay .btn-primary').attr("disabled","disabled")
         $scope.projectInfo = {
           "id": "",
           "projectname": "",
@@ -78,7 +81,9 @@ projectController.controller('projectController', function(
               
 
               $scope.loadingSave = false;
+              $scope.isDisabled = true;
               $mdDialog.hide();
+
               setTimeout(function(){ $(".dashboardContainer").removeClass('filter');},250)
        
               $("#addBox").show();

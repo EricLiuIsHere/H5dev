@@ -202,6 +202,8 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
                       $scope.button_clicked = false;
                       $scope.loginClose = function(){
                           $mdDialog.hide();
+                          $('.reveal-modal').hide();
+                          $('.reveal-modal-bg').hide();
                           setTimeout(function(){$("#popupContainer").removeClass('filter');},250)
                       }
 
@@ -368,11 +370,16 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
             
             $scope.closeSavePage = function() {
               $mdDialog.hide();
+              $('.reveal-modal').hide();
+              $('.reveal-modal-bg').hide();
               setTimeout(function(){$("#popupContainer").removeClass('filter');},250)
             }
             $scope.savePageContent = function() {
               $scope.loadingSave = true;
               $scope.isSaved = false;
+              $('#dialog_0 .btn-primary').attr('disabled','disabled')
+              $('#dialog_1 .btn-primary').attr('disabled','disabled')
+              $('#dialog_2 .btn-primary').attr('disabled','disabled')
               var pageLengthObj  = []
               var projectName    = $("#projectName").val();
               var projectInfo    = $('#projectInfo').val();     
@@ -431,7 +438,7 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
                    $(".box .page .swiper-slide").each(function(n){
                         leftCode.push($(".box .page .swiper-slide").eq(n).prop("outerHTML"));
                     });
-
+              $('.currentprojectname').text(projectName);
               projectFn.addProject(projectName,previewCode,editCode,leftCode,projectInfo,userName,pageLengthObj)
                 .then(function(data) {
                    // console.log(data.status+":data.status")
