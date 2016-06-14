@@ -45,6 +45,13 @@
                   <div ng-message="required" style="color:rgb(244,67,54);font-size: 10px;margin-top: 10px;">请输入项目名称</div>
              </div>
           </div>
+          <script>
+            $(document).ready(function(){
+              if($('.form-group').eq(0).length>0){
+                  $('#projectName').click(function(){$('.duplicatedpn').remove();$('form .btn').removeAttr('disabled');})
+                }
+                });
+          </script>
 
 
           <div class="form-group">
