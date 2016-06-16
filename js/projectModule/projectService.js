@@ -55,7 +55,7 @@ project.factory('projectFn',function($http,$q,$timeout,$compile,SERVER_URL,login
             var deffered = $q.defer();
 
             var pageSettingContent   = pageSettingService.getPageSetting();
-            console.log(pageSettingService)
+            console.log(pageSettingService);
             var pageSettingDirection = pageSettingService.direction || 'vertical';
 
             // console.log('pageSettingContent:'+pageSettingContent)
@@ -72,9 +72,10 @@ project.factory('projectFn',function($http,$q,$timeout,$compile,SERVER_URL,login
                 'projectName':projectName,
                 'pages':{'editCode':editCode,'previewCode':previewCode,'leftCode':leftCode,'pageSetting':{"content":pageSettingContent,"direction":pageSettingDirection}}
             }).success(function(data){
-                deffered.resolve(data)
+              console.log('page lenthdthe:::'+data.pageLength)
+                deffered.resolve(data);
             }).error(function(data){
-                deffered.reject(data)
+                deffered.reject(data);
             });
             return deffered.promise;
         },
@@ -124,6 +125,7 @@ project.factory('projectFn',function($http,$q,$timeout,$compile,SERVER_URL,login
 
             //描    述：重新处理pageLengthObj结构,默认数据结构在mongodb中报错
             //默认结构：pageLengthObj =  $scope.feedback.leftpages
+
                for(var i in pageLengthObj){
                    pageLeftNavObj.push({'type':pageLengthObj[i].type,'thumbId':pageLengthObj[i].thumbId});
                 }
@@ -141,14 +143,14 @@ project.factory('projectFn',function($http,$q,$timeout,$compile,SERVER_URL,login
                 'userName'   : userName,
                 'pages'      : {'editCode':editCode,'previewCode':previewCode,'leftCode':leftCode,'pageSetting':{"content":pageSettingContent,"direction":pageSettingDirection}}
             }).success(function(data ){
-                console.log('duplicated='+data.status);
+                console.log('duplicated='+data.pageLength);
                 if(data.status==0){
                   $('.form-group').eq(0).append('<div class="duplicatedpn" style="color: rgb(244, 67, 54);font-size: 10px;margin-top: 10px;">项目名重复，请重新输入项目名称</div>');
                 }
                 else{
                   $('.duplicatedpn').remove();
                   deffered.resolve(data);
-              }
+                }
             }).error(function(data){
                 deffered.reject(data)
             });
@@ -176,26 +178,32 @@ project.factory('projectFn',function($http,$q,$timeout,$compile,SERVER_URL,login
             projectIdInDashboardService.length = 0;
         },
     	deletedProject:function(projectId){
-            var deffered = $q.defer()
+            var deffered = $q.defer();
     		$http({method:"POST",url:productUrl+deletedProject,params:{pid:projectId}}).success(function(data){
                 deffered.resolve(data);
     		});
     		return deffered.promise;
     	},
         loadEditPage:function(id,$scope){
-            var deffered = $q.defer()
+            var deffered = $q.defer();
+            //projectFn.getPageLength().length = 0;
             $http({method:"GET",url:productUrl+editProject,params:{pid:id}}).success(function(data){
-               console.log('loadEditPage:'+data.projectname);
+              
+               for(var i in data.pageLength){
+                console.log("loadEditPage::"+data.pageLength[i].thumbId)
+              }
                // $('#sliderDirection').attr('data-direction',data.pages.pageSetting.direction);
                //  pageSettingService.setPageSetting(data.pages.pageSetting.direction);
                 // for(var i in data){
                 //   console.log(i+":"+data[i])
                 // }
                 deffered.resolve(data);
+                console.log('checko1');
             }).error(function(data){
                 deffered.reject(data);
             });
             return deffered.promise;
+
         },
     	copyProject:function(projectName,projectId){
            // console.log('@projectService.js DEC: projectName:'+projectName+"projectId:"+projectId)
@@ -207,7 +215,14 @@ project.factory('projectFn',function($http,$q,$timeout,$compile,SERVER_URL,login
                 //         console.log(j+":"+data[j])
                 //     }
                 // }
-                deffered.resolve(data);
+                console.log('copyProject:function went through!!!!');
+                if(data.status==0){
+                  $('.form-group').eq(0).append('<div class="duplicatedpn" style="color: rgb(244, 67, 54);font-size: 10px;margin-top: 10px;">项目名重复，请重新输入项目名称</div>');
+                }
+                else{
+                  $('.duplicatedpn').remove();
+                  deffered.resolve(data);
+                }
     		}).error(function(data){
                 deffered.reject(data);
             });

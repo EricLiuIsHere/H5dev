@@ -23,17 +23,17 @@
        
 <form style="width: 470px; margin:0 auto; color: #fff;font-size: 20px" name="createProjectFrom">
           <div class="form-group">
-            <label for="recipient-name" class="control-label"  style="">项目名称</label>
-            <input type="text" 
-                   class="form-control" 
-                   id="projectName" 
-                   style="font-size: 20px; border-radius: 0px; height: 60px;" 
-                   required 
-                   value="{{projectName}}" 
-                   ng-model="projectName" 
-                   name="projectName">
-               <div ng-messages="createProjectFrom.projectName.$error" ng-show="createProjectFrom.projectName.$touched">
-                <div ng-message="required">请输入项目名称</div>
+              <label for="recipient-name" class="control-label"  style="font-weight: normal;">项目名称</label>
+              <input type="text" 
+                     class="form-control" 
+                     id="projectName" 
+                     style="font-size: 20px; border-radius: 0px; height: 60px;" 
+                     required 
+                     value="{{projectName}}" 
+                     ng-model="projectName" 
+                     name="projectName" maxlength="30"/>
+              <div ng-messages="createProjectFrom.projectName.$error" ng-show="createProjectFrom.projectName.$touched">
+                    <div ng-message="required" style="color:rgb(244,67,54);font-size: 10px;margin-top: 10px;">请输入项目名称</div>
               </div>
           </div>
           <script>
