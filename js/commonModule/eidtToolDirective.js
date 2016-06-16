@@ -263,7 +263,7 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
           //projectFn.savePageLength($scope.feedback.leftpages);
           var pageLengthObj = projectFn.getPageLength();
           console.log('pageLengthObj::'+pageLengthObj.length);
-          var projectid     = $("#pagesList").data("projectid");
+          var projectid = $("#pagesList").data("projectid");
 
           /*
           *@描述：将当前页面个数与存储个数比较，判断页面个数是否有变
@@ -281,14 +281,14 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
            // console.log( pageLengthObj == null +"pageLength is null"+"///"+data.pageLength.length)
             if(pageLengthObj.length == null || pageLengthObj.length == 0){
               newLengthObj = data.pageLength;
-              for(var i in newLengthObj){
-                console.log(i+":-:"+newLengthObj[i].thumbId)
-              }
+              // for(var i in newLengthObj){
+              //   console.log(i+":-:"+newLengthObj[i].thumbId)
+              // }
             }else{
               newLengthObj = pageLengthObj;
-              for(var i in pageLengthObj){
-                console.log(i+":"+pageLengthObj[i].thumbId)
-              }
+              // for(var i in pageLengthObj){
+              //   console.log(i+":"+pageLengthObj[i].thumbId)
+              // }
             }
 
             // for(var i in newLengthObj){
@@ -381,9 +381,8 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
             $scope.savePageContent = function() {
               $scope.loadingSave = true;
               $scope.isSaved = false;
-              $('#dialog_0 .btn-primary').attr('disabled','disabled')
-              $('#dialog_1 .btn-primary').attr('disabled','disabled')
-              $('#dialog_2 .btn-primary').attr('disabled','disabled')
+              console.log('disabled02');
+              $('form .btn').attr('disabled','disabled');
               var pageLengthObj  = []
               var projectName    = $("#projectName").val();
               var projectInfo    = $('#projectInfo').val();     

@@ -57,13 +57,14 @@ projectController.controller('projectController', function(
       controller: function($scope, $compile, projectFn) {
         $scope.loadingSave =false;
         $scope.isDisabled = false;
-        $scope.createProjectInProgress = function() {
+        $scope.copyProjectInProgress = function() {
+          console.log('createProjectInProgress');
           //初始化 getPageLength 防止存储到当前项目
           projectFn.getPageLength().length = 0;
-          
+
         $scope.loadingSave = true;
         //$scope.isDisabled = true;
-        $('#saveProjectOverLay .btn-primary').attr("disabled","disabled")
+        $('form .btn').attr('disabled','disabled');
         $scope.projectInfo = {
           "id": "",
           "projectname": "",
@@ -230,7 +231,8 @@ projectController.controller('projectController', function(
         var pId = projectId;
         $scope.projectName = projectName;
         $scope.copyProjectInProgress = function() {
-
+          console.log('project copying----------------');
+          $('form .btn').attr('disabled','disabled');
           $scope.projectInfo = {
             "id": "",
             "projectname": "",
@@ -263,7 +265,7 @@ projectController.controller('projectController', function(
             }
             
           });
-
+          console.log('project copied!!!!!!!!!!!!!!!!');
         }
 
         $scope.close = function() {

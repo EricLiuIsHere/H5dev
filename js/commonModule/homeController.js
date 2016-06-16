@@ -308,9 +308,8 @@ $mdDialog.show({
       $scope.savePageContent = function() {
          $scope.loadingSave = true;
            $scope.button_clicked = true;
-           $('#dialog_0 .btn-primary').attr('disabled','disabled')
-           $('#dialog_1 .btn-primary').attr('disabled','disabled')
-           $('#dialog_2 .btn-primary').attr('disabled','disabled')
+           console.log('disabled01');
+           $('form .btn').attr('disabled','disabled');
          var projectName = $("#projectName").val();
          var projectInfo = $('#projectInfo').val();
          var pageLength  = projectFn.getPageLength();
