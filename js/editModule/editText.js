@@ -79,23 +79,22 @@ editText.directive('edittext',function(
 					//console.log(data.pages.projectName);
 
 					//load left Thumbnail
-					//$('.col-leftclick .swiper-slide').remove();
-
 					setTimeout(function(){
-					$.each($('.box .page'), function(i,val){  
-					      $('.box .page').eq(i).append(data.pages.leftCode[i]);
-					      //console.log('================='+data.pages.leftCode[i]);
-					  });
-					//$('.box').click();
-					//$('.box').eq(0).click();
-					  },150); 
-					console.log('data.pages.pageSetting.direction:'+data.pages.pageSetting.direction)
-					$('#sliderDirection').attr('data-direction',data.pages.pageSetting.direction)
-					pageSettingService.setPageSetting(data.pages.pageSetting.direction)
+						$('.col-leftclick .swiper-slide').remove();
+						$.each($('.box .page'), function(i,val){  
+						      $('.box .page').eq(i).append(data.pages.leftCode[i]);
+						      //console.log('================='+data.pages.leftCode[i]);
+						  });
+					  },450); 
+					
+					console.log('data.pages.pageSetting.direction:'+data.pages.pageSetting.direction);
+					$('#sliderDirection').attr('data-direction',data.pages.pageSetting.direction);
+					pageSettingService.setPageSetting(data.pages.pageSetting.direction);
 					//将当前项目id绑定到dom结点，用于保存更新项目
+					console.log('checko12');
 					$("#pagesList").attr('data-projectid',loadingProjectById);
                     $(".currentprojectname").text(data.projectname);
-                    
+                    console.log('checko13');
                     //设置默认显示页面
 					setTimeout(function(){
 						console.log("A")

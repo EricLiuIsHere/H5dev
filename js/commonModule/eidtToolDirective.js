@@ -250,7 +250,7 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
 
 /*
 *@描述：saveProjectFn
-*@作用：非新建项目点击保存按钮出发此方法
+*@作用：非新建项目点击保存按钮触发此方法
 *@详情：.....
 **/
       function saveProjectFn(){
@@ -260,8 +260,10 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
           *@描述：pageLengthObj
           *@作用：获取用户在当前编辑状态下的实际页面个数
           **/          
+          //projectFn.savePageLength($scope.feedback.leftpages);
           var pageLengthObj = projectFn.getPageLength();
-          var projectid     = $("#pagesList").data("projectid");
+          console.log('pageLengthObj::'+pageLengthObj.length);
+          var projectid = $("#pagesList").data("projectid");
 
           /*
           *@描述：将当前页面个数与存储个数比较，判断页面个数是否有变
@@ -274,18 +276,19 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
             // console.log('actual page length：'+pageLengthObj.length)
             // console.log('page length from db:'+data.pageLength.length)
             //pageLengthObj.length !== data.pageLength.length?pageLengthObj:
-              var newLengthObj = []
-              // for(var i in pageLengthObj){
-              //   console.log(i+":"+pageLengthObj[i])
-              // }
+              var newLengthObj = [];
            // console.log(pageLengthObj.length+"pageLength is null"+"///"+data.pageLength.length)
            // console.log( pageLengthObj == null +"pageLength is null"+"///"+data.pageLength.length)
             if(pageLengthObj.length == null || pageLengthObj.length == 0){
               newLengthObj = data.pageLength;
-              console.log('pageLengthObj111111:'+pageLengthObj);
+              // for(var i in newLengthObj){
+              //   console.log(i+":-:"+newLengthObj[i].thumbId)
+              // }
             }else{
               newLengthObj = pageLengthObj;
-              console.log('pageLengthObj1222211:'+pageLengthObj);
+              // for(var i in pageLengthObj){
+              //   console.log(i+":"+pageLengthObj[i].thumbId)
+              // }
             }
 
             // for(var i in newLengthObj){
@@ -335,6 +338,9 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
               .then(function(data) {
                  // console.log('@eidtToolDirective.js save project completed')
                   if (data.status) {
+                    for(var i in newLengthObj){
+                        console.log(i+":-:"+newLengthObj[i].thumbId)
+                    }
                     setTimeout(function(){$("#popupContainer").removeClass('filter');},250)
                     $("#addBox").show();
                     setTimeout(function() {
@@ -375,9 +381,8 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
             $scope.savePageContent = function() {
               $scope.loadingSave = true;
               $scope.isSaved = false;
-              $('#dialog_0 .btn-primary').attr('disabled','disabled')
-              $('#dialog_1 .btn-primary').attr('disabled','disabled')
-              $('#dialog_2 .btn-primary').attr('disabled','disabled')
+              console.log('disabled02');
+              $('form .btn').attr('disabled','disabled');
               var pageLengthObj  = []
               var projectName    = $("#projectName").val();
               var projectInfo    = $('#projectInfo').val();     

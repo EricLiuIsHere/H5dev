@@ -172,6 +172,7 @@ function showImageEditPanel($mdToast,$mdDialog,$document){
 	   	      //  console.log('$scope.opacity.numberValue'+$scope.opacity.numberValue)
 				$('.ui-selected .imageContainer .mImage').css('opacity',$scope.opacity.numberValue);
 				$('.ui-selected .imageContainer .mImage').attr('data-opacity',$scope.opacity.numberValue);
+				refresh();
 			}
 
 			//选择动画效果
@@ -198,6 +199,7 @@ function showImageEditPanel($mdToast,$mdDialog,$document){
 				    });
 
 				}
+				refresh();
 		    }
 
 		   //设置图片圆角
@@ -205,6 +207,7 @@ function showImageEditPanel($mdToast,$mdDialog,$document){
 
 				$('.ui-selected .imageContainer .mImage').attr('data-radius',$scope.imageRadius.size);
 				$(".ui-selected .imageContainer .mImage").css("borderRadius",$scope.imageRadius.size+"px");
+				refresh();
 		    }
 
 
@@ -241,6 +244,7 @@ function showImageEditPanel($mdToast,$mdDialog,$document){
 					$('.ui-selected').attr('swiper-animate-delay',delay);
 				}
 				setTimeout(test,100);
+				refresh();
 		   }
 
 		   $scope.setImageLink = function(){

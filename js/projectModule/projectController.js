@@ -58,9 +58,13 @@ projectController.controller('projectController', function(
         $scope.loadingSave =false;
         $scope.isDisabled = false;
         $scope.copyProjectInProgress = function() {
+          console.log('createProjectInProgress');
+          //初始化 getPageLength 防止存储到当前项目
+          projectFn.getPageLength().length = 0;
+
         $scope.loadingSave = true;
         //$scope.isDisabled = true;
-        $('#saveProjectOverLay .btn-primary').attr("disabled","disabled")
+        $('form .btn').attr('disabled','disabled');
         $scope.projectInfo = {
           "id": "",
           "projectname": "",
@@ -124,14 +128,14 @@ projectController.controller('projectController', function(
   }
 
     $scope.editPage = function(ev,id,projectname){
-      $('.swiper-slide').remove();
+      //$('.swiper-slide').remove();
       $state.go('homePage');
-      console.log(id);
+      console.log('editpage::'+id);
       projectFn.saveProjectId(id);
       //reload leftNav 
       setTimeout(function(){
           $('.box').eq(0).click();
-        },150)
+        },350)
     }
   // $scope.previewPage = function(ev, url, qrcode, code) {
   //   $('.modlist').css('display', 'none')
@@ -227,7 +231,8 @@ projectController.controller('projectController', function(
         var pId = projectId;
         $scope.projectName = projectName;
         $scope.copyProjectInProgress = function() {
-
+          console.log('project copying----------------');
+          $('form .btn').attr('disabled','disabled');
           $scope.projectInfo = {
             "id": "",
             "projectname": "",
@@ -260,7 +265,7 @@ projectController.controller('projectController', function(
             }
             
           });
-
+          console.log('project copied!!!!!!!!!!!!!!!!');
         }
 
         $scope.close = function() {
