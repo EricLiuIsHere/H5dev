@@ -261,8 +261,9 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
           *@作用：获取用户在当前编辑状态下的实际页面个数
           **/          
           //projectFn.savePageLength($scope.feedback.leftpages);
+          
           var pageLengthObj = projectFn.getPageLength();
-          console.log('pageLengthObj::'+pageLengthObj.length);
+          console.log('保存按钮点击:'+pageLengthObj.length);
           var projectid = $("#pagesList").data("projectid");
 
           /*

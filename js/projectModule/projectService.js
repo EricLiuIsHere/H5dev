@@ -112,12 +112,14 @@ project.factory('projectFn',function($http,$q,$timeout,$compile,SERVER_URL,login
           // console.log("@projectService.js 从我的项目 添加项目"+pageLengthObj)
            if(!pageLengthObj || pageLengthObj ==  undefined ){
              // console.log("#### add project from dashboard")
+             console.log('当前的page长度为:'+pageLeftNavObj.length);
               pageLeftNavObj.length =0;
               pageLeftNavObj.push({'type': '1','thumbId':defaultThumb});
-             // console.log(pageLeftNavObj.length)
+              console.log('添加后长度为'+pageLeftNavObj.length)
            }else if(pageLengthObj.length == 0){
             //如果当前的page长度为0，进行数组初始化
            // console.log(pageLengthObj.length+":pageLength is 0")
+           console.log('当前的page长度为0000');
              pageLeftNavObj.push({'type': '1','thumbId':$('.box').data('activeid')})
 
            //  console.log(pageLeftNavObj.length+":pageLength is 1")
@@ -190,7 +192,7 @@ project.factory('projectFn',function($http,$q,$timeout,$compile,SERVER_URL,login
             $http({method:"GET",url:productUrl+editProject,params:{pid:id}}).success(function(data){
               
                for(var i in data.pageLength){
-                console.log("loadEditPage::"+data.pageLength[i].thumbId)
+                console.log("从db读取left page的id为:"+data.pageLength[i].thumbId)
               }
                // $('#sliderDirection').attr('data-direction',data.pages.pageSetting.direction);
                //  pageSettingService.setPageSetting(data.pages.pageSetting.direction);
