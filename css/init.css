@@ -100,7 +100,7 @@ a.imgbut:hover{ background: #007ead; text-decoration: none;height: 48px;color: #
     position: fixed;
     /* text-align: center; */
     top: 23%;
-    width: 225px;
+    width: 290px;
     z-index: 999999;
     font-size: 12px;
     box-shadow: 0 0px 14px 0px rgba(22, 45, 62, 0.36);
@@ -123,7 +123,7 @@ a.imgbut:hover{ background: #007ead; text-decoration: none;height: 48px;color: #
 .col-right .module-half{width: 120px;}
 .col-right .module .module-select-half{width: 95px;}
 .col-right .module .module-select-full{width: 200px;}
-.col-right .Separation{width: 200px; margin-bottom:10px;border-bottom: 1px solid #c3c3c3; height: 10px; /*float: left;*//*margin-left: 10px; margin-right: 10px;*/}
+.col-right .Separation{width: 260px; margin-bottom:10px;border-bottom: 1px solid #c3c3c3; height: 10px; /*float: left;*//*margin-left: 10px; margin-right: 10px;*/}
 .col-right .B-but{font-weight: bold;}
 .col-right .B-I{font-style: italic;}
 .col-right .B-U{text-decoration: underline;}
