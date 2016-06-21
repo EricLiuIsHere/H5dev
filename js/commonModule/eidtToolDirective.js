@@ -85,22 +85,24 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
 
     $scope.userSlider = function(){
      if($("#sliderDirection").attr('data-direction') == ''){
-      console.log("      ")
+      console.log("   blank   ");
          $("#sliderDirection").attr('data-direction','vertical');
          pageSettingService.setPageSetting('vertical');
          
-         $("#sliderDirection").attr('src','./images/slider-vertical.png');
-
+         //$("#sliderDirection").attr('src','./images/slider-vertical.png');
+         $("#sliderDirection i").removeClass('icon-resize-horizontal').addClass('icon-resize-vertical');
      }else if ($("#sliderDirection").attr('data-direction') == 'horizontal'){
-       console.log("   horizontal   ")
-        $("#sliderDirection").attr('data-direction','vertical')
-        pageSettingService.setPageSetting('vertical')
-        $("#sliderDirection").attr('src','./images/slider-vertical.png');
+       console.log("   horizontal   ");
+        $("#sliderDirection").attr('data-direction','vertical');
+        pageSettingService.setPageSetting('vertical');
+        //$("#sliderDirection").attr('src','./images/slider-vertical.png');
+        $("#sliderDirection i").removeClass('icon-resize-horizontal').addClass('icon-resize-vertical');
      }else if ($("#sliderDirection").attr('data-direction') == 'vertical'){
-       console.log("  vertical    ")
-        $("#sliderDirection").attr('data-direction','horizontal')
-        pageSettingService.setPageSetting('horizontal')
-        $("#sliderDirection").attr('src','./images/slider-horizontal.png');
+       console.log("  vertical    ");
+        $("#sliderDirection").attr('data-direction','horizontal');
+        pageSettingService.setPageSetting('horizontal');
+        //$("#sliderDirection").attr('src','./images/slider-horizontal.png');
+        $("#sliderDirection i").removeClass('icon-resize-vertical').addClass('icon-resize-horizontal');
      }
 
     }
@@ -261,8 +263,9 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
           *@作用：获取用户在当前编辑状态下的实际页面个数
           **/          
           //projectFn.savePageLength($scope.feedback.leftpages);
+          
           var pageLengthObj = projectFn.getPageLength();
-          console.log('pageLengthObj::'+pageLengthObj.length);
+          console.log('保存按钮点击:'+pageLengthObj.length);
           var projectid = $("#pagesList").data("projectid");
 
           /*
