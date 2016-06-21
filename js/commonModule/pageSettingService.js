@@ -28,7 +28,7 @@ pageSetting.factory('pageSettingService',function(){
 			                     '})'+
 			                '</script>';
 		pageSetting.direction = direction;
-		console.log(_defaultSetting)
+		//console.log(_defaultSetting)
 	}
 
 	pageSetting.getPageSetting = function(){

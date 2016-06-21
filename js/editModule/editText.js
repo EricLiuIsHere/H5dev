@@ -86,7 +86,7 @@ editText.directive('edittext',function(
 						      //console.log('================='+data.pages.leftCode[i]);
 						  });
 					  },450); 
-					
+
 					console.log('data.pages.pageSetting.direction:'+data.pages.pageSetting.direction);
 					$('#sliderDirection').attr('data-direction',data.pages.pageSetting.direction);
 					pageSettingService.setPageSetting(data.pages.pageSetting.direction);
@@ -99,29 +99,31 @@ editText.directive('edittext',function(
 					setTimeout(function(){
 						console.log("A")
 						$('#pagesList .swiper-slide').eq(0).addClass('isEdit').show();
-console.log("AA  "+$('#sliderDirection').attr('data-direction') )
+							console.log("AA  "+$('#sliderDirection').attr('data-direction') )
 						if($("#sliderDirection").attr('data-direction') == ''){
 							console.log("B")
 					         $("#sliderDirection").attr('data-direction','vertical');
 					         pageSettingService.setPageSetting('vertical');
-					         
-					         $("#sliderDirection").attr('src','./images/slider-vertical.png');
+					         //$("#sliderDirection").attr('src','./images/slider-vertical.png');
+        					 $("#sliderDirection i").removeClass('icon-resize-horizontal').addClass('icon-resize-vertical');
 					         console.log(" BB")
 					     }else if ($("#sliderDirection").attr('data-direction') == 'horizontal'){
 					     	 console.log(" C")
 					        $("#sliderDirection").attr('data-direction','horizontal')
-					        pageSettingService.setPageSetting('horizontal')
-					        $("#sliderDirection").attr('src','./images/slider-horizontal.png');
+					        pageSettingService.setPageSetting('horizontal');
+					        //$("#sliderDirection").attr('src','./images/slider-horizontal.png');
+					        $("#sliderDirection i").removeClass('icon-resize-vertical').addClass('icon-resize-horizontal');
 					        console.log(" cC")
 					     }else if ($("#sliderDirection").attr('data-direction') == 'vertical'){
 					     	console.log("D")
 					        $("#sliderDirection").attr('data-direction','vertical')
 					        pageSettingService.setPageSetting('vertical')
-					        $("#sliderDirection").attr('src','./images/slider-vertical.png');
+					        //$("#sliderDirection").attr('src','./images/slider-vertical.png');
+					        $("#sliderDirection i").removeClass('icon-resize-horizontal').addClass('icon-resize-vertical');
 					        console.log("DD")
 					     }
 
-					},250)
+					},50)
 
 					//console.log('loading project')
 

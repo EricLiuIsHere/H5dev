@@ -132,10 +132,6 @@ projectController.controller('projectController', function(
       $state.go('homePage');
       console.log('editpage::'+id);
       projectFn.saveProjectId(id);
-      //reload leftNav 
-      setTimeout(function(){
-          $('.box').eq(0).click();
-        },350)
     }
   // $scope.previewPage = function(ev, url, qrcode, code) {
   //   $('.modlist').css('display', 'none')

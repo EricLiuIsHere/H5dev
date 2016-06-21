@@ -102,7 +102,7 @@ homeController.controller('homeController', function(
               
               setTimeout(function(){
                  $('.edit-icon .icon-save').click();
-              },100);
+              },10);
               setTimeout(function(){
                   $state.go('dashboard');
               },500);
@@ -447,16 +447,18 @@ setTimeout(function(){
 
 
   var projectIdInLeftNav = projectFn.getProjectId();
-
+  //初始化 getPageLength 防止缓存存储到当前项目
+  projectFn.getPageLength().length = 0;
   projectFn.loadEditPage(projectIdInLeftNav).then(function(data) {
     console.log('projectIdInLeftNav00000000000'+projectIdInLeftNav);
 
     $scope.feedback.leftpages = data.pageLength;
     var colLeftHeight         = 140 * $scope.feedback.leftpages.length;
-
+    console.log('loading completed');
     setTimeout(function(){
-      $("div.page:eq(0)").addClass('col-leftclick')
-    },100)
+      //$("div.page:eq(0)").addClass('col-leftclick');
+      $("div.page:eq(0)").click();
+    },400)
   })
   
   // $http({method:"GET",url:productUrl+editProject,params:{pid:projectIdInLeftNav}}).success(function(data){
