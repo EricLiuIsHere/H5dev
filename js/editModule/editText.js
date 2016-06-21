@@ -487,7 +487,8 @@ function showTextEditPanel($mdToast,$document){
 
 
 function textActive(curText){
-
+	// console.log($('.ui-draggable').removeClass('ui-draggable'))	
+	// initSelectedAndDraggable();
     /*
     * Demo
     * $(curText).attr("style").indexOf("font-size")
@@ -647,9 +648,6 @@ function setValue(elementId,value){
 
 function initSelectedAndDraggable(){
 
-
-
-
 $( ".isEdit > div" ).draggable({
     start: function(ev, ui) {
     	ev.stopPropagation();
@@ -657,6 +655,7 @@ $( ".isEdit > div" ).draggable({
 			     var t = ( 100 * parseFloat($(this).css("top")) / parseFloat($(this).parent().css("height")) )+ "%" ;
 			     $(this).css("left" , l);
 			     $(this).css("top" , t);
+			     
 			     refresh();
     },
     drag: function(ev, ui) {
@@ -665,6 +664,7 @@ $( ".isEdit > div" ).draggable({
 			     var t = ( 100 * parseFloat($(this).css("top")) / parseFloat($(this).parent().css("height")) )+ "%" ;
 			     $(this).css("left" , l);
 			     $(this).css("top" , t);
+
 			     refresh();
     }
 }).resizable({ handles: 'se,sw,ne,nw',
@@ -674,6 +674,7 @@ $( ".isEdit > div" ).draggable({
 			     var t = ( 100 * parseFloat($(this).css("top")) / parseFloat($(this).parent().css("height")) )+ "%" ;
 			     $(this).css("left" , l);
 			     $(this).css("top" , t);
+			     console.log(this)
 			     refresh();
 
                         
@@ -726,7 +727,6 @@ $( ".isEdit " ).selectable();
 			        // Coverting to percentage
 			        var topInPercentage = (100 * elementTopPosition) / ParentHeight;
 			        var leftInPercentage = (100 * elementLeftPosition) / parentWidth;
-
 			        $(ui).css({top: topInPercentage + '%', left: leftInPercentage + '%'});
 
 			    }
