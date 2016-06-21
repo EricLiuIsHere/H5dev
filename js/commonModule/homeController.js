@@ -454,7 +454,7 @@ setTimeout(function(){
 
     $scope.feedback.leftpages = data.pageLength;
     var colLeftHeight         = 140 * $scope.feedback.leftpages.length;
-
+    console.log('loading completed');
     setTimeout(function(){
       //$("div.page:eq(0)").addClass('col-leftclick');
       $("div.page:eq(0)").click();
