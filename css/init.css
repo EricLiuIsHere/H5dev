@@ -421,3 +421,5 @@ input[type=number]::-webkit-outer-spin-button {
 .the-icons li [class^="icon-"],.the-icons li [class*=" icon-"]{width:32px;font-size:14px;display: inline-block;text-align: center;}.the-icons li:hover{background-color:#fbf4f4}
 .the-icons li:hover [class^="icon-"],.the-icons li:hover [class*=" icon-"]{*font-size:28px;*vertical-align:middle}
 .the-icons li:hover [class^="icon-"]:before,.the-icons li:hover [class*=" icon-"]:before{font-size:28px;vertical-align:-5px}
+
+#color-chooser-bg, #color-chooser, #color-chooser-bg-1{height: 20px;}
