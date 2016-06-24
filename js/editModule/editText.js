@@ -177,7 +177,9 @@ editText.directive('edittext',function(
 //创建文本
 function createNewText($mdToast,$document){
 	$('.img-properties').remove();
+	$('.ui-selected').addClass('ui-selectee');
 	$('.ui-selected').removeClass('ui-selected');
+
 
 	//var iText = $('<div class="ui-selected textElement textElementActive" data-type="text" style=" position:absolute;"><div  class="mText"  style="font-size:1.2em;min-width:100px;line-height:1.2em;opacity:1;border-radius:0px;font-family: Helvetica;" contenteditable="true">请输入文本</div></div>');
     var iText = $('<div class="ui-selected textElement textElementActive" data-type="text" style=" position:absolute;"><div  class="mText"  style="font-size:1.2em;min-width:100px;line-height:1.2em;opacity:1;border-radius:0px;font-family: Helvetica;" contenteditable="true" onclick="textActive(this)">请输入文本</div></div>');
@@ -185,6 +187,7 @@ function createNewText($mdToast,$document){
     iText.appendTo(currentPage);
     showTextEditPanel($mdToast,$document);
     initSelectedAndDraggable();
+    //$('.ui-selected').removeClass('ui-selectee');
     refresh();
 }
 
@@ -487,6 +490,12 @@ function showTextEditPanel($mdToast,$document){
 
 
 function textActive(curText){
+	$('.ui-selected').addClass('ui-selectee');
+
+	setTimeout(function(){
+                $('.ui-selected').removeClass('ui-selectee');
+                  },100);
+
 	// console.log($('.ui-draggable').removeClass('ui-draggable'))	
 	// initSelectedAndDraggable();
     /*
