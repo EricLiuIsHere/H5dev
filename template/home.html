@@ -184,8 +184,30 @@ function refresh() {
   //$(".box .col-leftclick").append($("#pagesList .textElement").css('transform','scale(0.3,0.3)').clone());
   $(".col-leftclick .textElement").css('transform','scale(0.3,0.3)');
   $("#pagesList .isEdit").css('zoom','100%');
+
+  //同步选中textElement
+  if($(".col-leftclick .ui-selected").css('left')!=undefined){
+        var leftposi = '', topposi = '';
+        leftposi = parseFloat($(".col-leftclick .ui-selected").css('left').split('px')[0]);
+        topposi = parseFloat($(".col-leftclick .ui-selected").css('top').split('px')[0]);
+        $(".col-leftclick .ui-selected").css({'left':(leftposi-69 +"px"),'top':(topposi-18 +"px")});
+    }
+  //同步所有未选中textElement
+  var selecteeArryL = [];
+  var selecteeArryT = [];
+  if($("#pagesList .textElement.ui-selectee")){
+        $("#pagesList .textElement.ui-selectee").each(function(i,n){
+            selecteeArryL.push(parseFloat($(this).css('left').split('px')[0]));
+            selecteeArryT.push(parseFloat($(this).css('top').split('px')[0]));
+        });
+  }
+  $(".col-leftclick .textElement.ui-selectee").each(function(i,n){
+        $(this).css({'left':(selecteeArryL[i] -69 +"px"),'top':(selecteeArryT[i] -18 +"px")});
+  });
+  
   setTimeout(function(){
-                //$(".col-leftclick .textElement").css('transform','scale(0.3,0.3)');
+                //reset text position
+                
                     $(".box .col-leftclick .isEdit").removeClass('isEdit');
                   },100);
 } 

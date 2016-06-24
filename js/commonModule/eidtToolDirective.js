@@ -28,6 +28,7 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
     link: function($scope, $rootScope) {
       $scope.remove = function() {
         $(".ui-selected").remove();
+        refresh();
       }
 
 /////////////////// 用户第一次登陆 显示userguide ///////////////
