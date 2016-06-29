@@ -45,7 +45,7 @@ a.imgbut:hover{ background: #007ead; text-decoration: none;height: 48px;color: #
 
 .col-left{width: 140px;min-height: 100%;z-index: 999; background: #ffffff; margin: 0; padding-top: 60px; padding-bottom: 60px; float: left; text-align: center; position: absolute; overflow-x: hidden;}
 .col-left .box{float: left; margin: 20px 20px 0 20px; }
-.col-left .page{ width:96px; height: 144px;  box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.3); float: left; position: relative;}
+.col-left .page{ width:95px; height: 135px;  /*box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.3);*/ float: left; position: relative;}
 .col-left .page img{ width: 100px; height: 150px;}
 .col-left .pagenum{ /*width: 20px;*/ display: inline-block; margin-bottom: 20px; float: left; margin: 20px 0 0 20px; color: #aaa;}
 .col-left .pagenum span{font-size: 2em; display: block; }
@@ -224,7 +224,7 @@ a.imgbut:hover{ background: #007ead; text-decoration: none;height: 48px;color: #
 .form-control{
 	border-radius: 0px;
 }
-.col-leftclick{ border: 2px solid #00649d;border-bottom:2px solid #5AAAFA;}
+/*.col-leftclick{ border: 2px solid #00649d;border-bottom:2px solid #5AAAFA;}*/
 
 .editPanelElement{
 	margin-left: 10px;
@@ -423,3 +423,46 @@ input[type=number]::-webkit-outer-spin-button {
 .the-icons li:hover [class^="icon-"]:before,.the-icons li:hover [class*=" icon-"]:before{font-size:28px;vertical-align:-5px}
 
 #color-chooser-bg, #color-chooser, #color-chooser-bg-1{height: 20px;}
+
+/*highlight selected thumbnail*/
+.col-leftclick, .col-leftclick::before, .col-leftclick::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+ 
+.col-leftclick {
+  width: 100px;
+  height: 150px;
+  margin: auto;
+  color: #69ca62;
+}
+.col-leftclick::before, .col-leftclick::after {
+  content: '';
+  z-index: -1;
+  margin: -5%;
+  box-shadow: inset 0 0 0 2px;
+  animation: clipMe 8s linear infinite;
+}
+.col-leftclick::before {
+  animation-delay: -4s;
+}
+
+ 
+@keyframes clipMe {
+  0%, 100% {
+    clip: rect(0px, 104.5px, 2px, 0px);
+  }
+  25% {
+    clip: rect(0px, 2px, 147.5px, 0px);
+  }
+  50% {
+    clip: rect(147.5px, 104.5px, 147.5px, 0px);
+  }
+  75% {
+    clip: rect(0px, 104.5px, 147.5px, 104.5px);
+  }
+}           
+/*highlight selected thumbnail*/
