@@ -1,7 +1,7 @@
 
 <div class="col-right " id="text-properties">
   <!--text-properties start-->
-      <div class="title"><div class="active">文本设置</div></div>
+      <div class="title"><div class="active">文本设置22222</div></div>
 <div class="btn-group module">
 
 
@@ -264,6 +264,9 @@ $("#color-chooser").kendoColorPalette({
             var colorId = "#"+this.value().substring(1);
 
               $('.ui-selected > .mText').css('color',colorId);
+              setTimeout(function(){
+                    refresh();
+            },100);
         }
 });
 var palette = $("#color-chooser").data("kendoColorPalette");
@@ -282,6 +285,9 @@ $("#color-chooser-bg").kendoColorPalette({
         change: function() {
             var colorId = "#"+this.value().substring(1);
             $('.ui-selected').css('backgroundColor',colorId);
+            setTimeout(function(){
+                    refresh();
+            },100);
         }
 });
 var palette_bg = $("#color-chooser-bg").data("kendoColorPalette");
