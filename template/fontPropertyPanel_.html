@@ -262,8 +262,10 @@ $("#color-chooser").kendoColorPalette({
         value: "#000000",
         change: function() {
             var colorId = "#"+this.value().substring(1);
-
               $('.ui-selected > .mText').css('color',colorId);
+              setTimeout(function(){
+                    refresh();
+            },10);
         }
 });
 var palette = $("#color-chooser").data("kendoColorPalette");
@@ -282,6 +284,9 @@ $("#color-chooser-bg").kendoColorPalette({
         change: function() {
             var colorId = "#"+this.value().substring(1);
             $('.ui-selected').css('backgroundColor',colorId);
+            setTimeout(function(){
+                    refresh();
+            },10);
         }
 });
 var palette_bg = $("#color-chooser-bg").data("kendoColorPalette");

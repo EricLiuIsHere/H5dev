@@ -187,7 +187,7 @@ function createNewText($mdToast,$document){
     iText.appendTo(currentPage);
     showTextEditPanel($mdToast,$document);
     initSelectedAndDraggable();
-    //$('.ui-selected').removeClass('ui-selectee');
+    $('.ui-selected').removeClass('ui-selectee');
     refresh();
 }
 
@@ -328,7 +328,10 @@ function showTextEditPanel($mdToast,$document){
 					// $("#textDecorationId").removeClass("fontItemActive");
 				$(".B-U").removeClass("fontItemActive");
 			}
-			refresh();
+			setTimeout(function(){
+				refresh();
+    		},10)
+			
 		}
 
 		//设置元素对齐
@@ -339,6 +342,7 @@ function showTextEditPanel($mdToast,$document){
 			setTimeout(function(){
 				$('.ui-selected > .mText').css("textAlign",textPos);
 				$(".textAlign"+textPos+"Id").addClass("fontItemActive");
+				refresh();
 			},100)
 		}
 
@@ -396,7 +400,6 @@ function showTextEditPanel($mdToast,$document){
 			    				 .css({"animation-name":x,"animation-duration":speed,"animation-delay":delay})
 			    				 .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
 			    });
-			    refresh();
 			}
 		}
 
@@ -433,7 +436,6 @@ function showTextEditPanel($mdToast,$document){
 					$('.ui-selected').attr('swiper-animate-delay',delay);
 				}
 				setTimeout(test,100);
-				refresh();
 		}
 
 
@@ -719,7 +721,7 @@ $( ".isEdit " ).selectable();
 				drop: function (event, ui) {
 					// debugger;
 					event.stopPropagation();
-
+					refresh();
 					console.log(' draggable works')
 
 			        var pos = ui.draggable.offset();

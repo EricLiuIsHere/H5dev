@@ -386,11 +386,11 @@ $mdDialog.show({
 
 
 $(document).on("mouseenter",".page",function(){
-    $(this).find(".pageThumbMask").css('display','block');
+    //$(this).find(".pageThumbMask").css('display','block');
 
 });
 $(document).on("mouseleave",".page",function(){
-       $(this).find(".pageThumbMask").css('display','none');
+       //$(this).find(".pageThumbMask").css('display','none');
 });
 
 
@@ -529,7 +529,10 @@ $("#color-chooser-bg-1").data("kendoColorPalette").value('#ffffff');
     **/
 
     projectFn.savePageLength($scope.feedback.leftpages);
-
+    setTimeout(function(){
+           $(".box canvas").css('opacity','0.4').show();
+           $(".box .col-leftclick canvas").css('opacity','1')
+        },100)
   }
 
   $scope.choosePage = function(i) {
@@ -577,9 +580,8 @@ $("#color-chooser-bg-1").data("kendoColorPalette").value('#ffffff');
       })
     } 
     setTimeout(function(){
-          refresh();
-          $(".box .swiper-slide").css('opacity','0.4').show();
-          $('.col-leftclick .swiper-slide').css('opacity','1')
+           $(".box canvas").css('opacity','0.4').show();
+           $(".box .col-leftclick canvas").css('opacity','1')
         },100)
 }
 
