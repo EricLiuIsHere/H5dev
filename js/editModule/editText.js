@@ -79,13 +79,13 @@ editText.directive('edittext',function(
 					//console.log(data.pages.projectName);
 
 					//load left Thumbnail
-					setTimeout(function(){
-						$('.col-leftclick .swiper-slide').remove();
-						$.each($('.box .page'), function(i,val){  
-						      $('.box .page').eq(i).append(data.pages.leftCode[i]);
-						      //console.log('================='+data.pages.leftCode[i]);
-						  });
-					  },450); 
+					// setTimeout(function(){
+					// 	$('.col-leftclick .swiper-slide').remove();
+					// 	$.each($('.box .page'), function(i,val){  
+					// 	      $('.box .page').eq(i).append(data.pages.leftCode[i]);
+					// 	      //console.log('================='+data.pages.leftCode[i]);
+					// 	  });
+					//   },450); 
 
 					console.log('data.pages.pageSetting.direction:'+data.pages.pageSetting.direction);
 					$('#sliderDirection').attr('data-direction',data.pages.pageSetting.direction);
@@ -685,7 +685,7 @@ $( ".isEdit > div" ).draggable({
 			     var t = ( 100 * parseFloat($(this).css("top")) / parseFloat($(this).parent().css("height")) )+ "%" ;
 			     $(this).css("left" , l);
 			     $(this).css("top" , t);
-			     console.log(this)
+			     //console.log(this)
 			     refresh();
 
                         
