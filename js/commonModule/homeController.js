@@ -224,8 +224,8 @@ function saveProjectFn(){
             }
 
             var leftCode = [];
-                   $(".box .page .swiper-slide").each(function(n){
-                        leftCode.push($(".box .page .swiper-slide").eq(n).prop("outerHTML"));
+                   $(".box .page img").each(function(n){
+                        leftCode.push($(".box .page img").eq(n).attr('src'));
                     });
 
             var editCode = $("#pagesList").html()
@@ -344,8 +344,8 @@ $mdDialog.show({
                     //.replace('defaultPage','defaultPage isEdit')
                     //.replace('direction: ltr; display: none;','direction: ltr;display: block;')
               var leftCode = [];
-                   $(".box .page .swiper-slide").each(function(n){
-                        leftCode.push($(".box .page .swiper-slide").eq(n).prop("outerHTML"));
+                   $(".box .page img").each(function(n){
+                        leftCode.push($(".box .page img").eq(n).attr('src'));
                     });
               $('.currentprojectname').text(projectName);
         projectFn.addProject(projectName,previewCode,editCode,leftCode,projectInfo,userName,pageLength)
@@ -386,11 +386,11 @@ $mdDialog.show({
 
 
 $(document).on("mouseenter",".page",function(){
-    //$(this).find(".pageThumbMask").css('display','block');
+    $(this).find(".pageThumbMask").css('display','block');
 
 });
 $(document).on("mouseleave",".page",function(){
-       //$(this).find(".pageThumbMask").css('display','none');
+       $(this).find(".pageThumbMask").css('display','none');
 });
 
 
@@ -450,15 +450,18 @@ setTimeout(function(){
   //初始化 getPageLength 防止缓存存储到当前项目
   projectFn.getPageLength().length = 0;
   projectFn.loadEditPage(projectIdInLeftNav).then(function(data) {
-    console.log('projectIdInLeftNav00000000000'+projectIdInLeftNav);
 
     $scope.feedback.leftpages = data.pageLength;
     var colLeftHeight         = 140 * $scope.feedback.leftpages.length;
     console.log('loading completed');
-    setTimeout(function(){
-      //$("div.page:eq(0)").addClass('col-leftclick');
-      $("div.page:eq(0)").click();
-    },400)
+    //load left Thumbnail
+      setTimeout(function(){
+           $.each($('.box .page img'), function(i,val){  
+                 $('.box .page img').eq(i).attr('src',data.pages.leftCode[i])
+             });
+           $("div.page:eq(0)").addClass('col-leftclick');
+        },50);
+
   })
   
   // $http({method:"GET",url:productUrl+editProject,params:{pid:projectIdInLeftNav}}).success(function(data){
@@ -513,8 +516,8 @@ $("#color-chooser-bg-1").data("kendoColorPalette").value('#ffffff');
 //同步缩略图
         setTimeout(function(){
           refresh();
-          $(".box .swiper-slide").css('opacity','0.4').show();
-          $('.col-leftclick .swiper-slide').css('opacity','1')
+          // $(".box .swiper-slide").css('opacity','0.4').show();
+          // $('.col-leftclick .swiper-slide').css('opacity','1')
         },100)
 
 
@@ -529,10 +532,10 @@ $("#color-chooser-bg-1").data("kendoColorPalette").value('#ffffff');
     **/
 
     projectFn.savePageLength($scope.feedback.leftpages);
-    setTimeout(function(){
-           $(".box canvas").css('opacity','0.4').show();
-           $(".box .col-leftclick canvas").css('opacity','1')
-        },100)
+    // setTimeout(function(){
+    //        $(".box img").css('opacity','0.4').show();
+    //        $(".box .col-leftclick img").css('opacity','1')
+    //     },100)
   }
 
   $scope.choosePage = function(i) {
@@ -579,10 +582,10 @@ $("#color-chooser-bg-1").data("kendoColorPalette").value('#ffffff');
         'background-color': cuscolor,
       })
     } 
-    setTimeout(function(){
-           $(".box canvas").css('opacity','0.4').show();
-           $(".box .col-leftclick canvas").css('opacity','1')
-        },100)
+    // setTimeout(function(){
+    //        $(".box img").css('opacity','0.4').show();
+    //        $(".box .col-leftclick img").css('opacity','1')
+    //     },100)
 }
 
 /*
@@ -677,8 +680,8 @@ $scope.removePage = function(pageId){
           projectFn.savePageLength(_scope.feedback.leftpages);
           setTimeout(function(){
           refresh();
-          $(".box .swiper-slide").css('opacity','0.4').show();
-          $('.col-leftclick .swiper-slide').css('opacity','1')
+          // $(".box .swiper-slide").css('opacity','0.4').show();
+          // $('.col-leftclick .swiper-slide').css('opacity','1')
         },100)
 
         } // end $scope.deleteInProgress

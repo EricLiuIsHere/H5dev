@@ -199,7 +199,6 @@ function showImageEditPanel($mdToast,$mdDialog,$document){
 				    });
 
 				}
-				refresh();
 		    }
 
 		   //设置图片圆角
@@ -207,7 +206,9 @@ function showImageEditPanel($mdToast,$mdDialog,$document){
 
 				$('.ui-selected .imageContainer .mImage').attr('data-radius',$scope.imageRadius.size);
 				$(".ui-selected .imageContainer .mImage").css("borderRadius",$scope.imageRadius.size+"px");
-				refresh();
+				setTimeout(function(){
+                    refresh();
+                  },10);
 		    }
 
 
@@ -244,7 +245,6 @@ function showImageEditPanel($mdToast,$mdDialog,$document){
 					$('.ui-selected').attr('swiper-animate-delay',delay);
 				}
 				setTimeout(test,100);
-				refresh();
 		   }
 
 		   $scope.setImageLink = function(){
@@ -330,9 +330,30 @@ function showAddImageOverLay($mdToast,$mdDialog,$document,newImage){
 
 			    showImageEditPanel($mdToast,$mdDialog,$document);
 			    initSelectedAndDraggable();
+			    //图片转为base64并加载到页面 START
+			    function convertImgToBase64(url, callback, outputFormat){
+				    var canvas = document.createElement('CANVAS'),
+				        ctx = canvas.getContext('2d'),
+				        img = new Image;
+				    img.crossOrigin = 'Anonymous';
+				    img.onload = function(){
+				        canvas.height = img.height;
+				        canvas.width = img.width;
+				        ctx.drawImage(img,0,0);
+				        var dataURL = canvas.toDataURL(outputFormat || 'image/png');
+				        callback.call(this, dataURL);
+				        canvas = null; 
+				    };
+				    img.src = url;
+				}
+				var newimageURL = $("#pagesList .isEdit .ui-selected img").attr('src');
 
+				convertImgToBase64(newimageURL, function(base64Img){
+					$("#pagesList .isEdit .ui-selected img").attr('src', base64Img);
+				});
+				//图片转为base64并加载到页面 END
 				$mdDialog.hide();
-	       		setTimeout(function(){$("#popupContainer").removeClass('filter');refresh()},250)
+	       		setTimeout(function(){$("#popupContainer").removeClass('filter');refresh()},500)
 
 		   }
 

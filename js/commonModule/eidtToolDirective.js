@@ -303,8 +303,8 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
          
             //console.log('newLengthObj:'+newLengthObj.length)
            var leftCode = [];
-                   $(".box .page .swiper-slide").each(function(n){
-                        leftCode.push($(".box .page .swiper-slide").eq(n).prop("outerHTML"));  
+                   $(".box .page img").each(function(n){
+                        leftCode.push($(".box .page img").eq(n).attr('src'));
                     });
 
            var editCode = $("#pagesList").html()
@@ -343,7 +343,7 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
                  // console.log('@eidtToolDirective.js save project completed')
                   if (data.status) {
                     for(var i in newLengthObj){
-                        console.log(i+":-:"+newLengthObj[i].thumbId)
+                        //console.log(i+":-:"+newLengthObj[i].thumbId)
                     }
                     setTimeout(function(){$("#popupContainer").removeClass('filter');},250)
                     $("#addBox").show();
@@ -442,8 +442,8 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
                    // .replace('direction: ltr; display: none;','direction: ltr;display: block;');
 
               var leftCode = [];
-                   $(".box .page .swiper-slide").each(function(n){
-                        leftCode.push($(".box .page .swiper-slide").eq(n).prop("outerHTML"));
+                   $(".box .page img").each(function(n){
+                        leftCode.push($(".box .page img").eq(n).attr('src'));
                     });
               $('.currentprojectname').text(projectName);
               projectFn.addProject(projectName,previewCode,editCode,leftCode,projectInfo,userName,pageLengthObj)

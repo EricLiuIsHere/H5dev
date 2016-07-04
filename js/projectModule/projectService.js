@@ -72,7 +72,6 @@ project.factory('projectFn',function($http,$q,$timeout,$compile,SERVER_URL,login
                 'projectName':projectName,
                 'pages':{'editCode':editCode,'previewCode':previewCode,'leftCode':leftCode,'pageSetting':{"content":pageSettingContent,"direction":pageSettingDirection}}
             }).success(function(data){
-              console.log('page lenthdthe:::'+data.pageLength)
                 deffered.resolve(data);
             }).error(function(data){
                 deffered.reject(data);
@@ -192,7 +191,7 @@ project.factory('projectFn',function($http,$q,$timeout,$compile,SERVER_URL,login
             $http({method:"GET",url:productUrl+editProject,params:{pid:id}}).success(function(data){
               
                for(var i in data.pageLength){
-                console.log("从db读取left page的id为:"+data.pageLength[i].thumbId)
+                //console.log("从db读取left page的id为:"+data.pageLength[i].thumbId)
               }
                // $('#sliderDirection').attr('data-direction',data.pages.pageSetting.direction);
                //  pageSettingService.setPageSetting(data.pages.pageSetting.direction);
