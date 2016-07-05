@@ -47,7 +47,7 @@ projectController.controller('projectController', function(
 
       //项目管理页面退出后，返回到主页
       $state.go('homePage');
-      setTimeout(function(){$("#popupContainer").removeClass('filter');},250)
+      setTimeout(function(){$("#popupContainer").removeClass('filter');location.reload()},100)
      
   }
   $scope.createProject = function(ev, id) {
