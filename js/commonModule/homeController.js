@@ -21,7 +21,6 @@ homeController.controller('homeController', function(
   $sce, $state,$mdDialog, $document, SERVER_URL,loginFn,projectFn) {
 
 
-
 //用户退出
   $scope.loginOut = function(){
     $("#popupContainer").addClass('filter');
@@ -31,6 +30,7 @@ homeController.controller('homeController', function(
 
     window.location.reload();
     setTimeout(function(){$("#popupContainer").removeClass('filter');},250)
+    
   }
 
 //用户登录
@@ -87,15 +87,13 @@ homeController.controller('homeController', function(
   $scope.myProject = function(){
     $('.reveal-modal').css('visibility','visible');
     $('.reveal-modal-bg').css('display','block');
+
     //用户登录状态
     if(loginFn.islogged().status){
       //$('.reveal-modal').css('visibility','hidden');
       //$('.reveal-modal-bg').css('display','none');
 
-      var textIsNull = $('.textElementActive').length<1;
-      var imageIsNull = $('.imageElementAcitve').length<1;
-
-
+      
         //1.登陆状态下，编辑已创建过的项目，但没有保存，点击我的项目会将项目保存到db
         //2.登陆状态下，用户编辑结束，已点击保存，无须提示是否保存
         if($("#pagesList").data("projectid")){
@@ -111,11 +109,11 @@ homeController.controller('homeController', function(
          }
          else{
           //3.登陆状态下创建新项目，没有点击保存，直接点击我的项目
-              if(textIsNull&& imageIsNull){
-                $state.go('dashboard');
+              if($('.textElementActive').length>0 || $('.imageElementAcitve').length>0){
+                  addProject($mdDialog,$document);
               }
               else{
-                addProject($mdDialog,$document);
+                  $state.go('dashboard');
               }
          }
 
@@ -145,9 +143,11 @@ homeController.controller('homeController', function(
                         $rootScope.isAuthorized = loginFn.islogged().status;
                         $("#popupContainer").removeClass('filter');
 
-                        if(!$("#pagesList").data("projectid")){
+                        if($('.textElementActive').length>0 || $('.imageElementAcitve').length>0){
+                            addProject($mdDialog,$document);
+                        }
+                        else{
                             $state.go('dashboard');
-                            //addProject($mdDialog,$document);
                         }
 
                     }else{
@@ -304,6 +304,13 @@ $mdDialog.show({
         $('.reveal-modal').hide();
         $('.reveal-modal-bg').hide();
         $("#popupContainer").removeClass('filter');
+      }
+      //不保存直接进dashboard
+      $scope.godashboard = function(){
+        console.log(" 不保存");
+        if(loginFn.islogged().status){
+          $state.go('dashboard');
+        }
       }
       $scope.savePageContent = function() {
          $scope.loadingSave = true;

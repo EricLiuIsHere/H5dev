@@ -51,6 +51,13 @@
                   $('#projectName').click(function(){$('.duplicatedpn').remove();$('form .btn').removeAttr('disabled');})
                 }
                 });
+
+              $(".nosave").hover(function () {  
+                $(".nosavediv").css('display','block');
+                }, //mouseenter  
+                function () {  
+                     $(".nosavediv").css('display','none');
+                });//mouseleave  
           </script>
 
 
@@ -83,9 +90,20 @@
           font-size: 22px;
           height: 60px;
           margin: 30px 0;
-          width: 200px;"> 保存</button>
+          width: 200px;float: left;"> 保存</button>
 
+          <button type="button" class="btn btn-primary nosave" ng-click="godashboard()" style="   -moz-appearance: none;
+          background-color: transparent;
+          border: 2px solid #198cbf;
+          border-radius: 0;
+          color: #198cbf;
+          display: block;
+          font-size: 22px;
+          height: 60px;
+          margin: 30px 0;
+          width: 200px;float: right;"> 不保存</button>
 
+          <div class="nosavediv" style="float: left;display:none">不保存当前页面所做改动，直接跳至dashboard页面</div>
 
 </form>
      
