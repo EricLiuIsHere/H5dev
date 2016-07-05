@@ -176,19 +176,47 @@ $(document).ready(function(){
 
 function refresh() {
         
+      // html2canvas($("#pagesList .isEdit"), {
+      //     onrendered: function(canvas) {
+      //         $(".box .col-leftclick img").remove();
+
+      //         if($(".box .col-leftclick img").length==0){
+               
+      //             //生成base64图片数据
+      //             var dataUrl = canvas.toDataURL("image/png");  
+      //             var newImg = document.createElement("img");
+      //             newImg.src =  dataUrl;
+      //             //console.log(dataUrl); 
+      //             $(".box .col-leftclick").append(newImg);
+      //         }
+      //     },
+      // });
+
+      // html2canvas($("#pagesList .isEdit"), {
+      //     onrendered: function(canvas) {
+      //         $(".box .col-leftclick canvas").remove();
+      //         canvas.id = "myCanvas";
+      //           if($(".box .col-leftclick canvas").length==0){
+
+      //             $(".box .col-leftclick").append(canvas);
+      //             $(".box .col-leftclick canvas").css('zoom','28%');
+      //           }
+      //     },
+      // });
+
       html2canvas($("#pagesList .isEdit"), {
           onrendered: function(canvas) {
-              $(".box .col-leftclick img").remove();
-
-              if($(".box .col-leftclick img").length==0){
-               
-                  //生成base64图片数据
-                  var dataUrl = canvas.toDataURL();
-                  var newImg = document.createElement("img");
-                  newImg.src =  dataUrl;
-                  //console.log(dataUrl);
-                  $(".box .col-leftclick").append(newImg);
-              }
+            $(".box .col-leftclick img").remove();
+            var extra_canvas = document.createElement("canvas");
+            extra_canvas.setAttribute('width',90);
+            extra_canvas.setAttribute('height',135);
+            var ctx = extra_canvas.getContext('2d');
+            ctx.drawImage(canvas,0,0,canvas.width, canvas.height,0,0,90,135);
+            var dataURL = extra_canvas.toDataURL();
+            var img = $(document.createElement('img'));
+            img.attr('src', dataURL);
+            // insert the thumbnail into the left page
+            $(".box .col-leftclick").append(img);
           },
       });
 

@@ -328,9 +328,7 @@ function showTextEditPanel($mdToast,$document){
 					// $("#textDecorationId").removeClass("fontItemActive");
 				$(".B-U").removeClass("fontItemActive");
 			}
-			setTimeout(function(){
-				refresh();
-    		},10)
+			refresh();
 			
 		}
 
