@@ -94,6 +94,7 @@ editText.directive('edittext',function(
 					console.log('checko12');
 					$("#pagesList").attr('data-projectid',loadingProjectById);
                     $(".currentprojectname").text(data.projectname);
+
                     console.log('checko13');
                     //设置默认显示页面
 					setTimeout(function(){
@@ -122,7 +123,7 @@ editText.directive('edittext',function(
 					        $("#sliderDirection i").removeClass('icon-resize-horizontal').addClass('icon-resize-vertical');
 					        console.log("DD")
 					     }
-
+					     $("div.page:eq(0)").addClass('col-leftclick');
 					},50)
 
 					//console.log('loading project')
@@ -660,12 +661,11 @@ function initSelectedAndDraggable(){
 $( ".isEdit > div" ).draggable({
     start: function(ev, ui) {
     	ev.stopPropagation();
-     var l = ( 100 * parseFloat($(this).css("left")) / parseFloat($(this).parent().css("width")) )+ "%" ;
-			     var t = ( 100 * parseFloat($(this).css("top")) / parseFloat($(this).parent().css("height")) )+ "%" ;
+     	var l = ( 100 * parseFloat($(this).css("left")) / parseFloat($(this).parent().css("width")) )+ "%" ;
+	 	var t = ( 100 * parseFloat($(this).css("top")) / parseFloat($(this).parent().css("height")) )+ "%" ;
 			     $(this).css("left" , l);
 			     $(this).css("top" , t);
-			     
-			     refresh();
+			     //refresh();
     },
     drag: function(ev, ui) {
     	ev.stopPropagation();
@@ -673,7 +673,14 @@ $( ".isEdit > div" ).draggable({
 			     var t = ( 100 * parseFloat($(this).css("top")) / parseFloat($(this).parent().css("height")) )+ "%" ;
 			     $(this).css("left" , l);
 			     $(this).css("top" , t);
-
+			     //refresh();
+    },
+    stop: function(ev, ui) {
+    	ev.stopPropagation();
+     var l = ( 100 * parseFloat($(this).css("left")) / parseFloat($(this).parent().css("width")) )+ "%" ;
+			     var t = ( 100 * parseFloat($(this).css("top")) / parseFloat($(this).parent().css("height")) )+ "%" ;
+			     $(this).css("left" , l);
+			     $(this).css("top" , t);
 			     refresh();
     }
 }).resizable({ handles: 'se,sw,ne,nw',
@@ -699,7 +706,8 @@ $( ".isEdit > div" ).draggable({
 			}
 });
 
-
+//修复textelement 高度issue
+$('.textElement .ui-resizable-handle').css('display','');
 $( ".isEdit " ).selectable();
 
 

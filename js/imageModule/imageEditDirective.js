@@ -318,14 +318,14 @@ function showAddImageOverLay($mdToast,$mdDialog,$document,newImage){
 
 	       //从已上传列表中，选择图片
 		   $scope.imageSelected = function(target){
-		   	//console.log(target);
-		   	if(target){
-		   		target = target.split("h5dev")[1];
-		   	}
+		   	console.log(target);
+		   	// if(target){
+		   	// 	target = target.split("h5dev")[1];
+		   	// }
 			    $compile(
 			    	     $('<div class="ui-selected imageElement imageElementAcitve" style="position:absolute;" data-type="image"> '+
 			    				'<div class="imageContainer" style="overflow:hidden;">'+
-			    					'<img src=".'+target+'" class="mImage" style="border-radius:0px;opacity:1;width:100%;height:100%;" onclick="imageActive(this)"/>'+
+			    					'<img src="'+target+'" class="mImage" style="border-radius:0px;opacity:1;width:100%;height:100%;" onclick="imageActive(this)"/>'+
 			    				'<div>'+
 			    			'</div>').appendTo($('.isEdit')
 			    		  )
