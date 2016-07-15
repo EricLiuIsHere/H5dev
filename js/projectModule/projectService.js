@@ -55,14 +55,14 @@ project.factory('projectFn',function($http,$q,$timeout,$compile,SERVER_URL,login
             var deffered = $q.defer();
 
             var pageSettingContent   = pageSettingService.getPageSetting();
-            console.log(pageSettingService);
+            //console.log(pageSettingService);
             var pageSettingDirection = pageSettingService.direction || 'vertical';
 
             // console.log('pageSettingContent:'+pageSettingContent)
             // console.log('pageSettingDirection:'+pageSettingDirection)
 
             // console.log('xxxxxxxxxxxx');
-            // console.log(leftCode);
+            // console.log(leftCode[0]);
             // console.log('xxxxxxxxxxxx');
             
             $http.post(productUrl+saveProject,{
@@ -72,6 +72,7 @@ project.factory('projectFn',function($http,$q,$timeout,$compile,SERVER_URL,login
                 'projectName':projectName,
                 'pages':{'editCode':editCode,'previewCode':previewCode,'leftCode':leftCode,'pageSetting':{"content":pageSettingContent,"direction":pageSettingDirection}}
             }).success(function(data){
+              console.log('xxxxxxxxxxxx'+data.project);
                 deffered.resolve(data);
             }).error(function(data){
                 deffered.reject(data);
@@ -169,6 +170,7 @@ project.factory('projectFn',function($http,$q,$timeout,$compile,SERVER_URL,login
             // console.log('@projectService dec:userName is:'+userName);
             // console.log('@projectService dec:url is:'+productUrl+findMyProject);
     		$http({method:"GET",url:productUrl+findMyProject,params:{userName:userName}}).success(function(data){
+          //console.log(data[0].cover);
     			deffered.resolve(data);
     		}).error(function(data){
                 deffered.reject(data)

@@ -99,18 +99,16 @@ homeController.controller('homeController', function(
         if($("#pagesList").data("projectid")){
               
               setTimeout(function(){
-                 $('.edit-icon .icon-save').click();
+                 //$('.edit-icon .icon-save').click();
+                 saveProjectFn();
               },10);
-              setTimeout(function(){
-                  $state.go('dashboard');
-              },500);
-              
 
          }
          else{
           //3.登陆状态下创建新项目，没有点击保存，直接点击我的项目
               if($('.textElementActive').length>0 || $('.imageElementAcitve').length>0){
                   addProject($mdDialog,$document);
+                  setTimeout(function(){$('.nosave').css('display','block');},50)  
               }
               else{
                   $state.go('dashboard');
@@ -258,15 +256,30 @@ function saveProjectFn(){
                         
           projectFn.saveProject(newLengthObj, projectid, leftCode, editCode, previewCode)
             .then(function(data) {
+                // if (data.status) {
+                //     $mdDialog.hide();
+                //     setTimeout(function(){
+                //       $(".dashboardContainer").removeClass('filter');
+                //         $state.go('dashboard');
+                //     },150)
+                // } else {
+                //   //console.log('error')
+                // }
                 if (data.status) {
-                    $mdDialog.hide();
-                    setTimeout(function(){
-                      $(".dashboardContainer").removeClass('filter');
-                        $state.go('dashboard');
-                    },150)
-                } else {
-                  //console.log('error')
-                }
+                    for(var i in newLengthObj){
+                        //console.log(i+":-:"+newLengthObj[i].thumbId)
+                    }
+                    setTimeout(function(){$("#popupContainer").removeClass('filter');},250)
+                    $("#addBox").show();
+                    setTimeout(function() {
+                      $("#addBox").fadeTo(3000).hide(0,function(){
+                          $state.go('dashboard');
+                          });
+                    }, 1000);
+
+                  } else {
+                    view(data.msg);
+                  }
             }, function() {
 
                 $scope.error = "用户名或密码错误"
@@ -307,8 +320,9 @@ $mdDialog.show({
       }
       //不保存直接进dashboard
       $scope.godashboard = function(){
-        console.log(" 不保存");
+        $('form .nosave').attr('disabled','disabled');
         if(loginFn.islogged().status){
+          
           $state.go('dashboard');
         }
       }
@@ -357,7 +371,7 @@ $mdDialog.show({
               $('.currentprojectname').text(projectName);
         projectFn.addProject(projectName,previewCode,editCode,leftCode,projectInfo,userName,pageLength)
                  .then(function(data) {
-                // console.log(data.status+":data.status")
+                 //console.log(data.projectInfo+":data.projectInfo");
                     if (data.status) {
                       $("#pagesList").attr('data-projectid', data.project.id);
                         $scope.loadingSave = true;
@@ -460,15 +474,19 @@ setTimeout(function(){
 
     $scope.feedback.leftpages = data.pageLength;
     var colLeftHeight         = 140 * $scope.feedback.leftpages.length;
-    console.log('loading completed');
+    //console.log('loading completed'+data.pages.leftCode);
     //load left Thumbnail
       setTimeout(function(){
-           $.each($('.box .page img'), function(i,val){  
-                 $('.box .page img').eq(i).attr('src',data.pages.leftCode[i])
+           $.each($('.box .page img'), function(i,val){
+                if(data.pages.leftCode){
+                  $('.box .page img').eq(i).attr('src',data.pages.leftCode[i])
+                }
              });
            $("div.page:eq(0)").addClass('col-leftclick');
         },50);
-
+      if($("div.page:eq(0)")[0].className.indexOf('col-leftclick')<0){
+          $("div.page:eq(0)").addClass('col-leftclick');
+      }
   })
   
   // $http({method:"GET",url:productUrl+editProject,params:{pid:projectIdInLeftNav}}).success(function(data){
@@ -623,7 +641,7 @@ $scope.removePage = function(pageId){
             if(_scope.feedback.leftpages[i].thumbId == pageId){
 
               if(i==0){
-
+                console.log('i>0');
                // console.log('works deleted');
                 //判断要删除的元素是否是第一个元素,删除第一个元素后，紧邻元素高亮
 
@@ -685,11 +703,16 @@ $scope.removePage = function(pageId){
 
           }// end for loop
           projectFn.savePageLength(_scope.feedback.leftpages);
-          setTimeout(function(){
-          refresh();
-          // $(".box .swiper-slide").css('opacity','0.4').show();
-          // $('.col-leftclick .swiper-slide').css('opacity','1')
-        },100)
+        //
+        
+        if($("div.page:eq(0)").length==0){
+            setTimeout(function(){
+                 $('.new-button').click();
+                 if($("div.page:eq(0)")[0].className.indexOf('col-leftclick')<0){
+                  $("div.page:eq(0)").addClass('col-leftclick');
+                  }
+              },10);
+        }
 
         } // end $scope.deleteInProgress
 

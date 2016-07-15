@@ -73,6 +73,7 @@ projectController.controller('projectController', function(
         }
         var userName = loginFn.islogged().email;
           projectFn.addProject($scope.projectName).then(function(data){
+            //console.log(data.project.id);
             if(data.status){
               $scope.projectInfo.id          = data.project.id;
               $scope.projectInfo.url         = data.project.url;
@@ -155,7 +156,6 @@ projectController.controller('projectController', function(
 
  $scope.previewPage = function(ev, url, qrcode, code) {
  
-
         $(".dashboardContainer").addClass('filter');
        $mdDialog.show({
           controller: function($scope, $compile, $sce) {
@@ -168,7 +168,6 @@ projectController.controller('projectController', function(
              setTimeout(function(){ $(".dashboardContainer").removeClass('filter');},150)
            })
  
-
      $compile($("#previewContent").attr('ng-bind-html', 'page.preivewCode'))($scope)
           },  
        template: '<script>$(function () {$("#copy_btnid").zclip({path:"./swf/ZeroClipboard.swf", copy: function () { return $("#copy_value").val(); } });});</script><md-dialog aria-label="Mango (Fruit)" class="dashBoardPreview"  tabindex="-1" id="previewPageInEditStatus"  style="position:fixed;width: 100%;position: fixed;z-index: 10110;height: 100%; background: rgba(0,0,0,0.8); top:0; left: 0;max-width: 100%;max-height: 100%;">  <a class="closeOverLay" ng-click="close()"></a><md-dialog-content style="width:100%;height:100%;z-index: 999;position: absolute;top:45%;bottom: 0;left: 0;right: 0;margin:auto; text-align: center;" ><div style="width:320px;height:480px;display:inline-block"><iframe src="' + url + '" style="width:320px;height:480px; border: 0;" scrolling="no"></iframe></div><div style=" text-align:center;display: inline-block;vertical-align: top;width: 500px;margin-left: 40px;">  <img src="' + qrcode + '" style="width:200px;height:200px;margin-top:30px;" /><div class="input-group" style="margin-top:30px;"><input type="text" id ="copy_value" class="form-control " readonly value="' + url + '"><span class="input-group-btn"><button id="copy_btnid" class="btn btn-default copy_btn" type="button">复 制</button> </span></div></div></md-dialog-content></md-dialog>',
@@ -177,6 +176,8 @@ projectController.controller('projectController', function(
           hideDelay: false
             // position: $scope.getToastPosition()
         });
+      
+      //setTimeout(function(){$(".swiper-container img").attr("src","xxxx");},2250)
       }
 
 

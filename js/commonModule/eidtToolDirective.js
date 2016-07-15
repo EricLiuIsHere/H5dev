@@ -16,6 +16,7 @@ eidtToolDirective.directive('toolbar1', function(
   $mdToast, //提供文本/图片编辑面板             @angular-material.js
   $document, //angularjs 内部服务
   $rootScope,//angularjs 内部服务
+  $state,
   projectFn, //提供对项目操作的restful接口      @projectService.js
   loginFn,    //管理用户登录状态的restful接口   @loginService.js
 pageSettingService //提供页面设置属性接口     @pageSettingService.js
@@ -190,7 +191,8 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
                 *  }
                 */
                 if(projectIdIsNull()){
-                    addProjectFn($mdDialog, $document);  
+                    addProjectFn($mdDialog, $document);
+                    //setTimeout(function(){$('.nosave').remove();},50)  
                 }else{
                     saveProjectFn();
                 }
@@ -222,7 +224,8 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
                                 $scope.loadingLogin = false;
                                 //$mdDialog.hide();
                                 //setTimeout(function(){$("#popupContainer").removeClass('filter');},250)
-                                addProjectFn($mdDialog, $document) 
+                                addProjectFn($mdDialog, $document);
+                                //setTimeout(function(){$('.nosave').remove();},550) 
                             }else{
                                 // console.log('fail')
                                 $scope.loading = false;
@@ -256,7 +259,7 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
 *@作用：非新建项目点击保存按钮触发此方法
 *@详情：.....
 **/
-      function saveProjectFn(){
+      function saveProjectFn(stt){
 
          // console.log('saveProjectFn')
           /*
@@ -340,7 +343,6 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
 
             projectFn.saveProject(newLengthObj, projectid, leftCode, editCode, previewCode)
               .then(function(data) {
-                 // console.log('@eidtToolDirective.js save project completed')
                   if (data.status) {
                     for(var i in newLengthObj){
                         //console.log(i+":-:"+newLengthObj[i].thumbId)
@@ -348,8 +350,11 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
                     setTimeout(function(){$("#popupContainer").removeClass('filter');},250)
                     $("#addBox").show();
                     setTimeout(function() {
-                      $("#addBox").fadeTo(3000).hide();
+                      $("#addBox").fadeTo(3000).hide(0,function(){
+                          //$state.go('dashboard');
+                          });
                     }, 1000);
+
                   } else {
                     view(data.msg);
                   }
@@ -371,6 +376,7 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
 */
       function addProjectFn($mdDialog, $document) {
       $("#popupContainer").addClass('filter');
+
         $mdDialog.show({
           controller: function($scope, projectFn) {
             $scope.loadingSave =false;
@@ -472,6 +478,7 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
           parent: $('#main'),
           hideDelay: false
         });
+        //setTimeout(function(){$('.nosave').remove();},50)  
       }
 
 

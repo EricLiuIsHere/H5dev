@@ -101,7 +101,7 @@ a.imgbut:hover{ background: #007ead; text-decoration: none;height: 48px;color: #
     /* text-align: center; */
     top: 23%;
     width: 290px;
-    z-index: 999999;
+    z-index: 9999;
     font-size: 12px;
     box-shadow: 0 0px 14px 0px rgba(22, 45, 62, 0.36);
 /*
