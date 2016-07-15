@@ -175,22 +175,83 @@ $(document).ready(function(){
 })
 
 function refresh() {
-        
-      // html2canvas($("#pagesList .isEdit"), {
-      //     onrendered: function(canvas) {
-      //         $(".box .col-leftclick img").remove();
 
-      //         if($(".box .col-leftclick img").length==0){
+ 
+// var div=document.createElement('div');
+//         div.className='textdiv'; 
+//         $("#pagesList").append(div);
+//         var xx = $("#pagesList .isEdit").prop("outerHTML").replace(/ui-selected/, '');
+//         $(".textdiv").replaceWith(xx);
+    
+// $("#pagesList .isEdit").eq(1).hide();
+
+// html2canvas($("#pagesList .isEdit").eq(1), {
+//           onrendered: function(canvas) {
+//         $("#pagesList .isEdit").eq(1).show();
+//         $("#pagesList .isEdit").eq(0).hide();
+//               $(".box .col-leftclick img").remove();
+
+//               if($(".box .col-leftclick img").length==0){
+        
+        
+//                   //生成base64图片数据
+//                   var dataUrl = canvas.toDataURL("image/png");  
+//                   var newImg = document.createElement("img");
+//                   newImg.src =  dataUrl;
+//                   //console.log(dataUrl); 
+//                   $(".box .col-leftclick").append(newImg);
+//           $("#pagesList .isEdit").eq(0).show();
+//           $("#pagesList .isEdit").eq(1).hide();
+//               }
+//           },
+//       });
+//     $("#pagesList .isEdit").eq(1).remove();
+
+    var dd = $("#pagesList .isEdit").find('.ui-selected');
+    if(dd.length>0){
+    dd.removeClass('ui-selected',function(){
+
+      html2canvas($("#pagesList .isEdit"), {
+          onrendered: function(canvas) {
+
+              $(".box .col-leftclick img").remove();
+
+              if($(".box .col-leftclick img").length==0){
                
-      //             //生成base64图片数据
-      //             var dataUrl = canvas.toDataURL("image/png");  
-      //             var newImg = document.createElement("img");
-      //             newImg.src =  dataUrl;
-      //             //console.log(dataUrl); 
-      //             $(".box .col-leftclick").append(newImg);
-      //         }
-      //     },
-      // });
+                  //生成base64图片数据
+                  var dataUrl = canvas.toDataURL("image/png");  
+                  var newImg = document.createElement("img");
+                  newImg.src =  dataUrl;
+                  $(".box .col-leftclick").append(newImg);
+              }
+              setTimeout(function(){
+                  dd.addClass('ui-selected');
+              },1);
+          },
+      });
+
+    });
+    }
+    else{
+      html2canvas($("#pagesList .isEdit"), {
+          onrendered: function(canvas) {
+
+              $(".box .col-leftclick img").remove();
+
+              if($(".box .col-leftclick img").length==0){
+               
+                  //生成base64图片数据
+                  var dataUrl = canvas.toDataURL("image/png");  
+                  var newImg = document.createElement("img");
+                  newImg.src =  dataUrl;
+                  $(".box .col-leftclick").append(newImg);
+              }
+          },
+      });
+
+    }
+      
+
 
       // html2canvas($("#pagesList .isEdit"), {
       //     onrendered: function(canvas) {
@@ -203,22 +264,25 @@ function refresh() {
       //           }
       //     },
       // });
+      
 
-      html2canvas($("#pagesList .isEdit"), {
-          onrendered: function(canvas) {
-            $(".box .col-leftclick img").remove();
-            var extra_canvas = document.createElement("canvas");
-            extra_canvas.setAttribute('width',90);
-            extra_canvas.setAttribute('height',135);
-            var ctx = extra_canvas.getContext('2d');
-            ctx.drawImage(canvas,0,0,canvas.width, canvas.height,0,0,90,135);
-            var dataURL = extra_canvas.toDataURL();
-            var img = $(document.createElement('img'));
-            img.attr('src', dataURL);
-            // insert the thumbnail into the left page
-            $(".box .col-leftclick").append(img);
-          },
-      });
+      
+
+      // html2canvas($("#pagesList .isEdit"), {
+      //     onrendered: function(canvas) {
+      //       $(".box .col-leftclick img").remove();
+      //       var extra_canvas = document.createElement("canvas");
+      //       extra_canvas.setAttribute('width',90);
+      //       extra_canvas.setAttribute('height',135);
+      //       var ctx = extra_canvas.getContext('2d');
+      //       ctx.drawImage(canvas,0,0,canvas.width, canvas.height,0,0,90,135);
+      //       var dataURL = extra_canvas.toDataURL();
+      //       var img = $(document.createElement('img'));
+      //       img.attr('src', dataURL);
+      //       // insert the thumbnail into the left page
+      //       $(".box .col-leftclick").append(img);
+      //     },
+      // });
 
 } 
 
