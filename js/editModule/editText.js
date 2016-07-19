@@ -478,7 +478,7 @@ function showTextEditPanel($mdToast,$document){
 			});
 		}
 	},
-      templateUrl: './template/fontPropertyPanel_.html',
+      templateUrl: './template/fontPropertyPanel_text.html',
       parent :$('#editModulePosition'),
       hideDelay: false
       // position: $scope.getToastPosition()
