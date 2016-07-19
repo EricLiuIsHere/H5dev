@@ -108,7 +108,7 @@ homeController.controller('homeController', function(
           //3.登陆状态下创建新项目，没有点击保存，直接点击我的项目
               if($('.textElementActive').length>0 || $('.imageElementAcitve').length>0){
                   addProject($mdDialog,$document);
-                  setTimeout(function(){$('.nosave').css('display','block');},50)  
+                  setTimeout(function(){$('.nosave').css('display','block');},250)  
               }
               else{
                   $state.go('dashboard');
@@ -309,6 +309,7 @@ function mdDialogHide($mdDialog){
 function addProject($mdDialog,$document){
 
 $mdDialog.show({
+
     controller: function($scope, projectFn) {
       $scope.loadingSave = false;
       $scope.button_clicked = false;
@@ -398,6 +399,7 @@ $mdDialog.show({
     parent: $("#main"),
     hideDelay: false
   });
+  
 }
 
 
@@ -499,7 +501,9 @@ setTimeout(function(){
 $scope.addEmptyTemplate = function(index) {
 //清除背景颜色面板选中
 $('.k-selected-color').css('box-shadow','none');
-$("#color-chooser-bg-1").data("kendoColorPalette").value('#ffffff'); 
+$("#color-chooser-bg-1").data("kendoColorPalette").value('#ffffff');
+$('#text-properties').remove();
+$('.img-properties').remove();
 
 
 //清除左侧略缩图选中状态
@@ -565,7 +569,8 @@ $("#color-chooser-bg-1").data("kendoColorPalette").value('#ffffff');
 
   $scope.choosePage = function(i) {
 
-
+ $('#text-properties').remove();
+ $('.img-properties').remove();
  $(".swiper-slide").hide();
  $(".swiper-slide").removeClass("isEdit");
 
@@ -581,12 +586,17 @@ $("#color-chooser-bg-1").data("kendoColorPalette").value('#ffffff');
     var bgcol = ["rgb(255, 255, 255)", "rgb(0, 0, 0)","rgb(116, 97, 83)", "rgb(58, 76, 139)", "rgb(255, 204, 51)", "rgb(251, 69, 95)", "rgb(172, 18, 15)" ];
     var cuscolor = $('.isEdit').css('backgroundColor');
 
+    bgcolorReload(bgcol, cuscolor);
+ 
+}
 
+//颜色回显方法
+function bgcolorReload(bgcol, cuscolor){
     if(bgcol.indexOf(cuscolor)>-1){
       //initialize
       $('.k-colorpicker').css('overflow','visible');
-      $('.k-selected-color').css('box-shadow','none');
-      $('.k-state-selected').removeClass('k-state-selected');
+      $("#color-chooser-bg-1").next().find('.k-selected-color').css('box-shadow','none');
+      $('#color-chooser-bg-1 .k-state-selected').removeClass('k-state-selected');
 
       var palette_bg = $("#color-chooser-bg-1").data("kendoColorPalette");
       if(cuscolor=='rgb(255, 255, 255)'){
@@ -598,19 +608,17 @@ $("#color-chooser-bg-1").data("kendoColorPalette").value('#ffffff');
     }
     else{
       $('.k-colorpicker').css('overflow','visible');
-      $('.k-state-selected').removeClass('k-state-selected');
-      $('.k-selected-color').css({
+      $('#color-chooser-bg-1 .k-state-selected').removeClass('k-state-selected');
+      $("#color-chooser-bg-1").next().find('.k-selected-color').css({
         'height': '15px',
         'box-shadow': '0 1px 3px 1px rgba(0,0,0,0.7),inset 0 0 0 1px rgba(255,255,255,0.45)',
         'z-index' : '100',
         'position': 'relative',
         'background-color': cuscolor,
-      })
+      });
     } 
-    // setTimeout(function(){
-    //        $(".box img").css('opacity','0.4').show();
-    //        $(".box .col-leftclick img").css('opacity','1')
-    //     },100)
+
+
 }
 
 /*

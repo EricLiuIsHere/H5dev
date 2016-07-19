@@ -145,9 +145,14 @@ project.factory('projectFn',function($http,$q,$timeout,$compile,SERVER_URL,login
                 'userName'   : userName,
                 'pages'      : {'editCode':editCode,'previewCode':previewCode,'leftCode':leftCode,'pageSetting':{"content":pageSettingContent,"direction":pageSettingDirection}}
             }).success(function(data ){
-                console.log('duplicated='+data.pageLength);
+                console.log('datastatus = '+data.status+'   datainput = '+data.input);
                 if(data.status==0){
-                  $('.form-group').eq(0).append('<div class="duplicatedpn" style="color: rgb(244, 67, 54);font-size: 10px;margin-top: 10px;">项目名重复，请重新输入项目名称</div>');
+                    if(data.input=='Invalid data'){
+                        $('.form-group').eq(0).append('<div class="duplicatedpn" style="color: rgb(244, 67, 54);font-size: 10px;margin-top: 10px;">无效的字符，请重新输入项目名称</div>');
+                    }
+                    else{
+                        $('.form-group').eq(0).append('<div class="duplicatedpn" style="color: rgb(244, 67, 54);font-size: 10px;margin-top: 10px;">项目名重复，请重新输入项目名称</div>');
+                      }
                 }
                 else{
                   $('.duplicatedpn').remove();

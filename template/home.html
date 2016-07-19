@@ -125,21 +125,51 @@
 $(document).ready(function(){
 
 
-      $("#color-chooser-bg-1").kendoColorPalette({
-            palette: ["#ffffff", "#000000","#746153", "#3a4c8b", "#ffcc33", "#fb455f", "#ac120f" ],
-            tileSize: 20,
-            value: "rgb(255, 255, 255)",
-            change: function() {
-              $('.k-selected-color').css('box-shadow','none');
+      // $("#color-chooser-bg-1").kendoColorPalette({
+      //       palette: ["#ffffff", "#000000","#746153", "#3a4c8b", "#ffcc33", "#fb455f", "#ac120f" ],
+      //       tileSize: 20,
+      //       value: "rgb(255, 255, 255)",
+      //       change: function() {
+      //         console.log('#color-chooser-bg-1 =============Clicked');
+      //         $('.k-selected-color').css('box-shadow','none');
+      //           var colorId = "#"+this.value().substring(1);
+      //           console.log('#color-chooser-bg-333 ============='+colorId);
+      //           setTimeout(function(){
+      //               $('.isEdit').css('backgroundColor',colorId);
+      //               refresh();
+      //           },10);
+                
+      //       }
+      // });
+      
+      function palette_change(e) {
+              $("#color-chooser-bg-1").next().find('.k-selected-color').css('box-shadow','none');
                 var colorId = "#"+this.value().substring(1);
                 setTimeout(function(){
-
                     $('.isEdit').css('backgroundColor',colorId);
                     refresh();
-                  },100);
-                
-            }
-    });
+                },10);
+      }
+      $("#color-chooser-bg-1").kendoColorPalette({
+          palette: ["#ffffff", "#000000","#746153", "#3a4c8b", "#ffcc33", "#fb455f", "#ac120f" ],
+            tileSize: 20,
+            value: "rgb(255, 255, 255)",
+      });
+      var palette = $("#color-chooser-bg-1").data("kendoColorPalette");
+      palette.bind("change", palette_change);
+
+      //防止change事件没有执行
+      function palette_click(e) {
+              $("#color-chooser-bg-1").next().find('.k-selected-color').css('box-shadow','none');
+                var thiscolor = $(this).css('background-color');
+                setTimeout(function(){
+                    $('.isEdit').css('backgroundColor',thiscolor);
+                    refresh();
+                },10);
+      }
+      $("#color-chooser-bg-1 td").bind("click", palette_click);
+
+
 
 
 
@@ -150,23 +180,22 @@ $(document).ready(function(){
       buttons:true,
       opacity: true,
        change: function() {
+              
                 var colorId = this.value();
 
                   setTimeout(function(){
-
                     $('.isEdit').css('backgroundColor',colorId);
                     refresh();
-                  },100);
+                  },10);
 
                 $('.k-colorpicker').css('overflow','visible');
-                $('.k-state-selected').removeClass('k-state-selected');
-                $('.k-selected-color').css({
+                $('#color-chooser-bg-1 .k-state-selected').removeClass('k-state-selected');
+                $("#color-chooser-bg-1").next().find('.k-selected-color').css({
                   'height': '15px',
                   'box-shadow': '0 1px 3px 1px rgba(0,0,0,0.7),inset 0 0 0 1px rgba(255,255,255,0.45)',
                   'z-index' : '100',
                   'position': 'relative',
-                })
-                
+                });
             }
     });
 
@@ -207,30 +236,30 @@ function refresh() {
 //       });
 //     $("#pagesList .isEdit").eq(1).remove();
 
-    var dd = $("#pagesList .isEdit").find('.ui-selected');
-    if(dd.length>0){
-    dd.removeClass('ui-selected',function(){
+    var uiselected = $("#pagesList .isEdit").find('.ui-selected');
+    if(uiselected.length>0){
+        uiselected.removeClass('ui-selected',function(){
 
-      html2canvas($("#pagesList .isEdit"), {
-          onrendered: function(canvas) {
+          html2canvas($("#pagesList .isEdit"), {
+              onrendered: function(canvas) {
 
-              $(".box .col-leftclick img").remove();
+                  $(".box .col-leftclick img").remove();
 
-              if($(".box .col-leftclick img").length==0){
-               
-                  //生成base64图片数据
-                  var dataUrl = canvas.toDataURL("image/png");  
-                  var newImg = document.createElement("img");
-                  newImg.src =  dataUrl;
-                  $(".box .col-leftclick").append(newImg);
-              }
-              setTimeout(function(){
-                  dd.addClass('ui-selected');
-              },1);
-          },
-      });
+                  if($(".box .col-leftclick img").length==0){
+                   
+                      //生成base64图片数据
+                      var dataUrl = canvas.toDataURL("image/png");  
+                      var newImg = document.createElement("img");
+                      newImg.src =  dataUrl;
+                      $(".box .col-leftclick").append(newImg);
+                  }
+                  setTimeout(function(){
+                      uiselected.addClass('ui-selected');
+                  },1);
+              },
+          });
 
-    });
+        });
     }
     else{
       html2canvas($("#pagesList .isEdit"), {

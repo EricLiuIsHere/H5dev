@@ -1,7 +1,7 @@
 
 <div class="col-right " id="text-properties">
   <!--text-properties start-->
-      <div class="title"><div class="active">文本设置22222</div></div>
+      <div class="title"><div class="active">文本设置</div></div>
 <div class="btn-group module">
 
 
@@ -255,66 +255,164 @@
 
   </div>
 <script>
-
-$("#color-chooser").kendoColorPalette({
-        palette: [ "#000000","#ffffff","#746153", "#3a4c8b", "#ffcc33", "#fb455f", "#ac120f" ],
-        tileSize: 20,
-        value: "#000000",
-        change: function() {
-            var colorId = "#"+this.value().substring(1);
-
-              $('.ui-selected > .mText').css('color',colorId);
-              setTimeout(function(){
+//改变字体颜色
+function text_palette_change(e) {
+              $("#color-chooser").next().find('.k-selected-color').css('box-shadow','none');
+                var colorId = "#"+this.value().substring(1);
+                setTimeout(function(){
+                    $('.ui-selected > .mText').css('color',colorId);
                     refresh();
-            },100);
-        }
-});
-var palette = $("#color-chooser").data("kendoColorPalette");
-if($('.ui-selected > .mText').css('color')=='rgb(0, 0, 0)'){
-    palette.value("rgb(0, 0, 0)");
-}
-else{
-    palette.value($('.ui-selected > .mText').css('color'));
-}
-
-
-$("#color-chooser-bg").kendoColorPalette({
-        palette: [ "#000000","#ffffff","#746153", "#3a4c8b", "#ffcc33", "#fb455f", "#ac120f" ],
-        tileSize: 20,
-        value: "#ffffff",
-        change: function() {
-            var colorId = "#"+this.value().substring(1);
-            $('.ui-selected').css('backgroundColor',colorId);
-            setTimeout(function(){
+                },10);
+      }
+      $("#color-chooser").kendoColorPalette({
+          palette: [ "#000000","#ffffff","#746153", "#3a4c8b", "#ffcc33", "#fb455f", "#ac120f" ],
+            tileSize: 20,
+            value: "#000000",
+      });
+      var palette1 = $("#color-chooser").data("kendoColorPalette");
+      palette1.bind("change", text_palette_change);
+      //防止change事件没有执行
+      function text_palette_click(e) {
+              $("#color-chooser").next().find('.k-selected-color').css('box-shadow','none');
+                var thiscolor = $(this).css('background-color');
+                console.log('thiscolor : '+thiscolor);
+                setTimeout(function(){
+                    $('.ui-selected > .mText').css('color',thiscolor);
                     refresh();
-            },100);
-        }
-});
-var palette_bg = $("#color-chooser-bg").data("kendoColorPalette");
-if($('.ui-selected').css('backgroundColor')=='rgba(0, 0, 0, 0)'){
-    palette_bg.value("rgb(255, 255, 255)");
-}
-else{
-    palette_bg.value($('.ui-selected').css('backgroundColor'));
-}
+                },10);
+      }
+      $("#color-chooser td").bind("click", text_palette_click);
+
+      //字体颜色回显
+      var text_palette = $("#color-chooser").data("kendoColorPalette");
+      if($('.ui-selected > .mText').css('color')=='rgb(0, 0, 0)'){
+          text_palette.value("rgb(0, 0, 0)");
+      }
+      else{
+          text_palette.value($('.ui-selected > .mText').css('color'));
+      }
 
 
 
-$("#hsv-picker").kendoColorPicker({
-  toolIcon: false,
-  palette: "websafe",
-  tileSize: 20,
-  buttons:false,
-  opacity: true,
+//改变text背景颜色
+function textbg_palette_change(e) {
+              $("#color-chooser-bg").next().find('.k-selected-color').css('box-shadow','none');
+                var colorId = "#"+this.value().substring(1);
+                $('.ui-selected > .mText').css('background-color','');
+                setTimeout(function(){
+                    $('.ui-selected').css('background-color',colorId);
+                    refresh();
+                },10);
+      }
+      $("#color-chooser-bg").kendoColorPalette({
+          palette: [ "#000000","#ffffff","#746153", "#3a4c8b", "#ffcc33", "#fb455f", "#ac120f" ],
+            tileSize: 20,
+            value: "#000000",
+      });
+      var palette2 = $("#color-chooser-bg").data("kendoColorPalette");
+      palette2.bind("change", textbg_palette_change);
+      //防止change事件没有执行
+      function textbg_palette_click(e) {
+              $("#color-chooser-bg").next().find('.k-selected-color').css('box-shadow','none');
+                var thiscolor = $(this).css('background-color');
+                $('.ui-selected > .mText').css('background-color','');
+                setTimeout(function(){
+                    $('.ui-selected').css('background-color',thiscolor);
+                    refresh();
+                },10);
+      }
+      $("#color-chooser-bg td").bind("click", textbg_palette_click);
+
+      
+
+  $("#hsv-picker").kendoColorPicker({
+      toolIcon: false,
+      palette: "websafe",
+      tileSize: 20,
+      buttons:true,
+      opacity: true,
+         change: function() {
+              
+                var colorId = this.value();
+                $('.ui-selected > .mText').css('color',colorId);
+                  
+
+                //$('.k-colorpicker').next().css('overflow','visible');
+                $('#color-chooser .k-state-selected').removeClass('k-state-selected');
+                
+                setTimeout(function(){
+                    $("#color-chooser").next().find('.k-selected-color').css({
+                  'box-shadow': '0 1px 3px 1px rgba(0,0,0,0.7),inset 0 0 0 1px rgba(255,255,255,0.45)',
+                  'z-index' : '100',
+                  'position': 'relative',
+                });
+                    refresh();
+                  },100);
+            }
 });
 
 $("#hsv-picker-bg").kendoColorPicker({
   toolIcon: false,
   palette: "websafe",
   tileSize: 20,
-  buttons:false,
+  buttons:true,
   opacity: true,
+         change: function() {
+              
+                var colorId = this.value();
+                $('.ui-selected').css('background-color',colorId);
+                  
+                //$('.k-colorpicker').css('overflow','visible');
+                $('#color-chooser-bg .k-state-selected').removeClass('k-state-selected');
+                setTimeout(function(){
+                    $("#color-chooser-bg").next().find('.k-selected-color').css({
+                  'box-shadow': '0 1px 3px 1px rgba(0,0,0,0.7),inset 0 0 0 1px rgba(255,255,255,0.45)',
+                  'z-index' : '100',
+                  'position': 'relative',
+                    });
+                    refresh();
+                  },100);
+            }
 });
+
+//字体背景颜色回显
+          
+          var bgcol1 = ["rgb(255, 255, 255)", "rgb(0, 0, 0)","rgb(116, 97, 83)", "rgb(58, 76, 139)", "rgb(255, 204, 51)", "rgb(251, 69, 95)", "rgb(172, 18, 15)" ];
+          var cuscolor1 = $('.ui-selected').css('background-color');
+          var cuscolor2 = $('.ui-selected > .mText').css('color');
+          var ele1 = 'color-chooser-bg';
+          var ele2 = 'color-chooser';
+
+      function bgcolorReload(bgcol, cuscolor, ele){
+          if(bgcol.indexOf(cuscolor)>-1){
+                //initialize
+                $('.k-colorpicker').css('overflow','visible');
+                $('#'+ele).next().find('.k-selected-color').css('box-shadow','none');
+                $('#'+ele+' .k-state-selected').removeClass('k-state-selected');
+
+                var palette_bg = $('#'+ele).data("kendoColorPalette");
+                if(cuscolor=='rgb(255, 255, 255)'){
+                    palette_bg.value("rgb(255, 255, 255)");
+                }
+                else{
+                    palette_bg.value(cuscolor);
+                }
+              }
+              else{
+                $('.k-colorpicker').css('overflow','visible');
+                $('#'+ele+' .k-state-selected').removeClass('k-state-selected');
+                setTimeout(function(){
+                    $('#'+ele).next().find('.k-selected-color').css({
+                      'box-shadow': '0 1px 3px 1px rgba(0,0,0,0.7),inset 0 0 0 1px rgba(255,255,255,0.45)',
+                      'z-index' : '100',
+                      'position': 'relative',
+                      'background-color': cuscolor,
+                    });
+                },10);
+              }
+      }
+      bgcolorReload(bgcol1, cuscolor1, ele1);
+      bgcolorReload(bgcol1, cuscolor2, ele2);
 
 </script>
 
