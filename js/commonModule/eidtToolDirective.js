@@ -260,6 +260,7 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
 *@详情：.....
 **/
       function saveProjectFn(stt){
+        refresh();
 
          // console.log('saveProjectFn')
           /*
@@ -340,13 +341,14 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
                           .replace(/<div class="ui-resizable-handle(.)*?div>/g, '')
                           .replace(/ui-resizable/g,'');
              //console.log('@eidtToolDirective.js ready save')
-
+             console.log("previewCode");
             projectFn.saveProject(newLengthObj, projectid, leftCode, editCode, previewCode)
               .then(function(data) {
                   if (data.status) {
                     for(var i in newLengthObj){
                         //console.log(i+":-:"+newLengthObj[i].thumbId)
                     }
+                    console.log(data.previewCode);
                     setTimeout(function(){$("#popupContainer").removeClass('filter');},250)
                     $("#addBox").show();
                     setTimeout(function() {
@@ -389,6 +391,7 @@ pageSettingService //提供页面设置属性接口     @pageSettingService.js
               setTimeout(function(){$("#popupContainer").removeClass('filter');},250)
             }
             $scope.savePageContent = function() {
+              refresh();console.log('3csd');
               $scope.loadingSave = true;
               $scope.isSaved = false;
               console.log('disabled02');
