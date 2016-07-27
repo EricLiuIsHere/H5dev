@@ -85,6 +85,7 @@ homeController.controller('homeController', function(
 
 //用户点击我的项目
   $scope.myProject = function(){
+    refresh();
     $('.reveal-modal').css('visibility','visible');
     $('.reveal-modal-bg').css('display','block');
 
@@ -197,7 +198,7 @@ homeController.controller('homeController', function(
 *@详情：.....
 **/
 function saveProjectFn(){
-
+    refresh();
     /*
     *@描述：pageLengthObj
     *@作用：获取用户在当前编辑状态下的实际页面个数
@@ -275,7 +276,7 @@ function saveProjectFn(){
                       $("#addBox").fadeTo(3000).hide(0,function(){
                           $state.go('dashboard');
                           });
-                    }, 1000);
+                    }, 2000);
 
                   } else {
                     view(data.msg);
@@ -328,6 +329,7 @@ $mdDialog.show({
         }
       }
       $scope.savePageContent = function() {
+        refresh();
          $scope.loadingSave = true;
            $scope.button_clicked = true;
            console.log('disabled01');
@@ -547,6 +549,7 @@ $('.img-properties').remove();
           refresh();
           // $(".box .swiper-slide").css('opacity','0.4').show();
           // $('.col-leftclick .swiper-slide').css('opacity','1')
+          $('.scrollspy-example').scrollTop(10000000);
         },100)
 
 
