@@ -73,7 +73,7 @@ a.imgbut:hover{ background: #007ead; text-decoration: none;height: 48px;color: #
 .col-center .edit-area{margin-top: 40px;width: 100%;height: 500px;}
 .col-center .grid{background: url(../images/phone.png) no-repeat; background-size: cover;width: 300px;height: 550px;}
 .col-center .phone img{height: 100%;}
-.col-center .edit-icon{position: absolute;left: 763px;top: 200px;}
+/*.col-center .edit-icon{position: absolute;left: 763px;top: 200px;}*/
 /*.col-center .edit-icon span{width: 57px;display: inline-block;line-height: 16px;padding: 5px;float: right;}*/
 
 .the-icons li:hover{color: #000000;}
@@ -95,11 +95,11 @@ a.imgbut:hover{ background: #007ead; text-decoration: none;height: 48px;color: #
 
     background: rgba(255,255,255,0.94);
     box-sizing: border-box;
-    right: 18%;
+    left: 45%;
     padding-bottom: 10px;
-    position: fixed;
+    position: absolute;
     /* text-align: center; */
-    top: 23%;
+    top: 15%;
     width: 290px;
     z-index: 999;
     font-size: 12px;
@@ -307,8 +307,11 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .editContainer{
-    width: 100%;
     height: 100%;
+    position: absolute;
+    float: left;
+    left: 15%;
+    top: 12%;
 }
 
 
@@ -407,17 +410,14 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 8px;
 }
 
-@media screen and (max-width: 1370px){
+/*@media screen and (max-width: 1370px){
     .col-center .edit-icon{
         left: 650px;
     }
-    .col-right{
-        right: 10%;
-    }
-}
+}*/
 
 .the-icons{list-style-type:none;margin:0;}
-.the-icons li{color:#fff;cursor:pointer;line-height:32px;height:32px;padding-left:12px;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;width: 88px;margin-bottom: 20px;}
+.the-icons li{color:#fff;cursor:pointer;line-height:32px;height:32px;padding-left:12px;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;width: 88px;margin-bottom: 20px;float: left;}
 .the-icons li [class^="icon-"],.the-icons li [class*=" icon-"]{width:32px;font-size:14px;display: inline-block;text-align: center;}.the-icons li:hover{background-color:#fbf4f4}
 .the-icons li:hover [class^="icon-"],.the-icons li:hover [class*=" icon-"]{*font-size:28px;*vertical-align:middle}
 .the-icons li:hover [class^="icon-"]:before,.the-icons li:hover [class*=" icon-"]:before{font-size:28px;vertical-align:-5px}
