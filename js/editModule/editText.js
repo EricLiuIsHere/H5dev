@@ -183,7 +183,7 @@ function createNewText($mdToast,$document){
 
 
 	//var iText = $('<div class="ui-selected textElement textElementActive" data-type="text" style=" position:absolute;"><div  class="mText"  style="font-size:1.2em;min-width:100px;line-height:1.2em;opacity:1;border-radius:0px;font-family: Helvetica;" contenteditable="true">请输入文本</div></div>');
-    var iText = $('<div class="ui-selected textElement textElementActive" data-type="text" style=" position:absolute;"><div  class="mText"  style="font-size:1.2em;min-width:100px;line-height:1.2em;opacity:1;border-radius:0px;font-family: Helvetica;" contenteditable="true" onclick="textActive(this)">请输入文本</div></div>');
+    var iText = $('<div class="ui-selected textElement textElementActive" data-type="text" style=" position:absolute;"><div  class="mText"  style="font-size:1.2em;min-width:100px;line-height:1.2em;opacity:1;border-radius:0px;font-family: Helvetica;" onKeyUp="refresh()" onkeypress="refresh()" onkeydown="refresh()" contenteditable="true" onclick="textActive(this)">请输入文本</div></div>');
     var currentPage = $('.isEdit');
     iText.appendTo(currentPage);
     showTextEditPanel($mdToast,$document);
@@ -492,7 +492,7 @@ function showTextEditPanel($mdToast,$document){
 
 function textActive(curText){
 	$('.ui-selected').addClass('ui-selectee');
-
+	refresh();
 	setTimeout(function(){
                 $('.ui-selected').removeClass('ui-selectee');
                   },100);

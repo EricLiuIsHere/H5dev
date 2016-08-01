@@ -62,15 +62,30 @@
        <!-- mainbox-->
         <div class="mainbox" style="height: 100%;">
               <pageleft></pageleft>
-              <div class="col-center" id="editModulePosition" style="height: 100%;">
+              <div class="col-center" id="editModulePosition" style="height: 100%;position: absolute;top: 50px;left: 140px;">
                   <div id="addBox" class="saveSuccess">保存成功！</div>
                   <div class="editContainer" style=" position: relative;">
-                    <div id="pagesList" style="height: 480px;/*overflow: hidden;*/">
+                    <div id="pagesList">
                         <div class="swiper-slide isEdit defaultPage" data-type="page" id="right_1" style="height: 100%;  direction: ltr;"> 
                         </div> 
                     </div>
                   </div>
-                  <toolbar1></toolbar1>
+                  <toolbar1 style="position: absolute;left: 15%;top: 80%;"></toolbar1>
+                  <div class="backgroundSeting" style="    width: 300px;
+    height: 30px;
+    padding: 5px;
+    position: absolute;
+    left: 15%;
+    top: 2%;
+    border-radius: 100px;
+    background: #fff;
+    box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.3);">
+    <span style="font-size: 12px;display: inline-block;margin-top: -10px;vertical-align: middle;padding-left: 10px;">背景设置</span>
+         <div  id="color-chooser-bg-1" style="margin-left: 10px;"></div> 
+         <input type="color" id="hsv-picker-bg-1" 
+                ng-model="setFontBackgroundColor" 
+                style="display:inline-block;position: absolute;top:0%; right: 0px;" autocomplete="off" style="">
+    </div>
               </div>
 
 
@@ -87,21 +102,7 @@
    
   <!--setbg-->
 
-    <div class="backgroundSeting" style="    width: 300px;
-    height: 30px;
-    padding: 5px;
-    position: fixed;
-    left: 33%;
-    top: 10%;
-    border-radius: 100px;
-    background: #fff;
-    box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.3);">
-    <span style="font-size: 12px;display: inline-block;margin-top: -10px;vertical-align: middle;padding-left: 10px;">背景设置</span>
-         <div  id="color-chooser-bg-1" style="margin-left: 10px;"></div> 
-         <input type="color" id="hsv-picker-bg-1" 
-                ng-model="setFontBackgroundColor" 
-                style="display:inline-block;position: absolute;top:0%; right: 0px;" autocomplete="off" style="">
-    </div>
+    
 
     <!--setbg-->
 

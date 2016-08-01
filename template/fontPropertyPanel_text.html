@@ -70,6 +70,9 @@
              <div class="size-input-wrapper">
                 <input type="number"
                        id="txtRadiusid"
+                       step="1"
+                       min="0"
+                       max="20"
                        ng-model="radius.size"
                        ng-change="getRadiusSize()"/>
                 <span class="pxSpan">px</span>
