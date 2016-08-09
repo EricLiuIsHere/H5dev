@@ -13,21 +13,21 @@ font-size: 14px;}*/
     position: absolute;
     z-index: 9999;
     width: 100%;}
-.navbar-blue{background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5)); height: 35px; border-radius: 0; color: #fff;border-bottom: 1px solid #044e97;
+.navbar-blue{background-color: #fff; height: 35px; border-radius: 0; color: #000000;border-bottom: 1px solid #000000;
     box-shadow: 0 1px 2px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.15);}
 /*.navbar-blue{background-image: linear-gradient(to bottom,#00adee,#0078a5);background-repeat: repeat-x;border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);height: 35px;}*/
 .navbar-right{margin-right:15px;}
 #ibm-home{ width: 80px; padding: 0; margin: 0; height: 50px;}
 #ibm-home .ibm-logo{margin: 0; padding: 0; font-size: 0em; position: relative; color: #00649d;}
 #ibm-home .ibm-logo::before{top:0px; left: 15px; font-size: 6rem; position: absolute;}
-.navbar-blue a{color: #fff; }
+.navbar-blue a{color: #000000; }
 .navbar-blue li a{padding: 0; margin: 0;}
 .navbar-text-img{margin-left: 400px; width: 600px; }
 .imgbut{ float: left; margin-left: 20px;}
 a.imgbut{height: 50px; display: inline-block;text-align: center;width: 50px;cursor: pointer;}
-a.imgbut:hover{ background: #007ead; text-decoration: none;height: 48px;color: #d9eef7;}
+a.imgbut:hover{ background: -webkit-linear-gradient(top, #595C64, #1B1B1C); text-decoration: none;height: 48px;color: #fff;}
 .imgbut img{width: 2.5pc;}
-.navbar-img1{margin-left: 32%;}
+.navbar-img1{margin-left: 24%;}
 .navbar-img2{margin-left: 56%;}
 
 .navbar .popbox{position: absolute; width:50%; background: #FFF; left: 20%; top: 50px; text-align: center; display: none;}
@@ -56,13 +56,16 @@ a.imgbut:hover{ background: #007ead; text-decoration: none;height: 48px;color: #
 .col-left .box .pop-icon a{ margin: 0 5px; color: #aaa;}
 .col-left .box .pop-icon a:hover{color: #999;}
 /*.col-left .new-button{ float:left; color: #fff; font-size: 14px; background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5)); width: 140px; line-height: 40px; height: 40px;position: fixed; bottom: 0;}*/
-.col-left .new-button{float:left;font-size: 14px;color: #fff;text-shadow: 0 -1px 0 rgba(0,0,0,0.25);background-color: #49afcd;background-image: linear-gradient(to bottom,#5bc0de,#2f96b4);background-repeat: repeat-x;border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);width: 140px; line-height: 40px; height: 40px;position: fixed; bottom: 0;border-radius: 2px;z-index: 3000;}
-.col-left .new-button:hover {background-color: #3b7fd6;
+.col-left .new-button{background-color: #fff;width: 140px;
+    line-height: 40px;
+    position: fixed;
+    bottom: 0;
+    border-radius: 2px;
+    z-index: 3000;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);}
+.col-left .new-button:hover {background: -webkit-linear-gradient(top, #595C64, #1B1B1C);
     color: #fff;
-    background-image: -webkit-linear-gradient(top, #4090ec 10%,#3467b7 100%);
-    background-image: -moz-linear-gradient(top, #4090ec 10%, #3467b7 100%);
-    background-image: linear-gradient(top,, #4090ec 10%,#3467b7 100%);
-    filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, EndColorStr='#4090ec', StartColorStr='#61a6f5');
+    background: -webkit-linear-gradient(top, #595C64, #1B1B1C);
     border:1px solid rgba(0,0,0,0.28);
     text-shadow:0px -1px 1px rgba(0,0,0,0.7);}
 /*.col-left .flex{width: 9px; height: 100px; background: #ccc; position: absolute; right: -9px;}*/
@@ -76,7 +79,7 @@ a.imgbut:hover{ background: #007ead; text-decoration: none;height: 48px;color: #
 /*.col-center .edit-icon{position: absolute;left: 763px;top: 200px;}*/
 /*.col-center .edit-icon span{width: 57px;display: inline-block;line-height: 16px;padding: 5px;float: right;}*/
 
-.the-icons li:hover{color: #000000;}
+.the-icons li:hover{color: #fff;}
 /*.col-center .edit-icon a:hover{color:#fcc10e;     background: #fff; 
      box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.3);cursor: pointer; border-radius: 100px;}*/
 
@@ -99,7 +102,7 @@ a.imgbut:hover{ background: #007ead; text-decoration: none;height: 48px;color: #
     padding-bottom: 10px;
     position: absolute;
     /* text-align: center; */
-    top: 15%;
+    top: 12%;
     width: 290px;
     z-index: 999;
     font-size: 12px;
@@ -117,7 +120,7 @@ a.imgbut:hover{ background: #007ead; text-decoration: none;height: 48px;color: #
     box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.3);*/*/
 }
 .col-right .title{ height: 30px;/* background: #f2f2f2; */line-height: 30px; text-align: center;border-bottom: 1px solid #f0f3f5;}
-.col-right .title .active{width:50%; /*background: #e2e2e2;*/}
+.col-right .title .active{background: #e2e2e2;}
 .col-right .module{/* margin-left: 10px; margin-top: 10px;*/ float: left; width: 100%;padding: 5%;}
 .col-right .moduleNoleft{margin-top: 10px; float: left;}
 .col-right .module-half{width: 120px;}
@@ -238,7 +241,7 @@ a.imgbut:hover{ background: #007ead; text-decoration: none;height: 48px;color: #
     overflow: auto;
     position: relative;
     border:1px;
-    background: rgba(0, 0, 0, 0.4);
+    background: #EDEBE9;
 } 
 
 
@@ -311,7 +314,7 @@ input[type=number]::-webkit-outer-spin-button {
     position: absolute;
     float: left;
     left: 15%;
-    top: 12%;
+    top: 10%;
 }
 
 
@@ -417,8 +420,8 @@ input[type=number]::-webkit-outer-spin-button {
 }*/
 
 .the-icons{list-style-type:none;margin:0;}
-.the-icons li{color:#fff;cursor:pointer;line-height:32px;height:32px;padding-left:12px;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;width: 88px;margin-bottom: 20px;float: left;}
-.the-icons li [class^="icon-"],.the-icons li [class*=" icon-"]{width:32px;font-size:14px;display: inline-block;text-align: center;}.the-icons li:hover{background-color:#fbf4f4}
+.the-icons li{color:#000000;cursor:pointer;line-height:32px;height:32px;padding-left:12px;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;width: 88px;margin-bottom: 20px;float: left;}
+.the-icons li [class^="icon-"],.the-icons li [class*=" icon-"]{width:32px;font-size:14px;display: inline-block;text-align: center;}.the-icons li:hover{background-color:#000000}
 .the-icons li:hover [class^="icon-"],.the-icons li:hover [class*=" icon-"]{*font-size:28px;*vertical-align:middle}
 .the-icons li:hover [class^="icon-"]:before,.the-icons li:hover [class*=" icon-"]:before{font-size:28px;vertical-align:-5px}
 

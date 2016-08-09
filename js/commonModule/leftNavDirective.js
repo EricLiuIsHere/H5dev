@@ -23,7 +23,7 @@ angular.module('leftNav',[]).directive('pageleft',function($mdToast,$document){
 				var newSlide = $('<div class="swiper-slide isEdit"></div>'); 
 				$(".isEdit").css('display','block');
                 newSlide.appendTo($('#pagesList'));
-                showBackgroundEditPanel($mdToast,$document);
+                //showBackgroundEditPanel($mdToast,$document);
 			}
 		}
 	}

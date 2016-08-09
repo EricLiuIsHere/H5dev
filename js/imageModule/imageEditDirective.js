@@ -41,7 +41,8 @@ imageEditDirective.directive('editimage',function(
 			****/
 		$(document).undelegate('.imageElementAcitve', 'click').delegate('.imageElementAcitve','click',function(e){
 				e.stopPropagation();
-				$('.ui-selected').removeClass('ui-selected');
+				//$('.ui-selected').removeClass('ui-selected');
+				$('#background-properties').remove();
 				$('#text-properties').remove();
 				$('.img-properties').remove();
 
@@ -57,6 +58,7 @@ imageEditDirective.directive('editimage',function(
 			//创建新图片
 			$scope.newImages = function(){
 				$('.ui-selected').removeClass('ui-selected');
+				$('#background-properties').remove();
 
 				 //判断用户是否登陆，只有在登陆状态才可上传图片
 				 if(loginFn.islogged().status){
@@ -411,7 +413,7 @@ function showAddImageOverLay($mdToast,$mdDialog,$document,newImage){
 ********/
 function imageActive(curImage){
 
-
+	$('.ui-selected').addClass('ui-selectee').removeClass('ui-selected');
 
 	var imageRadius = $(curImage).attr("style").indexOf("border-radius")
 	console.log('imageRadius:'+imageRadius)

@@ -167,6 +167,7 @@ editText.directive('edittext',function(
 			//创建新文本
 			$scope.newText = function(){
                 createNewText($mdToast,$document);
+    			//$("#color-chooser-bg").next().find('.k-selected-color').css('box-shadow','none');
                 refresh();
 			};
 		}
@@ -491,7 +492,7 @@ function showTextEditPanel($mdToast,$document){
 
 
 function textActive(curText){
-	$('.ui-selected').addClass('ui-selectee');
+	$('.ui-selected').addClass('ui-selectee').removeClass('ui-selected');
 	refresh();
 	setTimeout(function(){
                 $('.ui-selected').removeClass('ui-selectee');

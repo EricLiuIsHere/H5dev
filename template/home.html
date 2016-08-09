@@ -9,7 +9,7 @@
                 <a  class="imgbut" ng-click="myProject()" data-toggle="editIcon" data-placement="top" title="我的项目"   id="editIcon" ><i class="icon-th icon-2x"></i><p style="font-size:12px;">我的项目</p></a>
                 
                 <div class="navbar-img1"><p class="navbar-text navbar-left">当前项目名: </p><p class="navbar-text navbar-left currentprojectname" style="text-overflow: ellipsis;width: 200px;white-space: nowrap;overflow: hidden;"></p></div>
-            <div class="navbar-img2"><edittext></edittext><editimage></editimage>
+            <div class="navbar-img2"><edittext></edittext><editimage></editimage><editbg></editbg>
             </div>
             <p class="navbar-text navbar-right" id="userProfile" style="margin: 0px 10px 0px 0px; line-height:50px;">
 
@@ -62,33 +62,17 @@
        <!-- mainbox-->
         <div class="mainbox" style="height: 100%;">
               <pageleft></pageleft>
-              <div class="col-center" id="editModulePosition" style="height: 100%;position: absolute;top: 50px;left: 140px;">
+              <div class="col-center" id="editModulePosition" style="height: 100%;position: absolute;top: 50px;left: 140px;background-color: #F9F9F8;">
                   <div id="addBox" class="saveSuccess">保存成功！</div>
-                  <div class="editContainer" style=" position: relative;">
+                  <div class="editContainer" >
                     <div id="pagesList">
-                        <div class="swiper-slide isEdit defaultPage" data-type="page" id="right_1" style="height: 100%;  direction: ltr;"> 
+                        <div class="swiper-slide isEdit defaultPage" data-type="page" id="right_1" style="height: 100%;  direction: ltr;">
                         </div> 
                     </div>
                   </div>
                   <toolbar1 style="position: absolute;left: 15%;top: 80%;"></toolbar1>
-                  <div class="backgroundSeting" style="    width: 300px;
-    height: 30px;
-    padding: 5px;
-    position: absolute;
-    left: 15%;
-    top: 2%;
-    border-radius: 100px;
-    background: #fff;
-    box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.3);">
-    <span style="font-size: 12px;display: inline-block;margin-top: -10px;vertical-align: middle;padding-left: 10px;">背景设置</span>
-         <div  id="color-chooser-bg-1" style="margin-left: 10px;"></div> 
-         <input type="color" id="hsv-picker-bg-1" 
-                ng-model="setFontBackgroundColor" 
-                style="display:inline-block;position: absolute;top:0%; right: 0px;" autocomplete="off" style="">
-    </div>
+
               </div>
-
-
 
         </div>
         <!-- mainbox-->
@@ -99,12 +83,8 @@
 
 </div>
 
-   
-  <!--setbg-->
 
-    
 
-    <!--setbg-->
 
 <!--loading page-->
 
@@ -120,89 +100,6 @@
 
 <script>
 
-
-
-
-$(document).ready(function(){
-
-
-      // $("#color-chooser-bg-1").kendoColorPalette({
-      //       palette: ["#ffffff", "#000000","#746153", "#3a4c8b", "#ffcc33", "#fb455f", "#ac120f" ],
-      //       tileSize: 20,
-      //       value: "rgb(255, 255, 255)",
-      //       change: function() {
-      //         console.log('#color-chooser-bg-1 =============Clicked');
-      //         $('.k-selected-color').css('box-shadow','none');
-      //           var colorId = "#"+this.value().substring(1);
-      //           console.log('#color-chooser-bg-333 ============='+colorId);
-      //           setTimeout(function(){
-      //               $('.isEdit').css('backgroundColor',colorId);
-      //               refresh();
-      //           },10);
-                
-      //       }
-      // });
-      
-      function palette_change(e) {
-              $("#color-chooser-bg-1").next().find('.k-selected-color').css('box-shadow','none');
-                var colorId = "#"+this.value().substring(1);
-                setTimeout(function(){
-                    $('.isEdit').css('backgroundColor',colorId);
-                    refresh();
-                },10);
-      }
-      $("#color-chooser-bg-1").kendoColorPalette({
-          palette: ["#ffffff", "#000000","#746153", "#3a4c8b", "#ffcc33", "#fb455f", "#ac120f" ],
-            tileSize: 20,
-            value: "rgb(255, 255, 255)",
-      });
-      var palette = $("#color-chooser-bg-1").data("kendoColorPalette");
-      palette.bind("change", palette_change);
-
-      //防止change事件没有执行
-      function palette_click(e) {
-              $("#color-chooser-bg-1").next().find('.k-selected-color').css('box-shadow','none');
-                var thiscolor = $(this).css('background-color');
-                setTimeout(function(){
-                    $('.isEdit').css('backgroundColor',thiscolor);
-                    refresh();
-                },10);
-      }
-      $("#color-chooser-bg-1 td").bind("click", palette_click);
-
-
-
-
-
-    $("#hsv-picker-bg-1").kendoColorPicker({
-      toolIcon: false,
-      palette: "websafe",
-      tileSize: 20,
-      buttons:true,
-      opacity: true,
-       change: function() {
-              
-                var colorId = this.value();
-
-                  setTimeout(function(){
-                    $('.isEdit').css('backgroundColor',colorId);
-                    refresh();
-                  },10);
-
-                $('.k-colorpicker').css('overflow','visible');
-                $('#color-chooser-bg-1 .k-state-selected').removeClass('k-state-selected');
-                $("#color-chooser-bg-1").next().find('.k-selected-color').css({
-                  'height': '15px',
-                  'box-shadow': '0 1px 3px 1px rgba(0,0,0,0.7),inset 0 0 0 1px rgba(255,255,255,0.45)',
-                  'z-index' : '100',
-                  'position': 'relative',
-                });
-            }
-    });
-
-    $('.k-colorpicker .k-selected-color').eq(0).css('height','15px');
-    
-})
 
 function refresh() {
 
@@ -280,8 +177,8 @@ function refresh() {
       });
 
     }
-      
 
+//$('.isEdit').bind("click", function(){ $('#background-properties').css('display','block'); });
 
       // html2canvas($("#pagesList .isEdit"), {
       //     onrendered: function(canvas) {

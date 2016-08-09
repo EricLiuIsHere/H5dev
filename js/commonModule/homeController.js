@@ -500,12 +500,24 @@ setTimeout(function(){
 
 
 
-$scope.addEmptyTemplate = function(index) {
+$scope.addEmptyTemplate = function() {
 //清除背景颜色面板选中
 $('.k-selected-color').css('box-shadow','none');
-$("#color-chooser-bg-1").data("kendoColorPalette").value('#ffffff');
-$('#text-properties').remove();
-$('.img-properties').remove();
+//$("#color-chooser-bg-1").data("kendoColorPalette").value('#ffffff');
+if($('#background-properties').length>0){
+  $('#background-properties').remove();
+}
+if($('#text-properties').length>0){
+  $('#text-properties').remove();
+}
+if($('.img-properties').length>0){
+  $('.img-properties').remove();
+}
+//控制背景颜色面板
+// $('#background-properties').css('display','none');
+// setTimeout(function(){
+//     $('.isEdit').bind("click", bg_panel);
+//     },10);
 
 
 //清除左侧略缩图选中状态
@@ -564,14 +576,16 @@ $('.img-properties').remove();
     **/
 
     projectFn.savePageLength($scope.feedback.leftpages);
-    // setTimeout(function(){
-    //        $(".box img").css('opacity','0.4').show();
-    //        $(".box .col-leftclick img").css('opacity','1')
-    //     },100)
+    
+    //showBackgroundEditPanel($mdToast,$document);
+    // $(document).undelegate('.isEdit', 'click').delegate('.isEdit','click',function(e){
+    //    showBackgroundEditPanel($mdToast,$document);
+    //   })
+    //$('.isEdit').bind("click", function(){ showBackgroundEditPanel($mdToast,$document); });
   }
 
   $scope.choosePage = function(i) {
-
+ $('#background-properties').remove();
  $('#text-properties').remove();
  $('.img-properties').remove();
  $(".swiper-slide").hide();
@@ -585,44 +599,14 @@ $('.img-properties').remove();
  //通过父级元素查找某个元素下的子元素
  $(".col-left").find("div[data-activeid='"+i+"']").find('div[class="page"]').addClass('col-leftclick');
  
- //背景颜色回显（customized）
-    var bgcol = ["rgb(255, 255, 255)", "rgb(0, 0, 0)","rgb(116, 97, 83)", "rgb(58, 76, 139)", "rgb(255, 204, 51)", "rgb(251, 69, 95)", "rgb(172, 18, 15)" ];
-    var cuscolor = $('.isEdit').css('backgroundColor');
-
-    bgcolorReload(bgcol, cuscolor);
+ //showBackgroundEditPanel($mdToast,$document);
+ // $(document).undelegate('.isEdit', 'click').delegate('.isEdit','click',function(e){
+ //       showBackgroundEditPanel($mdToast,$document);
+ //      })
  
 }
 
-//颜色回显方法
-function bgcolorReload(bgcol, cuscolor){
-    if(bgcol.indexOf(cuscolor)>-1){
-      //initialize
-      $('.k-colorpicker').css('overflow','visible');
-      $("#color-chooser-bg-1").next().find('.k-selected-color').css('box-shadow','none');
-      $('#color-chooser-bg-1 .k-state-selected').removeClass('k-state-selected');
 
-      var palette_bg = $("#color-chooser-bg-1").data("kendoColorPalette");
-      if(cuscolor=='rgb(255, 255, 255)'){
-          palette_bg.value("rgb(255, 255, 255)");
-      }
-      else{
-          palette_bg.value(cuscolor);
-      }
-    }
-    else{
-      $('.k-colorpicker').css('overflow','visible');
-      $('#color-chooser-bg-1 .k-state-selected').removeClass('k-state-selected');
-      $("#color-chooser-bg-1").next().find('.k-selected-color').css({
-        'height': '15px',
-        'box-shadow': '0 1px 3px 1px rgba(0,0,0,0.7),inset 0 0 0 1px rgba(255,255,255,0.45)',
-        'z-index' : '100',
-        'position': 'relative',
-        'background-color': cuscolor,
-      });
-    } 
-
-
-}
 
 /*
 *@删除页面
