@@ -1,0 +1,115 @@
+<div class="col-right" id="background-properties">
+          <div class="title"><div class="active">背景设置</div></div>
+            <div class="btn-group module">
+              <div layout style="margin-top: 10px;">
+                <div flex="15" layout  style="margin-right:5px;line-height: 2em;">
+                  <span>颜色</span>
+                </div>
+                <div  id="color-chooser-bg-1" ></div><input type="color" id="hsv-picker-bg-1" ng-model="setFontBackgroundColor">
+              </div>
+            </div>
+          </div>
+
+<script>
+
+
+      function palette_change(e) {
+              $("#color-chooser-bg-1").next().find('.k-selected-color').css('box-shadow','none');
+                var colorId = "#"+this.value().substring(1);
+                //console.log(colorId);
+                setTimeout(function(){
+                    $('.isEdit').css('backgroundColor',colorId);
+                    refresh();
+                },10);
+      }
+      $("#color-chooser-bg-1").kendoColorPalette({
+          palette: ["#ffffff", "#000000","#746153", "#3a4c8b", "#ffcc33", "#fb455f", "#ac120f" ],
+            tileSize: 20,
+            value: "rgb(255, 255, 255)",
+      });
+      var palette = $("#color-chooser-bg-1").data("kendoColorPalette");
+      palette.bind("change", palette_change);
+
+      //防止change事件没有执行
+      function palette_click(e) {
+              $("#color-chooser-bg-1").next().find('.k-selected-color').css('box-shadow','none');
+                var thiscolor = $(this).css('background-color');
+                //console.log(thiscolor);
+                setTimeout(function(){
+                    $('.isEdit').css('backgroundColor',thiscolor);
+                    refresh();
+                },10);
+      }
+      $("#color-chooser-bg-1 td").bind("click", palette_click);
+
+
+
+
+
+    $("#hsv-picker-bg-1").kendoColorPicker({
+      toolIcon: false,
+      palette: "websafe",
+      tileSize: 20,
+      buttons:true,
+      opacity: true,
+       change: function() {
+              
+                var colorId = this.value();
+
+                  setTimeout(function(){
+                    $('.isEdit').css('backgroundColor',colorId);
+                    refresh();
+                  },10);
+
+                $('.k-colorpicker').css('overflow','visible');
+                $('#color-chooser-bg-1 .k-state-selected').removeClass('k-state-selected');
+                $("#color-chooser-bg-1").next().find('.k-selected-color').css({
+                  'height': '15px',
+                  'box-shadow': '0 1px 3px 1px rgba(0,0,0,0.7),inset 0 0 0 1px rgba(255,255,255,0.45)',
+                  'z-index' : '100',
+                  'position': 'relative',
+                });
+            }
+    });
+
+    $('.k-colorpicker .k-selected-color').eq(0).css('height','16px');
+
+
+    //背景颜色回显（customized）
+      var bgcol = ["rgb(255, 255, 255)", "rgb(0, 0, 0)","rgb(116, 97, 83)", "rgb(58, 76, 139)", "rgb(255, 204, 51)", "rgb(251, 69, 95)", "rgb(172, 18, 15)" ];
+      var cuscolor = $('.isEdit').css('backgroundColor');
+
+
+    //颜色回显方法
+    function bgcolorReload(bgcol, cuscolor){
+        if(bgcol.indexOf(cuscolor)>-1){
+          //initialize
+          $('.k-colorpicker').css('overflow','visible');
+          $("#color-chooser-bg-1").next().find('.k-selected-color').css('box-shadow','none');
+          $('#color-chooser-bg-1 .k-state-selected').removeClass('k-state-selected');
+
+          var palette_bg = $("#color-chooser-bg-1").data("kendoColorPalette");
+              palette_bg.value(cuscolor);
+        }
+        else{
+          //console.log(cuscolor);
+          $('.k-colorpicker').css('overflow','visible');
+          $('#color-chooser-bg-1 .k-state-selected').removeClass('k-state-selected');
+          $("#color-chooser-bg-1").next().find('.k-selected-color').css({
+            'height': '15px',
+            'box-shadow': '0 1px 3px 1px rgba(0,0,0,0.7),inset 0 0 0 1px rgba(255,255,255,0.45)',
+            'z-index' : '100',
+            'position': 'relative',
+            'background-color': cuscolor,
+          });
+        } 
+
+
+    }
+    setTimeout(function(){
+      bgcolorReload(bgcol, cuscolor);
+    },10);
+
+
+   
+</script>
